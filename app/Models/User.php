@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // COLLEGAMENTO TABELLE USER - PLATE (ONE TO MANY)
+    public function plates() {
+        return $this->hasMany('App\Models\Plate');
+    }
 }
