@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::middleware('auth')
+   ->namespace('Restaurant')
+   ->name('restaurant.')
+   ->prefix('restaurant')
+   ->group(function () {
+    Route::get('/restaurant', 'RestaurantController@dashboard')->name('dashboard');
+   });
