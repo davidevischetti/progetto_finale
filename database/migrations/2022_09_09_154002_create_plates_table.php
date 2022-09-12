@@ -20,7 +20,7 @@ class CreatePlatesTable extends Migration
             $table->string('ingredients',255);
             $table->string('description',500);
             $table->smallInteger('price');
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->boolean('visible');
             $table->foreignId('user_id')->constrained();
         });

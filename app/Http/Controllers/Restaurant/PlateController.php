@@ -5,9 +5,20 @@ namespace App\Http\Controllers\Restaurant;
 use App\Models\Plate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PlateController extends Controller
 {
+    protected $validations = [
+        'name' => 'required|string|max:255',
+        'ingredients' => 'required|string|max:255',
+        'description' => 'required|string|max:500',
+        'price' => 'required|numeric',
+        'img' =>'nullable|file|image|max:1024',
+        'visible' =>'boolean',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +38,7 @@ class PlateController extends Controller
      */
     public function create()
     {
-        //
+        return view ('restaurant.plates.create');
     }
 
     /**
@@ -38,7 +49,23 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validations);
+
+        $create_data = $request->all();
+
+        dump($create_data);
+
+        // STORAGE IMMAGINI
+        $img_path = Storage::put('uploads', $create_data['img']);
+        $create_data['img'] = $img_path;
+
+        $create_data = $create_data + [
+            'user_id' => Auth::id()
+        ];
+
+        $plate = Plate::create($create_data);
+
+        return redirect()->route('restaurant.plates.index', compact('plate'));
     }
 
     /**
