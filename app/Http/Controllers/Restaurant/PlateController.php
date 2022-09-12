@@ -26,7 +26,7 @@ class PlateController extends Controller
      */
     public function index()
     {
-        $plates = Plate::all();
+        $plates = Plate::orderBy('name')->get();
 
         return view('restaurant.plates.index', compact('plates'));
     }
@@ -52,8 +52,6 @@ class PlateController extends Controller
         $request->validate($this->validations);
 
         $create_data = $request->all();
-
-        dump($create_data);
 
         // STORAGE IMMAGINI
         $img_path = Storage::put('uploads', $create_data['img']);
@@ -87,7 +85,7 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
-        //
+        return view ('restaurant.plates.edit', compact('plate'));
     }
 
     /**
@@ -99,7 +97,24 @@ class PlateController extends Controller
      */
     public function update(Request $request, Plate $plate)
     {
-        //
+        $request->validate($this->validations);
+
+        $edit_data = $request->all();
+
+        // STORAGE IMMAGINI
+        // TODO: ADD NEW IMG AND DELETE OLD IMG
+        if(key_exists('img', $edit_data)) {
+            if($plate->img) {
+                Storage::delete($plate->img);
+
+                $img_path = Storage::put('uploads', $edit_data['img']);
+                $edit_data['img'] = $img_path;
+            }
+        }
+
+        $plate->update($edit_data);
+
+        return redirect()->route('restaurant.plates.index');
     }
 
     /**
@@ -110,6 +125,8 @@ class PlateController extends Controller
      */
     public function destroy(Plate $plate)
     {
-        //
+        $plate->delete();
+
+        return redirect()->route('restaurant.plates.index');
     }
 }

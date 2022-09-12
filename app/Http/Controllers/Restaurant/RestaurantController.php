@@ -25,7 +25,7 @@ class RestaurantController extends Controller
      */
     public function dashboard()
     {
-        $platesVisible = Plate::all()->where('visible', '==', true);
+        $platesVisible = Plate::where('visible', '==', true)->orderBy('name')->get();
 
         return view('restaurant.dashboard', compact('platesVisible'));
     }

@@ -14,6 +14,12 @@
                     <li class="nav-item">
                         <img src="{{ asset ('storage/' . $plate->img)}}" alt="">
                         <a class="nav-link list-group-item" href="#">{{$plate->name}}</a>
+                        <a class="btn btn-success" href="{{route('restaurant.plates.edit', ['plate' => $plate])}}">Edit</a>
+                        <form class="popup" action="{{route('restaurant.plates.destroy', ['plate'=> $plate])}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </li>
                 @endforeach
             </ul>
@@ -22,3 +28,4 @@
     </div>
 </div>
 @endsection
+
