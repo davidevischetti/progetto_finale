@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Restaurant;
 use App\Models\Plate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -25,7 +26,7 @@ class RestaurantController extends Controller
      */
     public function dashboard()
     {
-        $platesVisible = Plate::where('visible', '==', true)->orderBy('name')->get();
+        $platesVisible = Auth::user()->plates()->where('visible', '==', true)->orderBy('name')->get();
 
         return view('restaurant.dashboard', compact('platesVisible'));
     }
