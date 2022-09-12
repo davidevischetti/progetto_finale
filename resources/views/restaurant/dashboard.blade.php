@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+    <a href="{{url()->previous()}}" class="mb-5"><< Back</a>
+
     <div class="row justify-content-start">
 
         <div class="col-2">
