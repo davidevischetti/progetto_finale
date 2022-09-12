@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Restaurant;
 
+use App\Models\Plate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,8 +23,10 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function dashboard()
     {
-        return view('home');
+        $platesVisible = Plate::all()->where('visible', '==', true);
+
+        return view('restaurant.dashboard', compact('platesVisible'));
     }
 }

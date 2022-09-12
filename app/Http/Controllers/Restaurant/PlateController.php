@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Restaurant;
 
 use App\Models\Plate;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PlateController extends Controller
 {
@@ -14,7 +15,9 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
+        $plates = Plate::all();
+
+        return view('restaurant.plates.index', compact('plates'));
     }
 
     /**
