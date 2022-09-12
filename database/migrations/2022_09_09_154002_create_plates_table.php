@@ -22,6 +22,7 @@ class CreatePlatesTable extends Migration
             $table->smallInteger('price');
             $table->string('img');
             $table->boolean('visible');
+            $table->foreignId('user_id')->constrained();
         });
     }
 

@@ -9,4 +9,8 @@ class Category extends Model
     protected $fillable = [
         'name', 'img'
     ];
+
+    public function users() {
+        return $this->belongsToMany('App\Models\User');
+    }
 }

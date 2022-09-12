@@ -14,7 +14,7 @@ class PlateSeeder extends Seeder
     {
         $plates = [
             [
-                'name'          => 'Pasta patete e provola',
+                'name'          => 'Pasta patate e provola',
                 'ingredients'   => 'pasta, patate, provola',
                 'description'   => 'si tratta di una pasta con patate e provola',
                 'price'         => 5,

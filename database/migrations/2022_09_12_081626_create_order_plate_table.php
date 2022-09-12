@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyUserToPlates extends Migration
+class CreateOrderPlateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddForeignKeyUserToPlates extends Migration
      */
     public function up()
     {
-        Schema::table('plates', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained();
+        Schema::create('order_plate', function (Blueprint $table) {
+            $table->foreignId('order_id')->constrained();
+            $table->foreignId('plate_id')->constrained();
+            // $table->tinyInteger('quantity');
         });
     }
 
@@ -25,9 +27,6 @@ class AddForeignKeyUserToPlates extends Migration
      */
     public function down()
     {
-        Schema::table('plates', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropColumn(['user_id']);
-        });
+        Schema::dropIfExists('order_plate');
     }
 }
