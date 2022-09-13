@@ -66,7 +66,10 @@ class PlateController extends Controller
 
         $plate = Plate::create($create_data);
 
-        return redirect()->route('restaurant.plates.index', compact('plate'));
+        return redirect()->route('restaurant.plates.index', compact('plate'))
+            ->with([
+                'creato' => 'piatto creato con successo',
+        ]);
     }
 
     /**
@@ -117,7 +120,9 @@ class PlateController extends Controller
 
         $plate->update($edit_data);
 
-        return redirect()->route('restaurant.plates.index');
+        return redirect()->route('restaurant.plates.index')->with([
+            'modificato' => 'piatto modificato con successo',
+        ]);
     }
 
     /**
@@ -130,6 +135,8 @@ class PlateController extends Controller
     {
         $plate->delete();
 
-        return redirect()->route('restaurant.plates.index');
+        return redirect()->route('restaurant.plates.index')->with([
+            'eliminato' => 'piatto eliminato con successo',
+        ]);;
     }
 }
