@@ -11,13 +11,20 @@
         </div>
 
         <div class="col-8">
+            <h1 class="mb-4">
+                Menu online
+            </h1>
             <ul class="nav flex-column list-group">
                 @foreach ($platesVisible as $plate)
-                    <li class="nav-item">
-                        <a class="nav-link list-group-item" href="#">{{$plate->name}}</a>
+                    <li class="card my-2 p-2">
+                        <h2 class="card-title px-0" href="#">{{$plate->name}}</h2>
+                        <span>
+                            {{$plate->ingredients}}
+                        </span>
                     </li>
                 @endforeach
             </ul>
+            {{ $platesVisible->links() }}
         </div>
 
     </div>

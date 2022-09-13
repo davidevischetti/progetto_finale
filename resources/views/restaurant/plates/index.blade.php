@@ -25,20 +25,32 @@
             </div>
             @endif
 
-            <ul class="nav flex-column list-group">
+            <h1 class="mb-4">
+                Lista piatti creati
+            </h1>
+
+            <ul class="nav flex-column list-group mb-2">
                 @foreach ($plates as $plate)
-                    <li class="nav-item d-flex mb-3 list-group-item">
+                    <li class="nav-item d-flex align-items-center py-3 list-group-item">
                         {{-- <img src="{{ asset ('storage/' . $plate->img)}}" alt="" > --}}
-                        <a class="nav-link col-8  text-dark" href="#">{{$plate->name}}</a>
-                        <a class="btn btn-success col-1 me-5 ms-5" href="{{route('restaurant.plates.edit', ['plate' => $plate])}}">Edit</a>
+                        <div class="col-8 my-0 align-items-center">
+                            <h2  href="#">{{$plate->name}}</h2>
+                            <span>
+                                {{$plate->ingredients}}
+                            </span>
+                        </div>
+                        <a class="btn btn-success col-1 py-2 me-5 ms-5" href="{{route('restaurant.plates.edit', ['plate' => $plate])}}">Edit</a>
                         <form class="popup col-1" action="{{route('restaurant.plates.destroy', ['plate'=> $plate])}}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger py-2">Delete</button>
                         </form>
                     </li>
                 @endforeach
             </ul>
+
+            {{ $plates->links() }}
+
         </div>
 
     </div>

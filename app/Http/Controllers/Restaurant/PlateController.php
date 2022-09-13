@@ -27,7 +27,7 @@ class PlateController extends Controller
     public function index()
     {
 
-        $plates = Auth::user()->plates()->orderBy('name')->get();
+        $plates = Auth::user()->plates()->orderBy('name')->paginate(10);
 
         return view('restaurant.plates.index', compact('plates'));
     }
