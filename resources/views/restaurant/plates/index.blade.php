@@ -11,6 +11,20 @@
         </div>
 
         <div class="col-8">
+            @if (session('creato'))
+                <div class="alert alert-success">
+                    {{ session('creato') }}
+                </div>
+            @elseif (session('modificato'))
+                <div class="alert alert-success">
+                    {{ session('modificato') }}
+                </div>
+            @elseif (session('eliminato'))
+            <div class="alert alert-danger">
+                {{ session('eliminato') }}
+            </div>
+            @endif
+
             <ul class="nav flex-column list-group">
                 @foreach ($plates as $plate)
                     <li class="nav-item d-flex mb-3 list-group-item">
