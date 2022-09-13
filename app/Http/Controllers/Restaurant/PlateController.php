@@ -55,8 +55,10 @@ class PlateController extends Controller
         $create_data = $request->all();
 
         // STORAGE IMMAGINI
-        $img_path = Storage::put('uploads', $create_data['img']);
-        $create_data['img'] = $img_path;
+        if (key_exists('img', $create_data)) {
+            $img_path = Storage::put('uploads', $create_data['img']);
+            $create_data['img'] = $img_path;
+        }
 
         $create_data = $create_data + [
             'user_id' => Auth::id()

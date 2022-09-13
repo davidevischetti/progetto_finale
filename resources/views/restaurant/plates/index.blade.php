@@ -14,7 +14,7 @@
             <ul class="nav flex-column list-group">
                 @foreach ($plates as $plate)
                     <li class="nav-item d-flex mb-3 list-group-item">
-                        <img src="{{ asset ('storage/' . $plate->img)}}" alt="" >
+                        {{-- <img src="{{ asset ('storage/' . $plate->img)}}" alt="" > --}}
                         <a class="nav-link col-8  text-dark" href="#">{{$plate->name}}</a>
                         <a class="btn btn-success col-1 me-5 ms-5" href="{{route('restaurant.plates.edit', ['plate' => $plate])}}">Edit</a>
                         <form class="popup col-1" action="{{route('restaurant.plates.destroy', ['plate'=> $plate])}}" method="post">
