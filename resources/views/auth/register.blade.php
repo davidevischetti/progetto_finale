@@ -57,15 +57,7 @@
                             <label for="p_iva" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="p_iva" oninput="controllaPartitaIVA('11111')" type="number" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva" value="{{ old('p_iva') }}" required autofocus>
-                                <script>
-
-                                    function controllaPartitaIVA(pi) {
-                                    if (pi == '') return 'Non hai inserito alcun valore';
-                                    else if (!/^[0-9]{11}$/.test(pi)) return 'La partita IVA deve contenere 11 cifre.';
-                                    else return '';
-                                    }
-                                </script>
+                                <input id="p_iva" type="number" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva" value="{{ old('p_iva') }}" required autofocus min="1">
                                 @error('p_iva')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -93,7 +85,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'  => ['required', 'string', 'min:8', 'confirmed'],
             'address'   => ['required', 'string', 'max:255', 'unique:users'],
-            'p_iva'   => ['required', 'numeric','unique:users'],
+            'p_iva'   => ['required', 'string','unique:users','min:11', 'max:11'],
             // TODO:validazione immagine
             // 'img'   => ['nullable', 'file', 'max:1024', 'image']
         ]);
