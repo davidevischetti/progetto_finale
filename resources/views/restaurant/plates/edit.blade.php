@@ -63,13 +63,6 @@
                             {{$message}}
                         </div>
                     @enderror
-
-                    {{-- TODO:Switch immagine in preview con edit --}}
-                    @if (file_exists(asset('storage/' . $plate->img)))
-                        <img id="preview" class="img-fluid" src="{{ asset('storage/' . $plate->img) }}">
-                    @else
-                        <div>nessuna immagine e' stata caricata precedentemente</div>
-                    @endif
                 </div>
 
                 <div class="mb-3">
