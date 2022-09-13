@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}*</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  maxlength="255" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}*</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}*</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}"  maxlength="255" minlength="8" required autocomplete="address" autofocus>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="p_iva" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}</label>
+                            <label for="p_iva" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}*</label>
 
                             <div class="col-md-6">
                                 <input id="p_iva" type="number" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva" value="{{ old('p_iva') }}" required autofocus min="1">
@@ -82,7 +82,7 @@
                         </div> --}}
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}*</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8">
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}*</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -110,6 +110,29 @@
                                 </button>
                             </div>
                         </div>
+
+
+
+
+                        <fieldset class="mb-3">
+                            <legend>categories*</legend>
+                            <div class="checkbox-group">
+                                    @foreach ($categories as $category)
+                                    <input type="checkbox" class="form-check-input remove-required" name="categories[]" value="{{$category->id}}" id="category-{{$category->id}}" required
+                                        @if(in_array($category->id, old('categories') ?: [])) checked @endif>
+                                    <label for="category-{{$category->id}}" class="fomr-check-label">{{$category->name}}</label>
+                                    @endforeach
+                            </div>
+                            @error('categories')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </fieldset>
+
+
+
+
                     </form>
                 </div>
             </div>

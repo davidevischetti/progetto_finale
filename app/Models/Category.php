@@ -10,6 +10,8 @@ class Category extends Model
         'name', 'img'
     ];
 
+    public $timestamps = false;
+
     public function users() {
         return $this->belongsToMany('App\Models\User');
     }

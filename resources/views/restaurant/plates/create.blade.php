@@ -55,16 +55,6 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="img">img</label>
-                    <input class="form-control @error('img') is-invalid @enderror" type="file" name="img" id="img" accept="img/*" value="{{old('img')}}" max="1">
-                    @error('img')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
                     <label class="form-label" for="visible">Vuoi inserire questo piatto nel menu'?</label>
                     <select class="form-select" name="visible" id="visible" aria-label="Default select example">
                         <option value="0" selected>NO</option>
