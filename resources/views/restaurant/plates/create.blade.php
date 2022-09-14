@@ -3,14 +3,18 @@
 @section('content')
 
 <div class="container">
-    <a href="{{url()->previous()}}" class="mb-5"><< Back</a>
+    <a href="{{url()->previous()}}" class="mb-5 text-decoration-none"><< Back</a>
 
     <div class="row justify-content-start">
+        <h1 class="mb-4 text-center">
+            Creazione Piatto
+        </h1>
+
         <div class="col-2">
             @include('restaurant/partials/side-bar')
         </div>
 
-        <div class="col-8">
+        <div class="col-8 card p-5 myBorder-primary">
             <form action="{{route('restaurant.plates.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
@@ -62,7 +66,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn myBtn-primary">Save</button>
             </form>
         </div>
     </div>

@@ -8,7 +8,7 @@
                 <h4 class="card-header myBg-primary text-white text-center">{{ __('Register') }}</h4>
 
                 <div class="card-body row justify-content-center">
-                    <form class="row justify-content-center" method="POST" action="{{ route('register') }}">
+                    <form class="row justify-content-center" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row mb-4">
@@ -67,19 +67,17 @@
                         </div>
 
                         {{-- IMMAGINE NULLABLE DA INSERIRE/ DEFAULT CATEGORIA --}}
-                        {{-- <div class="form-group row mb-4">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <div class="mb-3">
+                            <label class="form-label" for="img">img</label>
+                            <input class="form-control @error('img') is-invalid @enderror" type="file" name="img" id="img" accept="image/*">
+                            @error('img')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
-                            <div class="col-md-8">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> --}}
+                            <img id="preview" class="img-fluid" src="">
+                        </div>
 
                         <div class="form-group row mb-4">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}*</label>

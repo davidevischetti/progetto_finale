@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    <a href="{{url()->previous()}}" class="mb-5"><< Back</a>
+    <a href="{{url()->previous()}}" class="mb-5 text-decoration-none"><< Back</a>
 
     <div class="row justify-content-start">
 
-        <h1 class="mb-4 offset-2">
+        <h1 class="mb-4 text-center">
             Menu online
         </h1>
 
@@ -16,15 +16,18 @@
 
         <div class="col-8">
 
-            <ul class="nav flex-column list-group">
+            <ul class="nav myBorder-primary flex-column list-group mb-2">
                 @foreach ($platesVisible as $plate)
-                    <li class="card my-2 p-2">
-                        <h2 class="card-title px-0" href="#">{{$plate->name}}</h2>
-                        <span>
-                            {{$plate->ingredients}}
-                        </span>
-                        <div class="mt-2">
-                            {{$plate->price}} €
+                    <li  data-id="{{ $plate->id }}" class="nav-item d-flex align-items-center py-3 list-group-item">
+                        {{-- <img src="{{ asset ('storage/' . $plate->img)}}" alt="" > --}}
+                        <div class="col-8 my-0 align-items-center">
+                            <h3  href="#">{{$plate->name}}</h3>
+                            <span>
+                                {{$plate->ingredients}}
+                            </span>
+                            <div class="mt-2">
+                                {{$plate->price}} €
+                            </div>
                         </div>
                     </li>
                 @endforeach
