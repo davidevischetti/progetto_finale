@@ -67,15 +67,16 @@
                         </div>
 
                         {{-- IMMAGINE NULLABLE DA INSERIRE/ DEFAULT CATEGORIA --}}
-                        <div class="mb-3">
-                            <label class="form-label" for="img">img</label>
+                        <div class="form-group row mb-4">
+                            <label class="col-md-4 col-form-label text-md-right" for="img">img</label>
+                            <div class="col-md-8">
                             <input class="form-control @error('img') is-invalid @enderror" type="file" name="img" id="img" accept="image/*">
                             @error('img')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
-
+                            </div>
                             <img id="preview" class="img-fluid" src="">
                         </div>
 
