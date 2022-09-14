@@ -106,9 +106,9 @@
                         {{-- SELEZIONE DELLA CATEGORIA --}}
                         <fieldset class="mb-3 form-group row">
                             <label for="check-category" class="col-md-4 col-form-label text-md-right">{{ __('Categories') }}*</label>
-                            <div class="checkbox-group col-md-6 row" id="check-category">
+                            <div class="checkbox-group col-md-8 row" id="check-category">
                                     @foreach ($categories as $category)
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-lg-4 col-sm-6 mb-2 d-flex flex-nowrap">
                                         <input type="checkbox" class="form-check-input remove-required me-1" name="categories[]" value="{{$category->id}}" id="category-{{$category->id}}" required
                                         @if(in_array($category->id, old('categories') ?: [])) checked @endif>
                                         <label for="category-{{$category->id}}" class="fomr-check-label">{{$category->name}}</label>
