@@ -6,3 +6,48 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.myBg-primary {
+    background-color: #d43a1c;
+}
+
+.myBg-secondary {
+    background-color: #ffe6d8;
+}
+
+.myBtn-primary {
+    background-color: #d43a1c;
+    color: #fff;
+
+    &:hover {
+        background-color: #ff5735 !important;
+        color: #fff !important;
+    }
+
+}
+
+
+.myBorder-primary {
+    border: 1px solid #d43a1c;
+}
+
+
+.overlay {
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color: #000, $alpha: 0.5);
+
+    .popup {
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin: auto;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+}

@@ -27883,6 +27883,24 @@ checkBoxRequired.forEach(function (checkbox) {
     }
   });
 });
+var eleOverlay = document.querySelector('.overlay');
+
+if (eleOverlay) {
+  var deleteButtons = document.querySelectorAll('.js-delete');
+  var formPopup = document.querySelector('.popup');
+  deleteButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      eleOverlay.classList.remove('d-none');
+      var id = this.closest('[data-id]').dataset.id;
+      var pattern = formPopup.dataset.action;
+      var newAction = pattern.replace('*', id);
+      formPopup.action = newAction;
+    });
+  });
+  document.querySelector('.js-no').addEventListener('click', function () {
+    eleOverlay.classList.add('d-none');
+  });
+}
 
 /***/ }),
 
@@ -27909,7 +27927,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\boolean\esercizi\back_end\final_project\progetto_finale\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })

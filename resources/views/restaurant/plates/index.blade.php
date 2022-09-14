@@ -32,7 +32,7 @@
 
             <ul class="nav flex-column list-group mb-2">
                 @foreach ($plates as $plate)
-                    <li class="nav-item d-flex align-items-center py-3 list-group-item">
+                    <li  data-id="{{ $plate->id }}" class="nav-item d-flex align-items-center py-3 list-group-item">
                         {{-- <img src="{{ asset ('storage/' . $plate->img)}}" alt="" > --}}
                         <div class="col-8 my-0 align-items-center">
                             <h3  href="#">{{$plate->name}}</h3>
@@ -44,12 +44,15 @@
                             </div>
                         </div>
                         <a class="btn btn-success col-1 py-2 me-5 ms-5" href="{{route('restaurant.plates.edit', ['plate' => $plate])}}">Edit</a>
-                        <form class="popup col-1" action="{{route('restaurant.plates.destroy', ['plate'=> $plate])}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger py-2">Delete</button>
-                        </form>
+
+
+
+                        <button class="btn btn-danger js-delete">Delete</button>
+
+
+
                     </li>
+
                 @endforeach
             </ul>
 
@@ -59,5 +62,17 @@
 
     </div>
 </div>
+<section class="overlay d-none">
+    <form class="popup" data-action="{{ route('restaurant.plates.destroy', ['plate' => '*']) }}" method="post">
+        @csrf
+        @method('DELETE')
+
+        <h1>Sei sicuro?</h1>
+        <div>
+            <button type="submit" class="btn btn-success js-yes">SI</button>
+            <button type="button" class="btn btn-danger js-no">No</button>
+        </div>
+    </form>
+</section>
 @endsection
 

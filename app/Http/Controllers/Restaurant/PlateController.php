@@ -68,7 +68,7 @@ class PlateController extends Controller
 
         return redirect()->route('restaurant.plates.index', compact('plate'))
             ->with([
-                'creato' => 'piatto creato con successo',
+                'creato' => 'Piatto creato con successo',
         ]);
     }
 
@@ -121,7 +121,7 @@ class PlateController extends Controller
         $plate->update($edit_data);
 
         return redirect()->route('restaurant.plates.index')->with([
-            'modificato' => 'piatto modificato con successo',
+            'modificato' => 'Piatto modificato con successo',
         ]);
     }
 
@@ -136,7 +136,7 @@ class PlateController extends Controller
         $plate->delete();
 
         return redirect()->route('restaurant.plates.index')->with([
-            'eliminato' => 'piatto eliminato con successo',
+            'eliminato' => 'Piatto eliminato con successo',
         ]);;
     }
 }
