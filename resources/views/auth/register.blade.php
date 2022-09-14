@@ -57,7 +57,7 @@
                             <label for="p_iva" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}*</label>
 
                             <div class="col-md-8">
-                                <input id="p_iva" type="text" pattern="[0-9]{11}" oninvalid="this.setCustomValidity('Inserire 11 numeri')" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva" value="{{ old('p_iva') }}" required autofocus min="1">
+                                <input id="p_iva" type="text" pattern="[0-9]{11}" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Inserire 11 numeri')" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva" value="{{ old('p_iva') }}" required autofocus min="1">
                                 @error('p_iva')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
