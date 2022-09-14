@@ -15,15 +15,15 @@
 
         <div class="col-8">
             @if (session('creato'))
-                <div class="alert alert-success">
+                <div class="alert time-ring alert-success">
                     {{ session('creato') }}
                 </div>
             @elseif (session('modificato'))
-                <div class="alert alert-success">
+                <div class="alert time-ring alert-success">
                     {{ session('modificato') }}
                 </div>
             @elseif (session('eliminato'))
-            <div class="alert alert-danger">
+            <div class="alert time-ring alert-danger">
                 {{ session('eliminato') }}
             </div>
             @endif
@@ -65,7 +65,7 @@
 
         <h1>Sei sicuro?</h1>
         <div>
-            <button type="submit" class="btn btn-success js-yes">SI</button>
+            <button type="submit" class="btn button-time btn-success js-yes">SI</button>
             <button type="button" class="btn btn-danger js-no">No</button>
         </div>
     </form>

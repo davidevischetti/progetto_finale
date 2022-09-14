@@ -49,3 +49,16 @@ if (eleOverlay) {
         eleOverlay.classList.add('d-none');
     })
 }
+
+const timeAdv = document.querySelectorAll('.time-ring'); 
+
+const buttonsTime = document.querySelectorAll('.button-time');
+
+buttonsTime.forEach(button => {
+    button.addEventListener('click', function() {
+        
+    })
+});
+setTimeout(function(){
+    timeAdv.classList.add('d-none');
+}, 2000);

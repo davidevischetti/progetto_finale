@@ -66,7 +66,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn myBtn-primary">Save</button>
+                <button type="submit" class="btn button-time myBtn-primary">Save</button>
             </form>
         </div>
     </div>
