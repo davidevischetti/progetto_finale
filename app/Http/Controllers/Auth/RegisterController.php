@@ -63,6 +63,7 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         $dataform = $request->all();
+
         // STORAGE IMMAGINI
         if (key_exists('img', $dataform)) {
             $img_path = Storage::put('uploads', $dataform['img']);

@@ -15,16 +15,19 @@
 
         <div class="col-8">
             @if (session('creato'))
-                <div class="alert time-ring alert-success">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('creato') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @elseif (session('modificato'))
-                <div class="alert time-ring alert-success">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('modificato') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @elseif (session('eliminato'))
-            <div class="alert time-ring alert-danger">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session('eliminato') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
 
@@ -65,7 +68,7 @@
 
         <h1>Sei sicuro?</h1>
         <div>
-            <button type="submit" class="btn button-time btn-success js-yes">SI</button>
+            <button type="submit" class="btn btn-success js-yes">SI</button>
             <button type="button" class="btn btn-danger js-no">No</button>
         </div>
     </form>
