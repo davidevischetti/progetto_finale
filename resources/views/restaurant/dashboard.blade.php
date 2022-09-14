@@ -6,14 +6,16 @@
 
     <div class="row justify-content-start">
 
+        <h1 class="mb-4 offset-2">
+            Menu online
+        </h1>
+
         <div class="col-2">
             @include('restaurant/partials/side-bar')
         </div>
 
         <div class="col-8">
-            <h1 class="mb-4">
-                Menu online
-            </h1>
+
             <ul class="nav flex-column list-group">
                 @foreach ($platesVisible as $plate)
                     <li class="card my-2 p-2">
@@ -21,6 +23,9 @@
                         <span>
                             {{$plate->ingredients}}
                         </span>
+                        <div class="mt-2">
+                            {{$plate->price}} €
+                        </div>
                     </li>
                 @endforeach
             </ul>

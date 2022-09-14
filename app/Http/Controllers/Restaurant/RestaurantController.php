@@ -26,7 +26,7 @@ class RestaurantController extends Controller
      */
     public function dashboard()
     {
-        $platesVisible = Auth::user()->plates()->where('visible', '=', true)->orderBy('name')->paginate(10);
+        $platesVisible = Auth::user()->plates()->where('visible', '=', true)->orderBy('name')->paginate(8);
 
         return view('restaurant.dashboard', compact('platesVisible'));
     }
