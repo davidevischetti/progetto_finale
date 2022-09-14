@@ -67,6 +67,10 @@ class RegisterController extends Controller
         if (key_exists('img', $dataform)) {
             $img_path = Storage::put('uploads', $dataform['img']);
             $dataform['img'] = $img_path;
+        } else {
+            $idCategory = $dataform['categories'][0];
+            $dataCategory = Category::find($idCategory);
+            $dataform['img'] = $dataCategory['img'];
         }
 
         event(new Registered($user = $this->create($dataform)));
