@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container myContainer">
+        <div>
             <router-view></router-view>
         </div>
     </div>
@@ -18,8 +18,4 @@
 
 <style lang="scss">
     @import "~bootstrap/scss/bootstrap";
-    .myContainer {
-        height: 100vh;
-        border: 3px solid red;
-    }
 </style>
