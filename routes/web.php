@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
 
 
-Route::get("{any?}", function() {
-    return view("guests.home");
-})->where("any", ".*")->name('home');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -21,3 +19,7 @@ Route::middleware('auth')
     Route::get('/', 'RestaurantController@dashboard')->name('dashboard');
     Route::resource('plates', 'PlateController');
    });
+
+Route::get("{any?}", function() {
+    return view("guests.home");
+})->where("any", ".*")->name('home');
