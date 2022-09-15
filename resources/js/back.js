@@ -28,7 +28,7 @@ checkBoxRequired.forEach(checkbox => {
 });
 
 
-
+// pop up overlay delete
 const eleOverlay = document.querySelector('.overlay');
 if (eleOverlay) {
     const deleteButtons = document.querySelectorAll('.js-delete');
@@ -49,3 +49,6 @@ if (eleOverlay) {
         eleOverlay.classList.add('d-none');
     })
 }
+
+
+// TODO: controllo password

@@ -91,6 +91,7 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
+        if (Auth::id() != $plate->user_id) abort(401);
         return view ('restaurant.plates.edit', compact('plate'));
     }
 
@@ -103,6 +104,7 @@ class PlateController extends Controller
      */
     public function update(Request $request, Plate $plate)
     {
+        if (Auth::id() != $plate->user_id) abort(401);
         $request->validate($this->validations);
 
         $edit_data = $request->all();
@@ -133,6 +135,7 @@ class PlateController extends Controller
      */
     public function destroy(Plate $plate)
     {
+        if (Auth::id() != $plate->user_id) abort(401);
         $plate->delete();
 
         return redirect()->route('restaurant.plates.index')->with([

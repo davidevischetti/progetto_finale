@@ -8,7 +8,7 @@
                 <h4 class="card-header myBg-primary text-white text-center">{{ __('Register') }}</h4>
 
                 <div class="card-body row justify-content-center">
-                    <form class="row justify-content-center" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form id="myForm" class="row justify-content-center" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row mb-4">
@@ -84,7 +84,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}*</label>
 
                             <div class="col-md-8">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8">
+                                <input id="password" type="password" class=" pws form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -94,11 +94,13 @@
                             </div>
                         </div>
 
+
+
                         <div class="form-group row mb-4">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}*</label>
 
                             <div class="col-md-8">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control pws-confirmed" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
@@ -108,8 +110,7 @@
                             <div class="checkbox-group col-md-8 row" id="check-category">
                                     @foreach ($categories as $category)
                                     <div class="col-lg-4 col-sm-6 mb-2 d-flex flex-nowrap">
-                                        <input type="checkbox" class="form-check-input remove-required me-1" name="categories[]" value="{{$category->id}}" id="category-{{$category->id}}" required
-                                        @if(in_array($category->id, old('categories') ?: [])) checked @endif>
+                                        <input type="checkbox" class="form-check-input remove-required me-1" name="categories[]" value="{{$category->id}}" id="category-{{$category->id}}" required>
                                         <label for="category-{{$category->id}}" class="fomr-check-label">{{$category->name}}</label>
                                     </div>
                                     @endforeach
@@ -135,4 +136,5 @@
         </div>
     </div>
 </div>
+
 @endsection

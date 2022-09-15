@@ -27882,7 +27882,8 @@ checkBoxRequired.forEach(function (checkbox) {
       });
     }
   });
-});
+}); // pop up overlay delete
+
 var eleOverlay = document.querySelector('.overlay');
 
 if (eleOverlay) {
@@ -27900,7 +27901,7 @@ if (eleOverlay) {
   document.querySelector('.js-no').addEventListener('click', function () {
     eleOverlay.classList.add('d-none');
   });
-}
+} // TODO: controllo password
 
 /***/ }),
 
