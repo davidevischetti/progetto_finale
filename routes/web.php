@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
 
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("{any?}", function() {
+    return view("guests.home");
+})->where("any", ".*")->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
