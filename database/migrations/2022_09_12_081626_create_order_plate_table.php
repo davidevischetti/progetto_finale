@@ -16,7 +16,7 @@ class CreateOrderPlateTable extends Migration
         Schema::create('order_plate', function (Blueprint $table) {
             $table->foreignId('order_id')->constrained();
             $table->foreignId('plate_id')->constrained();
-            // $table->tinyInteger('quantity');
+            $table->tinyInteger('quantity');
         });
     }
 
