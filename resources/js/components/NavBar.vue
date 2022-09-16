@@ -8,8 +8,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li v-for="(navItem, index) in navItems" :key="index" class="nav-item">
-                        <router-link :to="{name: navItem.routeName}" :key="componentKey" class="nav-link active">{{ navItem.label }}</router-link>
+                    <li v-for="(navItem, index) in navItems"  :key="index" class="nav-item">
+                        <a :href="navItem.routeName" class="nav-link active">{{ navItem.label }}</a>
                     </li>
                 </ul>
             </div>
@@ -19,33 +19,9 @@
 
 </div>
 </template>
-        <!-- @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route ('restaurant.dashboard') }}">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-        @endif -->
-
-
-
-
 
 <script>
-    import { ref } from 'vue';
-    const componentKey = ref(0);
-
-const forceRerender = () => {
-  componentKey.value += 1;
-    };
-
-    export default {
+export default {
         name: 'NavBar',
         data() {
             return {
@@ -57,25 +33,17 @@ const forceRerender = () => {
                     {
                         label: 'Login',
                         routeName: 'login',
-                        componentKey: 0,
                     },
                     {
                         label: 'Register',
                         routeName: 'register',
-                        componentKey: 0,
                     },
                     {
                         label: 'Dashboard',
-                        routeName: 'restaurant.dashboard',
-                        componentKey: 0,
+                        routeName: 'restaurant',
                     }
                 ]
             };
-  },
-  methods: {
-    forceRerender() {
-      this.componentKey += 1;
-    }
   }
 }
 

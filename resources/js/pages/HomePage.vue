@@ -24,7 +24,4 @@ import Footer from './Footer.vue';
 </script>
 
 <style lang="scss" scoped>
-    #myHompage{
-        height: 100vh;
-    }
 </style>
