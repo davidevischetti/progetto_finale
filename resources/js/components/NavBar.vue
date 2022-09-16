@@ -26,31 +26,30 @@
 
 <script>
 export default {
-        name: 'NavBar',
-        data() {
-            return {
-                navItems: [
-                    // {
-                    //     label: 'Home',
-                    //     routeName: 'home'
-                    // },
-                    {
-                        label: 'Login',
-                        routeName: 'login',
-                    },
-                    {
-                        label: 'Register',
-                        routeName: 'register',
-                    },
-                    {
-                        label: 'Dashboard',
-                        routeName: 'restaurant',
-                    }
-                ]
-            };
-  }
+    name: 'NavBar',
+    data() {
+        return {
+            navItems: [
+                // {
+                //     label: 'Home',
+                //     routeName: 'home'
+                // },
+                {
+                    label: 'Login',
+                    routeName: 'login',
+                },
+                {
+                    label: 'Register',
+                    routeName: 'register',
+                },
+                {
+                    label: 'Dashboard',
+                    routeName: 'restaurant',
+                }
+            ]
+        };
+    }
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -60,6 +59,5 @@ export default {
 
     img{
         width: 80px;
-
     }
 </style>

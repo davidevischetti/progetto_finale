@@ -9,12 +9,9 @@
             :name="category.name"
             class="myCategory" />
             </div>
-
         </div>
-
-
         <ListaRisto></ListaRisto>
-        <Footer></Footer>
+
     </div>
 </template>
 
@@ -23,8 +20,6 @@
 import Jumbotrone from '../components/Jumbotrone.vue';
 import CategoriesTop from '../components/CategoriesTop.vue'
 import ListaRisto from '../components/ListaRisto.vue';
-import Footer from './Footer.vue';
-
 
     export default {
         name: 'HomePage',
@@ -32,7 +27,6 @@ import Footer from './Footer.vue';
             Jumbotrone,    
             CategoriesTop,
             ListaRisto,
-            Footer,
         },
         data() {
             return {
