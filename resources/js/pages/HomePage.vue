@@ -2,11 +2,14 @@
     <div id="myHompage">
 
         <Jumbotrone></Jumbotrone>
-        <div class="container my-4 justify-content-between d-flex">
+        <div class="container my-4 ">
+            <div class="row d-flex justify-content-between  ">
             <CategoriesTop v-for="category in categories" :key="category"
             :img="category.img"
             :name="category.name"
             class="myCategory" />
+            </div>
+
         </div>
 
 

@@ -41134,7 +41134,7 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("a", {
-    staticClass: "card myCard border-0 text-decoration-none text-dark",
+    staticClass: "card myCard col-4 border-0 text-decoration-none text-dark",
     attrs: {
       href: "#"
     }
@@ -41261,16 +41261,14 @@ var render = function render() {
   }, [_c("nav", {
     staticClass: "navbar navbar-expand-lg navbar-dark"
   }, [_c("div", {
-    staticClass: "container justify-content-end"
+    staticClass: "container-fluid"
   }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-end"
-  }, [_c("div", {
     staticClass: "collapse navbar-collapse",
     attrs: {
-      id: "navbarNav"
+      id: "navbarSupportedContent"
     }
   }, [_c("ul", {
-    staticClass: "navbar-nav"
+    staticClass: "navbar-nav me-auto mb-2 mb-lg-0"
   }, _vm._l(_vm.navItems, function (navItem, index) {
     return _c("li", {
       key: index,
@@ -41281,7 +41279,7 @@ var render = function render() {
         href: navItem.routeName
       }
     }, [_vm._v(_vm._s(navItem.label))])]);
-  }), 0)])])])])]);
+  }), 0)])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -41295,7 +41293,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("img", {
     attrs: {
-      src: "",
+      src: "/image/logo-deliveboo-transparent.png",
       alt: ""
     }
   })]);
@@ -41308,8 +41306,8 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button",
       "data-bs-toggle": "collapse",
-      "data-bs-target": "#navbarNav",
-      "aria-controls": "navbarNav",
+      "data-bs-target": "#navbarSupportedContent",
+      "aria-controls": "navbarSupportedContent",
       "aria-expanded": "false",
       "aria-label": "Toggle navigation"
     }
@@ -41377,7 +41375,9 @@ var render = function render() {
       id: "myHompage"
     }
   }, [_c("Jumbotrone"), _vm._v(" "), _c("div", {
-    staticClass: "container my-4 justify-content-between d-flex"
+    staticClass: "container my-4"
+  }, [_c("div", {
+    staticClass: "row d-flex justify-content-between"
   }, _vm._l(_vm.categories, function (category) {
     return _c("CategoriesTop", {
       key: category,
@@ -41387,7 +41387,7 @@ var render = function render() {
         name: category.name
       }
     });
-  }), 1), _vm._v(" "), _c("ListaRisto"), _vm._v(" "), _c("Footer")], 1);
+  }), 1)]), _vm._v(" "), _c("ListaRisto"), _vm._v(" "), _c("Footer")], 1);
 };
 
 var staticRenderFns = [];
@@ -48334,7 +48334,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myNavbar[data-v-5dd24bca] {\n  background-color: #d43a1c;\n}", ""]);
+exports.push([module.i, "#myNavbar[data-v-5dd24bca] {\n  background-color: #d43a1c;\n}\nimg[data-v-5dd24bca] {\n  width: 80px;\n}", ""]);
 
 // exports
 
@@ -48391,7 +48391,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.myCard{\n    width: 12rem;\n    height: 12rem;\n}\n.myCardImg{\n    width: 100%;  \n    height: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.myCard{\n    width: 12rem;\n    height: 12rem;\n}\n.myCardImg{\n    height: 100%;\n}\n", ""]);
 
 // exports
 

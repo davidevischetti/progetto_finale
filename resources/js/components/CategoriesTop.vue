@@ -1,8 +1,8 @@
 <template>
-    <a href="#" class="card myCard border-0 text-decoration-none text-dark">
+    <a href="#" class="card myCard col-4 border-0 text-decoration-none text-dark">
         <img :src="img" :alt="name" class="card-img-top  rounded-3 myCardImg">
         <div class="card-body">
-            <p class="card-text text-capitalize  text-center fs-5"> {{name}} </p>
+            <p class="card-text text-capitalize text-center fs-5"> {{name}} </p>
         </div>
     </a>
 </template>
@@ -29,11 +29,9 @@ export default {
         width: 12rem;
         height: 12rem;
 
-
     }
 
     .myCardImg{
-        width: 100%;  
-        height: 100%;
+        height: 100%;  
     }
 </style>
