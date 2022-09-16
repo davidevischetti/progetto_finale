@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="myHompage">
 
         <Jumbotrone></Jumbotrone>
         <ListaRisto></ListaRisto>
@@ -24,5 +24,7 @@ import Footer from './Footer.vue';
 </script>
 
 <style lang="scss" scoped>
-    
+    #myHompage{
+        height: 100vh;
+    }
 </style>

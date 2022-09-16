@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li v-for="(navItem, index) in navItems" :key="index" class="nav-item">
-                        <router-link :to="{name: navItem.routeName}" class="nav-link active">{{ navItem.label }}</router-link>
+                        <router-link :to="{name: navItem.routeName}" :key="componentKey" class="nav-link active">{{ navItem.label }}</router-link>
                     </li>
                 </ul>
             </div>
@@ -38,33 +38,46 @@
 
 
 <script>
+    import { ref } from 'vue';
+    const componentKey = ref(0);
+
+const forceRerender = () => {
+  componentKey.value += 1;
+    };
+
     export default {
         name: 'NavBar',
         data() {
-        return {
-            navItems: [
-                // {
-                //     label: 'Home',
-                //     routeName: 'home'
-                // },
-                {
-                    label: 'Login',
-                    routeName: 'login'
-                },
-                {
-                    label: 'Register',
-                    routeName: 'register'
-                },
-                {
-                    label: 'Dashboard',
-                    routeName: 'restaurant.dashboard'
-                }
-            ]
-        }
+            return {
+                navItems: [
+                    // {
+                    //     label: 'Home',
+                    //     routeName: 'home'
+                    // },
+                    {
+                        label: 'Login',
+                        routeName: 'login',
+                        componentKey: 0,
+                    },
+                    {
+                        label: 'Register',
+                        routeName: 'register',
+                        componentKey: 0,
+                    },
+                    {
+                        label: 'Dashboard',
+                        routeName: 'restaurant.dashboard',
+                        componentKey: 0,
+                    }
+                ]
+            };
+  },
+  methods: {
+    forceRerender() {
+      this.componentKey += 1;
     }
+  }
 }
-
-// var user_is = <?php echo Auth::user()->id; ?>
 
 </script>
 
