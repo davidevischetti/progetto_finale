@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'ShowRisto',
+        name: 'ListaRisto',
     }
 </script>
 

@@ -8,8 +8,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li v-for="(navItem, index) in navItems" :key="index" class="nav-item">
-                        <router-link :to="{name: navItem.routeName}" class="nav-link active">{{ navItem.label }}</router-link>
+                    <li v-for="(navItem, index) in navItems"  :key="index" class="nav-item">
+                        <a :href="navItem.routeName" class="nav-link active">{{ navItem.label }}</a>
                     </li>
                 </ul>
             </div>
@@ -19,52 +19,33 @@
 
 </div>
 </template>
-        <!-- @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route ('restaurant.dashboard') }}">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-        @endif -->
-
-
-
-
 
 <script>
-    export default {
+export default {
         name: 'NavBar',
         data() {
-        return {
-            navItems: [
-                // {
-                //     label: 'Home',
-                //     routeName: 'home'
-                // },
-                {
-                    label: 'Login',
-                    routeName: 'login'
-                },
-                {
-                    label: 'Register',
-                    routeName: 'register'
-                },
-                {
-                    label: 'Dashboard',
-                    routeName: 'restaurant.dashboard'
-                }
-            ]
-        }
-    }
+            return {
+                navItems: [
+                    // {
+                    //     label: 'Home',
+                    //     routeName: 'home'
+                    // },
+                    {
+                        label: 'Login',
+                        routeName: 'login',
+                    },
+                    {
+                        label: 'Register',
+                        routeName: 'register',
+                    },
+                    {
+                        label: 'Dashboard',
+                        routeName: 'restaurant',
+                    }
+                ]
+            };
+  }
 }
-
-// var user_is = <?php echo Auth::user()->id; ?>
 
 </script>
 
