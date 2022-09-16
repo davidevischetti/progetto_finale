@@ -17,6 +17,22 @@ require('./bootstrap');
             name: 'home',
             component: HomePage,
         },
+        {
+            // questa è la index (paginata) dei post
+            path: '/login',
+            name: 'login',
+            // component: ,
+        }, 
+        // {
+        //     path: '/about',
+        //     name: 'about',
+        //     component: NavBar,
+        // },
+        // {
+        //     path: '/contacts',
+        //     name: 'contacts',
+        //     component: NavBar,
+        // },
 
         // {
         //     path: '/percorso/url/:parametro',
