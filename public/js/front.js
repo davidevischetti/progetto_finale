@@ -5148,21 +5148,7 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Jumbotrone',
-  data: function data() {
-    return {
-      categories: []
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.get('api/restaurants').then(function (response) {
-      if (response.data.success) {
-        _this.categories = response.data.categories;
-      }
-    });
-  }
+  name: 'Jumbotrone'
 });
 
 /***/ }),
@@ -5247,6 +5233,37 @@ __webpack_require__.r(__webpack_exports__);
     Jumbotrone: _components_Jumbotrone_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     ListaRisto: _components_ListaRisto_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      categories: [],
+      arrRestaurants: [],
+      idcategoy: null
+    };
+  },
+  created: function created() {
+    this.getRest();
+  },
+  methods: {
+    getRest: function getRest() {
+      var _this = this;
+
+      axios.get('api/restaurants' + '?category=' + this.idcategoy).then(function (response) {
+        if (response.data.success) {
+          _this.categories = response.data.categories;
+          _this.arrRestaurants = response.data.arrRestaurants;
+        }
+      });
+    },
+    assegnaValore: function assegnaValore($num) {
+      this.idcategoy = $num;
+      this.getRest();
+    }
+  },
+  computed: {// assegnaValore($num){
+    //     this.idcategoy = $num;
+    //     // getRest()
+    // }
   }
 });
 
@@ -5466,7 +5483,58 @@ var render = function render() {
     attrs: {
       id: "myHompage"
     }
-  }, [_c("Jumbotrone"), _vm._v(" "), _c("ListaRisto"), _vm._v(" "), _c("Footer")], 1);
+  }, [_c("Jumbotrone"), _vm._v(" "), _c("ListaRisto"), _vm._v(" "), _c("Footer"), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-content-center"
+  }, [_c("div", _vm._l(_vm.arrRestaurants, function (rest) {
+    return _c("div", {
+      key: rest.id
+    }, [_vm._v("\n                " + _vm._s(rest.name) + "\n            ")]);
+  }), 0), _vm._v(" "), _c("div", [_c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.assegnaValore(1);
+      }
+    }
+  }, [_vm._v("italiano")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.assegnaValore(2);
+      }
+    }
+  }, [_vm._v("pizza")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.assegnaValore(3);
+      }
+    }
+  }, [_vm._v("giapponese")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.assegnaValore(4);
+      }
+    }
+  }, [_vm._v("messicano")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.assegnaValore(5);
+      }
+    }
+  }, [_vm._v("kebab")])])])])], 1);
 };
 
 var staticRenderFns = [];
@@ -27767,8 +27835,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
