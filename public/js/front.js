@@ -5162,13 +5162,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/HomePage.vue */ "./resources/js/pages/HomePage.vue");
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'App',
-  components: {
-    HomePage: _pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  name: 'App'
 });
 
 /***/ }),
