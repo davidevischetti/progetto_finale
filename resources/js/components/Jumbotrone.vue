@@ -7,58 +7,13 @@
     </div>
   </div>
 
-  <!-- TODO: carosello delle categorie -->
-  <!-- <div class="jumbo-carousel">
-        <div class="container">
-          <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-6 g-3">
-            <div class="col ms_thumb ms_select">
-              <img src="img/returnal-listing-thumb-01-ps5.jpg" alt=""/>
-            </div>
-            <div class="col">
-              <img src="img/ratchet-and-clank-rift-apart-keyart.jpg" alt=""/>
-            </div>
-            <div class="col">
-              <img src="img/returnal-listing-thumb-01-ps5.jpg" alt=""/>
-            </div>
-            <div class="col">
-              <img src="img/ratchet-and-clank-rift-apart-keyart.jpg" alt=""/>
-            </div>
-            <div class="col">
-              <img src="img/returnal-listing-thumb-01-ps5.jpg" alt=""/>
-            </div>
-            <div class="col">
-              <img src="img/ratchet-and-clank-rift-apart-keyart.jpg" alt=""/>
-            </div>
-          </div>
-        </div>
-      </div> -->
 </div>
 </template>
 
 <script>
     export default {
         name: 'Jumbotrone',
-        data() {
-            return {
-                categoryItems: [
-  
-                    {
-                        label: 'Italiano',
-
-                    },
-                    {
-                        label: 'Giapponese',
-
-                    },
-                    {
-                        label: '',
-
-                    }
-                ]
-            };
-  }
-
-    }
+}
 </script>
 
 <style lang="scss" scoped>
