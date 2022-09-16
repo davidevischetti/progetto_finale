@@ -26,19 +26,19 @@
 
             <div>
                 <div>
-                    <a href="#" @click="assegnaValore(1)">italiano</a>
+                    <a href="#" @click.prevent="assegnaValore(1)" >italiano</a>
                 </div>
                 <div>
-                    <a href="#" @click="assegnaValore(2)">pizza</a>
+                    <a href="#" @click.prevent="assegnaValore(2)">pizza</a>
                 </div>
                 <div>
-                    <a href="#" @click="assegnaValore(3)">giapponese</a>
+                    <a href="#" @click.prevent="assegnaValore(3)">giapponese</a>
                 </div>
                 <div>
-                    <a href="#" @click="assegnaValore(4)">messicano</a>
+                    <a href="#" @click.prevent="assegnaValore(4)">messicano</a>
                 </div>
                 <div>
-                    <a href="#" @click="assegnaValore(5)">kebab</a>
+                    <a href="#" @click.prevent="assegnaValore(5)">kebab</a>
                 </div>
             </div>
         </div>
@@ -80,14 +80,10 @@ import Footer from './Footer.vue';
             },
             assegnaValore($num){
                 this.idcategoy = $num;
-                this.getRest();
+                return this.getRest();
             }
         },
         computed:{
-            // assegnaValore($num){
-            //     this.idcategoy = $num;
-            //     // getRest()
-            // }
         }
 
     }

@@ -5257,14 +5257,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     assegnaValore: function assegnaValore($num) {
       this.idcategoy = $num;
-      this.getRest();
+      return this.getRest();
     }
   },
-  computed: {// assegnaValore($num){
-    //     this.idcategoy = $num;
-    //     // getRest()
-    // }
-  }
+  computed: {}
 });
 
 /***/ }),
@@ -5495,6 +5491,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
+        $event.preventDefault();
         return _vm.assegnaValore(1);
       }
     }
@@ -5504,6 +5501,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
+        $event.preventDefault();
         return _vm.assegnaValore(2);
       }
     }
@@ -5513,6 +5511,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
+        $event.preventDefault();
         return _vm.assegnaValore(3);
       }
     }
@@ -5522,6 +5521,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
+        $event.preventDefault();
         return _vm.assegnaValore(4);
       }
     }
@@ -5531,6 +5531,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
+        $event.preventDefault();
         return _vm.assegnaValore(5);
       }
     }
