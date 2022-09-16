@@ -19,7 +19,19 @@ import Footer from './Footer.vue';
             Jumbotrone,
             ListaRisto,
             Footer,
-        }
+        },
+        data() {
+            return {
+                categories: [],
+            }
+        },
+        created() {
+            axios.get('api/restaurants').then(response => {
+                if (response.data.success) {
+                    this.categories = response.data.categories
+                }
+            })
+        },
     }
 </script>
 

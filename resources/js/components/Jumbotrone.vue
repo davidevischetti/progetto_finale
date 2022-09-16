@@ -1,12 +1,17 @@
 <template>
 <!-- inserito immagine di hero -->
 <div class="jumbotron jumbotron-fluid " id="myJumbotrone">
-  <div class="myFilter d-flex align-items-center">
+  <div class="myFilter d-flex justify-content-center  align-items-center flex-column">
     <div class="container">
         <h1 class="text-center text-white ">Dove vuoi, quando vuoi. Direttamente dal divano di casa tua.</h1>
     </div>
-  </div>
+    <div class="d-flex flex-row">
+        <div v-for="category in categories" :key="category" class="">
+            <h1 class="text-white">ciao</h1>
+        </div> 
+    </div>
 
+  </div>
 </div>
 </template>
 
@@ -14,21 +19,8 @@
 
     export default {
         name: 'Jumbotrone',
-        data() {
-            return {
-                categories: [],
-            }
-        },
-        created() {
-            axios.get('api/restaurants').then(response => {
-                if (response.data.success) {
-                    this.categories = response.data.categories
-                }
-            })
-        },
+
     }
-
-
 
 </script>
 

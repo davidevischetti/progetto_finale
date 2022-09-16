@@ -5148,21 +5148,7 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Jumbotrone',
-  data: function data() {
-    return {
-      categories: []
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.get('api/restaurants').then(function (response) {
-      if (response.data.success) {
-        _this.categories = response.data.categories;
-      }
-    });
-  }
+  name: 'Jumbotrone'
 });
 
 /***/ }),
@@ -5247,6 +5233,20 @@ __webpack_require__.r(__webpack_exports__);
     Jumbotrone: _components_Jumbotrone_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     ListaRisto: _components_ListaRisto_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      categories: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('api/restaurants').then(function (response) {
+      if (response.data.success) {
+        _this.categories = response.data.categories;
+      }
+    });
   }
 });
 
@@ -5287,7 +5287,22 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("div", {
+    staticClass: "jumbotron jumbotron-fluid",
+    attrs: {
+      id: "myJumbotrone"
+    }
+  }, [_c("div", {
+    staticClass: "myFilter d-flex justify-content-center align-items-center flex-column"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "d-flex flex-row"
+  }, _vm._l(_vm.categories, function (category) {
+    return _c("div", {
+      key: category
+    }, [_c("h1", {
+      staticClass: "text-white"
+    }, [_vm._v("ciao")])]);
+  }), 0)])]);
 };
 
 var staticRenderFns = [function () {
@@ -5295,17 +5310,10 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "jumbotron jumbotron-fluid",
-    attrs: {
-      id: "myJumbotrone"
-    }
-  }, [_c("div", {
-    staticClass: "myFilter d-flex align-items-center"
-  }, [_c("div", {
     staticClass: "container"
   }, [_c("h1", {
     staticClass: "text-center text-white"
-  }, [_vm._v("Dove vuoi, quando vuoi. Direttamente dal divano di casa tua.")])])])]);
+  }, [_vm._v("Dove vuoi, quando vuoi. Direttamente dal divano di casa tua.")])]);
 }];
 render._withStripped = true;
 
