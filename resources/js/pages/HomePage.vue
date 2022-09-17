@@ -18,11 +18,7 @@
             </div> -->
             <!-- ristoranti filtrati -->
 
-            <div>
-                <div v-for="rest in arrRestaurants" :key="rest.id">
-                    {{rest.name}}
-                </div>
-            </div>
+
 
             <div>
                 <div>
@@ -41,6 +37,13 @@
                     <a href="#" @click.prevent="assegnaValore(5)">kebab</a>
                 </div>
             </div>
+
+            <div>
+                <div v-for="rest in arrRestaurants" :key="rest.id">
+                    {{rest.name}}
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -61,15 +64,23 @@ import Footer from './Footer.vue';
         },
         data() {
             return {
+                // categorie da mostrare
                 categories: [],
+
+                // ristoranti filtrati in base alla categoria
                 arrRestaurants: [],
+                // id categoria che si trova nella funzione di ogni categoria per la chiamata api
                 idcategoy: null,
+
+
             }
         },
         created() {
             this.getRest()
         },
         methods: {
+
+            // chiamata per i ristoranti in base alla categoria
             getRest(){
                 axios.get('api/restaurants' + '?category=' + this.idcategoy).then(response => {
                 if (response.data.success) {

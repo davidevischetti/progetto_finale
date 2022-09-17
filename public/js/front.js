@@ -5236,8 +5236,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      // categorie da mostrare
       categories: [],
+      // ristoranti filtrati in base alla categoria
       arrRestaurants: [],
+      // id categoria che si trova nella funzione di ogni categoria per la chiamata api
       idcategoy: null
     };
   },
@@ -5245,6 +5248,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getRest();
   },
   methods: {
+    // chiamata per i ristoranti in base alla categoria
     getRest: function getRest() {
       var _this = this;
 
@@ -5481,11 +5485,7 @@ var render = function render() {
     }
   }, [_c("Jumbotrone"), _vm._v(" "), _c("ListaRisto"), _vm._v(" "), _c("Footer"), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-center"
-  }, [_c("div", _vm._l(_vm.arrRestaurants, function (rest) {
-    return _c("div", {
-      key: rest.id
-    }, [_vm._v("\n                " + _vm._s(rest.name) + "\n            ")]);
-  }), 0), _vm._v(" "), _c("div", [_c("div", [_c("a", {
+  }, [_c("div", [_c("div", [_c("a", {
     attrs: {
       href: "#"
     },
@@ -5535,7 +5535,11 @@ var render = function render() {
         return _vm.assegnaValore(5);
       }
     }
-  }, [_vm._v("kebab")])])])])], 1);
+  }, [_vm._v("kebab")])])]), _vm._v(" "), _c("div", _vm._l(_vm.arrRestaurants, function (rest) {
+    return _c("div", {
+      key: rest.id
+    }, [_vm._v("\n                " + _vm._s(rest.name) + "\n            ")]);
+  }), 0)])], 1);
 };
 
 var staticRenderFns = [];

@@ -29,4 +29,7 @@ class RestaurantController extends Controller
             'arrRestaurants' => $arrRestaurants
         ]);
     }
+
+
+
 }
