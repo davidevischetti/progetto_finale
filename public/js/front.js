@@ -5284,6 +5284,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/category/restaurants/' + this.idRistorante).then(function (response) {
         if (response.data.success) {
           _this3.arrPlateRest = response.data.plateRestaurant;
+          _this3.arrPlateRest = response.data.infoRestaurant;
         }
       });
     },

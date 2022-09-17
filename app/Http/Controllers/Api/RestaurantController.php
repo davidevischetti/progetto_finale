@@ -47,7 +47,7 @@ class RestaurantController extends Controller
 
         return response()->json([
             'success' => true,
-            // 'infoRestaurant' => $infoRestaurant,
+            'infoRestaurant' => $infoRestaurant,
             'plateRestaurant' => $plateRestaurant[0]['plates'],
         ]);
 

@@ -108,6 +108,7 @@ import Footer from './Footer.vue';
                 axios.get('/api/category/restaurants/' + this.idRistorante).then(response => {
                 if (response.data.success) {
                     this.arrPlateRest = response.data.plateRestaurant
+                    this.arrPlateRest = response.data.infoRestaurant
                     }
                 })
             },
