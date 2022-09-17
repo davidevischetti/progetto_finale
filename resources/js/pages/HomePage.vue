@@ -29,6 +29,7 @@
             <!-- lista ristoranti -->
             <div>
                 <div v-for="rest in arrRestaurants" :key="rest.id">
+                    <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                     <a href="#" @click.prevent="assegnaValoreIdRest(1)">{{rest.name}}</a>
                 </div>
             </div>
