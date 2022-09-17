@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Plate extends Model
 {
     protected $fillable = [
-        'user_id', 'name', 'ingredients', 'description', 'price', 'img', 'visible'
+        'user_id', 'name', 'ingredients', 'description', 'price', 'img', 'id', 'visible'
     ];
 
     protected $hidden = [
-        'id', 'user_id'
+         'user_id'
     ];
 
     // COLLEGAMENTO TABELLE USER - PLATE (ONE TO MANY)

@@ -10,7 +10,19 @@ use App\Http\Controllers\Controller;
 
 class RestaurantController extends Controller
 {
-    public function index(Request $request){
+
+    // api che restituisce le categorie da visualizzare
+    public function categories() {
+        $categories = Category::all();
+
+        return response()->json([
+            'success' => true,
+            'categories' => $categories,
+        ]);
+    }
+
+    // api che restituisce le i ristoranti da visualizzare (con anche i piatti) nel json
+    public function restaurants(Request $request){
 
         $category = $request->get('category');
 
@@ -18,16 +30,27 @@ class RestaurantController extends Controller
                             ->join('categories', 'category_user.category_id', '=', 'categories.id')
                             ->select('users.*','categories.name as categoryName', 'categories.id as categoryId')
         ->where('category_id', $category)->get();
-
-
-
-        $categories = Category::all();
+        // ->where('category_id', $category)->with(['plates'])->get();
 
         return response()->json([
             'success' => true,
-            'categories' => $categories,
             'arrRestaurants' => $arrRestaurants
         ]);
+    }
+
+
+    public function show($id){
+
+
+        $infoRestaurant = User::find($id)->where('id', $id)->get();
+        $plateRestaurant = User::find($id)->with(['plates'])->where('id', $id)->get();
+
+        return response()->json([
+            'success' => true,
+            // 'infoRestaurant' => $infoRestaurant,
+            'plateRestaurant' => $plateRestaurant[0]['plates'],
+        ]);
+
     }
 
 

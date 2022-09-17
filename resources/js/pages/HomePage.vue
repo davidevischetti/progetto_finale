@@ -6,44 +6,41 @@
         <Footer></Footer>
 
         <div class="d-flex justify-content-center">
-            <!-- <div class="me-4">
-                <div v-for="restaurant in restaurants" :key="restaurant.id">
-                    {{restaurant.name}}
-                </div>
-            </div> -->
-            <!-- <div>
-                <div v-for="category in categories" :key="category.id">
-                    {{category.name}}
-                </div>
-            </div> -->
-            <!-- ristoranti filtrati -->
-
-
 
             <div>
+                <!-- lista categorie -->
                 <div>
-                    <a href="#" @click.prevent="assegnaValore(1)" >italiano</a>
+                    <a href="#" @click.prevent="assegnaValoreIdCategory(1)" >italiano</a>
                 </div>
                 <div>
-                    <a href="#" @click.prevent="assegnaValore(2)">pizza</a>
+                    <a href="#" @click.prevent="assegnaValoreIdCategory(2)" >pizza</a>
                 </div>
                 <div>
-                    <a href="#" @click.prevent="assegnaValore(3)">giapponese</a>
+                    <a href="#" @click.prevent="assegnaValoreIdCategory(3)" >giapponese</a>
                 </div>
                 <div>
-                    <a href="#" @click.prevent="assegnaValore(4)">messicano</a>
+                    <a href="#" @click.prevent="assegnaValoreIdCategory(4)" >messicano</a>
                 </div>
                 <div>
-                    <a href="#" @click.prevent="assegnaValore(5)">kebab</a>
+                    <a href="#" @click.prevent="assegnaValoreIdCategory(5)" >kebab</a>
                 </div>
             </div>
 
+            <!-- lista ristoranti -->
             <div>
                 <div v-for="rest in arrRestaurants" :key="rest.id">
-                    {{rest.name}}
+                    <a href="#" @click.prevent="assegnaValoreIdRest(1)">{{rest.name}}</a>
                 </div>
             </div>
 
+            <!-- lista piatti -->
+            <div>
+                <div v-for="plate in arrPlateRest" :key="plate.id">
+                    <h1>
+                        {{plate.name}}
+                    </h1>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -64,39 +61,60 @@ import Footer from './Footer.vue';
         },
         data() {
             return {
-                // categorie da mostrare
-                categories: [],
 
-                // ristoranti filtrati in base alla categoria
-                arrRestaurants: [],
-                // id categoria che si trova nella funzione di ogni categoria per la chiamata api
-                idcategoy: null,
+                categories: [], // categorie da mostrare
+
+                // ristoranti filtrati
+                arrRestaurants: [], // ristoranti filtrati in base alla categoria
+                idcategory: null, // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+
+                // piatti filtrati in base al ristorante
+                arrInfoRest: [],
+                arrPlateRest: [],
+                idRistorante : null,
 
 
             }
         },
         created() {
-            this.getRest()
+            this.getCategory();
         },
         methods: {
+            // chiamata per mostrare le categorie
+            getCategory(){
+                axios.get('/api/categories').then(response => {
+                if (response.data.success) {
+                    this.categories = response.data.categories
+                    }
+                })
+            },
 
             // chiamata per i ristoranti in base alla categoria
             getRest(){
-                axios.get('api/restaurants' + '?category=' + this.idcategoy).then(response => {
+                axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(response => {
                 if (response.data.success) {
-                    this.categories = response.data.categories
                     this.arrRestaurants = response.data.arrRestaurants
                     }
                 })
             },
-            assegnaValore($num){
-                this.idcategoy = $num;
-                return this.getRest();
-            }
-        },
-        computed:{
-        }
+            assegnaValoreIdCategory($num){
+                this.idcategory = $num;
+                this.getRest();
+            },
 
+            // chiamata per i ristoranti in base alla categoria
+            getPlate(){
+                axios.get('/api/category/restaurants/' + this.idRistorante).then(response => {
+                if (response.data.success) {
+                    this.arrPlateRest = response.data.plateRestaurant
+                    }
+                })
+            },
+            assegnaValoreIdRest($num){
+                this.idRistorante = $num
+                this.getPlate()
+            },
+        },
     }
 </script>
 

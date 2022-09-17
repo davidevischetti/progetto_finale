@@ -5236,35 +5236,62 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // categorie da mostrare
       categories: [],
-      // ristoranti filtrati in base alla categoria
+      // categorie da mostrare
+      // ristoranti filtrati
       arrRestaurants: [],
+      // ristoranti filtrati in base alla categoria
+      idcategory: null,
       // id categoria che si trova nella funzione di ogni categoria per la chiamata api
-      idcategoy: null
+      // piatti filtrati in base al ristorante
+      arrInfoRest: [],
+      arrPlateRest: [],
+      idRistorante: null
     };
   },
   created: function created() {
-    this.getRest();
+    this.getCategory();
   },
   methods: {
-    // chiamata per i ristoranti in base alla categoria
-    getRest: function getRest() {
+    // chiamata per mostrare le categorie
+    getCategory: function getCategory() {
       var _this = this;
 
-      axios.get('api/restaurants' + '?category=' + this.idcategoy).then(function (response) {
+      axios.get('/api/categories').then(function (response) {
         if (response.data.success) {
           _this.categories = response.data.categories;
-          _this.arrRestaurants = response.data.arrRestaurants;
         }
       });
     },
-    assegnaValore: function assegnaValore($num) {
-      this.idcategoy = $num;
-      return this.getRest();
+    // chiamata per i ristoranti in base alla categoria
+    getRest: function getRest() {
+      var _this2 = this;
+
+      axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(function (response) {
+        if (response.data.success) {
+          _this2.arrRestaurants = response.data.arrRestaurants;
+        }
+      });
+    },
+    assegnaValoreIdCategory: function assegnaValoreIdCategory($num) {
+      this.idcategory = $num;
+      this.getRest();
+    },
+    // chiamata per i ristoranti in base alla categoria
+    getPlate: function getPlate() {
+      var _this3 = this;
+
+      axios.get('/api/category/restaurants/' + this.idRistorante).then(function (response) {
+        if (response.data.success) {
+          _this3.arrPlateRest = response.data.plateRestaurant;
+        }
+      });
+    },
+    assegnaValoreIdRest: function assegnaValoreIdRest($num) {
+      this.idRistorante = $num;
+      this.getPlate();
     }
-  },
-  computed: {}
+  }
 });
 
 /***/ }),
@@ -5492,7 +5519,7 @@ var render = function render() {
     on: {
       click: function click($event) {
         $event.preventDefault();
-        return _vm.assegnaValore(1);
+        return _vm.assegnaValoreIdCategory(1);
       }
     }
   }, [_vm._v("italiano")])]), _vm._v(" "), _c("div", [_c("a", {
@@ -5502,7 +5529,7 @@ var render = function render() {
     on: {
       click: function click($event) {
         $event.preventDefault();
-        return _vm.assegnaValore(2);
+        return _vm.assegnaValoreIdCategory(2);
       }
     }
   }, [_vm._v("pizza")])]), _vm._v(" "), _c("div", [_c("a", {
@@ -5512,7 +5539,7 @@ var render = function render() {
     on: {
       click: function click($event) {
         $event.preventDefault();
-        return _vm.assegnaValore(3);
+        return _vm.assegnaValoreIdCategory(3);
       }
     }
   }, [_vm._v("giapponese")])]), _vm._v(" "), _c("div", [_c("a", {
@@ -5522,7 +5549,7 @@ var render = function render() {
     on: {
       click: function click($event) {
         $event.preventDefault();
-        return _vm.assegnaValore(4);
+        return _vm.assegnaValoreIdCategory(4);
       }
     }
   }, [_vm._v("messicano")])]), _vm._v(" "), _c("div", [_c("a", {
@@ -5532,13 +5559,27 @@ var render = function render() {
     on: {
       click: function click($event) {
         $event.preventDefault();
-        return _vm.assegnaValore(5);
+        return _vm.assegnaValoreIdCategory(5);
       }
     }
   }, [_vm._v("kebab")])])]), _vm._v(" "), _c("div", _vm._l(_vm.arrRestaurants, function (rest) {
     return _c("div", {
       key: rest.id
-    }, [_vm._v("\n                " + _vm._s(rest.name) + "\n            ")]);
+    }, [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.assegnaValoreIdRest(1);
+        }
+      }
+    }, [_vm._v(_vm._s(rest.name))])]);
+  }), 0), _vm._v(" "), _c("div", _vm._l(_vm.arrPlateRest, function (plate) {
+    return _c("div", {
+      key: plate.id
+    }, [_c("h1", [_vm._v("\n                    " + _vm._s(plate.name) + "\n                ")])]);
   }), 0)])], 1);
 };
 
