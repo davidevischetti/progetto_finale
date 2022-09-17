@@ -5283,8 +5283,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/category/restaurants/' + this.idRistorante).then(function (response) {
         if (response.data.success) {
+          _this3.arrInfoRest = response.data.infoRestaurant;
           _this3.arrPlateRest = response.data.plateRestaurant;
-          _this3.arrPlateRest = response.data.infoRestaurant;
         }
       });
     },
@@ -5577,11 +5577,11 @@ var render = function render() {
         }
       }
     }, [_vm._v(_vm._s(rest.name))])]);
-  }), 0), _vm._v(" "), _c("div", _vm._l(_vm.arrPlateRest, function (plate) {
+  }), 0), _vm._v(" "), _c("div", [_c("ul", _vm._l(_vm.arrPlateRest, function (plate) {
     return _c("div", {
       key: plate.id
-    }, [_c("h1", [_vm._v("\n                    " + _vm._s(plate.name) + "\n                ")])]);
-  }), 0)])], 1);
+    }, [_c("li", [_vm._v("\n                        " + _vm._s(plate.name) + "\n                    ")])]);
+  }), 0)])])], 1);
 };
 
 var staticRenderFns = [];

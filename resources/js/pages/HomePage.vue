@@ -36,11 +36,13 @@
 
             <!-- lista piatti -->
             <div>
-                <div v-for="plate in arrPlateRest" :key="plate.id">
-                    <h1>
-                        {{plate.name}}
-                    </h1>
-                </div>
+                <ul>
+                    <div v-for="plate in arrPlateRest" :key="plate.id">
+                        <li>
+                            {{plate.name}}
+                        </li>
+                    </div>
+                </ul>
             </div>
         </div>
 
@@ -107,8 +109,8 @@ import Footer from './Footer.vue';
             getPlate(){
                 axios.get('/api/category/restaurants/' + this.idRistorante).then(response => {
                 if (response.data.success) {
+                    this.arrInfoRest = response.data.infoRestaurant
                     this.arrPlateRest = response.data.plateRestaurant
-                    this.arrPlateRest = response.data.infoRestaurant
                     }
                 })
             },
