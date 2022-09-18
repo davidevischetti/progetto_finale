@@ -5278,19 +5278,27 @@ __webpack_require__.r(__webpack_exports__);
       this.getRest();
     },
     // chiamata per i ristoranti in base alla categoria
-    getPlate: function getPlate() {
+    getInfoRest: function getInfoRest() {
       var _this3 = this;
 
       axios.get('/api/category/restaurants/' + this.idRistorante).then(function (response) {
         if (response.data.success) {
-          _this3.arrInfoRest = response.data.infoRestaurant;
-          _this3.arrPlateRest = response.data.plateRestaurant;
+          _this3.arrInfoRest = response.data.infoRestaurant; // this.arrPlateRest = response.data.plateRestaurant
         }
+      });
+    },
+    getPlateRest: function getPlateRest() {
+      var _this4 = this;
+
+      axios.get('/api/plates' + '?userId=' + this.idRistorante).then(function (response) {
+        _this4.arrPlateRest = response.data.data; // if (response.data.success) {
+        // }
       });
     },
     assegnaValoreIdRest: function assegnaValoreIdRest($num) {
       this.idRistorante = $num;
-      this.getPlate();
+      this.getInfoRest();
+      this.getPlateRest();
     }
   }
 });
@@ -5580,7 +5588,7 @@ var render = function render() {
   }), 0), _vm._v(" "), _c("div", [_c("ul", _vm._l(_vm.arrPlateRest, function (plate) {
     return _c("div", {
       key: plate.id
-    }, [_c("li", [_vm._v("\n                        " + _vm._s(plate.name) + "\n                    ")])]);
+    }, [_c("li", [_vm._v("\n                        " + _vm._s(plate.namePlate) + "\n                    ")])]);
   }), 0)])])], 1);
 };
 

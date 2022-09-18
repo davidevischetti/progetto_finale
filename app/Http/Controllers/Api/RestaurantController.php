@@ -43,12 +43,10 @@ class RestaurantController extends Controller
 
 
         $infoRestaurant = User::find($id)->where('id', $id)->get();
-        $plateRestaurant = User::find($id)->with(['plates'])->where('id', $id)->get();
 
         return response()->json([
             'success' => true,
             'infoRestaurant' => $infoRestaurant,
-            'plateRestaurant' => $plateRestaurant[0]['plates'],
         ]);
 
     }

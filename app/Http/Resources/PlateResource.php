@@ -19,7 +19,6 @@ class PlateResource extends JsonResource
             'namePlate' => $this->name,
             'pricePlate' => $this->price,
             'img' => $this->img,
-
         ];
     }
 }

@@ -39,7 +39,7 @@
                 <ul>
                     <div v-for="plate in arrPlateRest" :key="plate.id">
                         <li>
-                            {{plate.name}}
+                            {{plate.namePlate}}
                         </li>
                     </div>
                 </ul>
@@ -106,19 +106,27 @@ import Footer from './Footer.vue';
             },
 
             // chiamata per i ristoranti in base alla categoria
-            getPlate(){
+            getInfoRest(){
                 axios.get('/api/category/restaurants/' + this.idRistorante).then(response => {
-                if (response.data.success) {
-                    this.arrInfoRest = response.data.infoRestaurant
-                    this.arrPlateRest = response.data.plateRestaurant
+                    if (response.data.success) {
+                        this.arrInfoRest = response.data.infoRestaurant
+                        // this.arrPlateRest = response.data.plateRestaurant
                     }
                 })
             },
-            assegnaValoreIdRest($num){
-                this.idRistorante = $num
-                this.getPlate()
+            getPlateRest(){
+                axios.get('/api/plates' + '?userId=' + this.idRistorante).then(response => {
+                    this.arrPlateRest = response.data.data
+                    // if (response.data.success) {
+                    // }
+                })
             },
-        },
+            assegnaValoreIdRest($num){
+                this.idRistorante = $num;
+                this.getInfoRest();
+                this.getPlateRest();
+            }
+        }
     }
 </script>
 
