@@ -4,12 +4,12 @@
         <Jumbotrone></Jumbotrone>
         <div class="container my-4"  >
             <div class=" row d-flex justify-content-between">
-                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 border-0 text-decoration-none text-dark" v-for="category in categories" :key="category.id">
-                <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
-                <div class="card-body">
-                    <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
-                </div>
-            </a>
+                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 border-0 text-decoration-none text-dark"  v-for="category in categories" :key="category.id"  @click="activeBorder(category.id)" :class= "category === activeCard ? 'active':''">
+                    <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
+                    <div class="card-body">
+                        <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -59,6 +59,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             Jumbotrone,
         },
         data() {
+
             return {
 
                 categories: [], // categorie da mostrare
@@ -71,6 +72,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 arrInfoRest: [],
                 arrPlateRest: [],
                 idRistorante : null,
+
+                
+                activeCard: 0,
 
 
             }
@@ -121,7 +125,15 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 this.idRistorante = $num;
                 this.getInfoRest();
                 this.getPlateRest();
-            }
+            },
+
+            activeBorder(element) {
+                this.activeCard = element;
+                element.classList
+                // some code to filter users
+                console.log("funziona");
+                console.log(element);
+            } 
         }
     }
 </script>
@@ -130,7 +142,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     .myCateg{
         width: 12rem;
         height: 12rem;
-
+        a:active{
+            color:blue;
+        }
     }
 
     .myCategImg{
@@ -144,4 +158,6 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         width: 80px;
         height: 40px;
     }
+
+
 </style>

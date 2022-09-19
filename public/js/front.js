@@ -5225,7 +5225,8 @@ __webpack_require__.r(__webpack_exports__);
       // piatti filtrati in base al ristorante
       arrInfoRest: [],
       arrPlateRest: [],
-      idRistorante: null
+      idRistorante: null,
+      activeCard: 0
     };
   },
   created: function created() {
@@ -5278,6 +5279,13 @@ __webpack_require__.r(__webpack_exports__);
       this.idRistorante = $num;
       this.getInfoRest();
       this.getPlateRest();
+    },
+    activeBorder: function activeBorder(element) {
+      this.activeCard = element;
+      element.classList; // some code to filter users
+
+      console.log("funziona");
+      console.log(element);
     }
   }
 });
@@ -5491,14 +5499,17 @@ var render = function render() {
     return _c("a", {
       key: category.id,
       staticClass: "card myCateg col-4 border-0 text-decoration-none text-dark",
+      "class": category === _vm.activeCard ? "active" : "",
       attrs: {
         href: "#"
       },
       on: {
-        click: function click($event) {
+        click: [function ($event) {
           $event.preventDefault();
           return _vm.assegnaValoreIdCategory(category.id);
-        }
+        }, function ($event) {
+          return _vm.activeBorder(category.id);
+        }]
       }
     }, [_c("img", {
       staticClass: "card-img-top rounded-3 myCategImg",
@@ -10904,7 +10915,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}", ""]);
+exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n}\n.myCateg a[data-v-04c29797]:active {\n  color: blue;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}", ""]);
 
 // exports
 
