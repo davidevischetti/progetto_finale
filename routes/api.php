@@ -20,7 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/categories', 'Api\RestaurantController@categories')->name('api.restaurants.categories');
+
 Route::get('/category/restaurants', 'Api\RestaurantController@restaurants')->name('api.restaurants.restaurants');
+
 Route::get('/category/restaurants/{restaurant}', 'Api\RestaurantController@show')->name('api.restaurants.show');
 
 

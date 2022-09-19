@@ -16,21 +16,8 @@
         <div class="d-flex justify-content-center">
 
             <div>
-                <!-- lista categorie -->
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(1)" >italiano</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(2)" >pizza</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(3)" >giapponese</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(4)" >messicano</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(5)" >kebab</a>
+                <div v-for="category in categories" :key="category.id">
+                    <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)">{{category.name}}</a>
                 </div>
             </div>
 
@@ -38,7 +25,14 @@
             <div>
                 <div v-for="rest in arrRestaurants" :key="rest.id">
                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                    <a href="#" @click.prevent="assegnaValoreIdRest(1)">{{rest.name}}</a>
+                    <a href="#" @click.prevent="assegnaValoreIdRest(rest.id)">{{rest.name}}</a>
+                </div>
+            </div>
+
+
+            <div>
+                <div v-for="restInfo in arrInfoRest" :key="restInfo.id">
+                    {{restInfo.name}}
                 </div>
             </div>
 
@@ -77,7 +71,8 @@ import ListaRisto from '../components/ListaRisto.vue';
 
                 // ristoranti filtrati
                 arrRestaurants: [], // ristoranti filtrati in base alla categoria
-                idcategory: null, // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+                idcategory: [], // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+                idJoinUrl: null,
 
                 // piatti filtrati in base al ristorante
                 arrInfoRest: [],
@@ -102,16 +97,28 @@ import ListaRisto from '../components/ListaRisto.vue';
 
             // chiamata per i ristoranti in base alla categoria
             getRest(){
-                axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(response => {
+                axios.get('/api/category/restaurants' + '?category=' + this.idJoinUrl).then(response => {
                 if (response.data.success) {
                     this.arrRestaurants = response.data.arrRestaurants
                     }
                 })
             },
             assegnaValoreIdCategory($num){
-                this.idcategory = $num;
+                if(!this.idcategory.includes($num)){
+                    this.idcategory.push($num);
+                } else {
+                    const index = this.idcategory.indexOf($num);
+                    this.idcategory.splice(index, 1);
+                }
+                this.idJoinUrl = this.idcategory.join('-');
+                console.log(this.idJoinUrl);
                 this.getRest();
             },
+
+            // const index = array.indexOf(5);
+            // if (index > -1) { // only splice array when item is found
+            // array.splice(index, 1); // 2nd parameter means remove one item only
+            // }
 
             // chiamata per i ristoranti in base alla categoria
             getInfoRest(){
