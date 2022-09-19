@@ -6,30 +6,13 @@
         <h1 class="text-center text-white ">Dove vuoi, quando vuoi. Direttamente dal divano di casa tua.</h1>
     </div>
   </div>
-
 </div>
 </template>
 
 <script>
-
     export default {
         name: 'Jumbotrone',
-        data() {
-            return {
-                categories: [],
-            }
-        },
-        created() {
-            axios.get('api/restaurants').then(response => {
-                if (response.data.success) {
-                    this.categories = response.data.categories
-                }
-            })
-        },
     }
-
-
-
 </script>
 
 <style lang="scss" scoped>

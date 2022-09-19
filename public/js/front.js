@@ -5148,21 +5148,7 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Jumbotrone',
-  data: function data() {
-    return {
-      categories: []
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.get('api/restaurants').then(function (response) {
-      if (response.data.success) {
-        _this.categories = response.data.categories;
-      }
-    });
-  }
+  name: 'Jumbotrone'
 });
 
 /***/ }),
@@ -5247,6 +5233,73 @@ __webpack_require__.r(__webpack_exports__);
     Jumbotrone: _components_Jumbotrone_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     ListaRisto: _components_ListaRisto_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Footer: _Footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      categories: [],
+      // categorie da mostrare
+      // ristoranti filtrati
+      arrRestaurants: [],
+      // ristoranti filtrati in base alla categoria
+      idcategory: null,
+      // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+      // piatti filtrati in base al ristorante
+      arrInfoRest: [],
+      arrPlateRest: [],
+      idRistorante: null
+    };
+  },
+  created: function created() {
+    this.getCategory();
+  },
+  methods: {
+    // chiamata per mostrare le categorie
+    getCategory: function getCategory() {
+      var _this = this;
+
+      axios.get('/api/categories').then(function (response) {
+        if (response.data.success) {
+          _this.categories = response.data.categories;
+        }
+      });
+    },
+    // chiamata per i ristoranti in base alla categoria
+    getRest: function getRest() {
+      var _this2 = this;
+
+      axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(function (response) {
+        if (response.data.success) {
+          _this2.arrRestaurants = response.data.arrRestaurants;
+        }
+      });
+    },
+    assegnaValoreIdCategory: function assegnaValoreIdCategory($num) {
+      this.idcategory = $num;
+      this.getRest();
+    },
+    // chiamata per i ristoranti in base alla categoria
+    getInfoRest: function getInfoRest() {
+      var _this3 = this;
+
+      axios.get('/api/category/restaurants/' + this.idRistorante).then(function (response) {
+        if (response.data.success) {
+          _this3.arrInfoRest = response.data.infoRestaurant; // this.arrPlateRest = response.data.plateRestaurant
+        }
+      });
+    },
+    getPlateRest: function getPlateRest() {
+      var _this4 = this;
+
+      axios.get('/api/plates' + '?userId=' + this.idRistorante).then(function (response) {
+        _this4.arrPlateRest = response.data.data; // if (response.data.success) {
+        // }
+      });
+    },
+    assegnaValoreIdRest: function assegnaValoreIdRest($num) {
+      this.idRistorante = $num;
+      this.getInfoRest();
+      this.getPlateRest();
+    }
   }
 });
 
@@ -5466,7 +5519,77 @@ var render = function render() {
     attrs: {
       id: "myHompage"
     }
-  }, [_c("Jumbotrone"), _vm._v(" "), _c("ListaRisto"), _vm._v(" "), _c("Footer")], 1);
+  }, [_c("Jumbotrone"), _vm._v(" "), _c("ListaRisto"), _vm._v(" "), _c("Footer"), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-content-center"
+  }, [_c("div", [_c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.assegnaValoreIdCategory(1);
+      }
+    }
+  }, [_vm._v("italiano")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.assegnaValoreIdCategory(2);
+      }
+    }
+  }, [_vm._v("pizza")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.assegnaValoreIdCategory(3);
+      }
+    }
+  }, [_vm._v("giapponese")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.assegnaValoreIdCategory(4);
+      }
+    }
+  }, [_vm._v("messicano")])]), _vm._v(" "), _c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.assegnaValoreIdCategory(5);
+      }
+    }
+  }, [_vm._v("kebab")])])]), _vm._v(" "), _c("div", _vm._l(_vm.arrRestaurants, function (rest) {
+    return _c("div", {
+      key: rest.id
+    }, [_c("a", {
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.assegnaValoreIdRest(1);
+        }
+      }
+    }, [_vm._v(_vm._s(rest.name))])]);
+  }), 0), _vm._v(" "), _c("div", [_c("ul", _vm._l(_vm.arrPlateRest, function (plate) {
+    return _c("div", {
+      key: plate.id
+    }, [_c("li", [_vm._v("\n                        " + _vm._s(plate.namePlate) + "\n                    ")])]);
+  }), 0)])])], 1);
 };
 
 var staticRenderFns = [];
@@ -27767,8 +27890,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

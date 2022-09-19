@@ -19,4 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/restaurants', 'Api\RestaurantController@index')->name('api.restaurants.index');
+Route::get('/categories', 'Api\RestaurantController@categories')->name('api.restaurants.categories');
+Route::get('/category/restaurants', 'Api\RestaurantController@restaurants')->name('api.restaurants.restaurants');
+Route::get('/category/restaurants/{restaurant}', 'Api\RestaurantController@show')->name('api.restaurants.show');
+
+
+
+// route per Braintree
+Route::get('/orders/generate', 'Api\Orders\OrderController@generate')->name('api.orders.generateToken'); // genera un token
+Route::post('/orders/make/payment', 'Api\Orders\OrderController@makePayment')->name('api.orders.makePayment'); // genera il pagamento
+
+// rotte per i piatti
+Route::get('/plates', 'Api\Plate\PlateController@index');
