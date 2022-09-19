@@ -9,6 +9,7 @@ require('./bootstrap');
 
     // importiamo tutti i componenti delle pagine
     import HomePage from './pages/HomePage.vue';
+    import ShowRestaurant from './pages/ShowRestaurant.vue';
 
     // definiamo le rotte
     const routes = [
@@ -23,11 +24,12 @@ require('./bootstrap');
             name: 'login',
             // component: ,
         }, 
-        // {
-        //     path: '/about',
-        //     name: 'about',
-        //     component: NavBar,
-        // },
+        {
+            path: '/restaurants/:id',
+            name: 'show',
+            component: ShowRestaurant,
+            props: true,
+        },
         // {
         //     path: '/contacts',
         //     name: 'contacts',

@@ -24,7 +24,6 @@ Route::get('/category/restaurants', 'Api\RestaurantController@restaurants')->nam
 Route::get('/category/restaurants/{restaurant}', 'Api\RestaurantController@show')->name('api.restaurants.show');
 
 
-
 // route per Braintree
 Route::get('/orders/generate', 'Api\Orders\OrderController@generate')->name('api.orders.generateToken'); // genera un token
 Route::post('/orders/make/payment', 'Api\Orders\OrderController@makePayment')->name('api.orders.makePayment'); // genera il pagamento
