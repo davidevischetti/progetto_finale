@@ -41261,22 +41261,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "jumbotron jumbotron-fluid",
-    attrs: {
-      id: "myJumbotrone"
-    }
-  }, [_c("div", {
-    staticClass: "myFilter d-flex justify-content-center align-items-center flex-column"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-row"
-  }, _vm._l(_vm.categories, function (category) {
-    return _c("div", {
-      key: category
-    }, [_c("h1", {
-      staticClass: "text-white"
-    }, [_vm._v("ciao")])]);
-  }), 0)])]);
+  return _vm._m(0);
 };
 
 var staticRenderFns = [function () {
@@ -41284,10 +41269,17 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
+    staticClass: "jumbotron jumbotron-fluid",
+    attrs: {
+      id: "myJumbotrone"
+    }
+  }, [_c("div", {
+    staticClass: "myFilter d-flex justify-content-center align-items-center flex-column"
+  }, [_c("div", {
     staticClass: "container"
   }, [_c("h1", {
     staticClass: "text-center text-white"
-  }, [_vm._v("Dove vuoi, quando vuoi. Direttamente dal divano di casa tua.")])]);
+  }, [_vm._v("Dove vuoi, quando vuoi. Direttamente dal divano di casa tua.")])])])]);
 }];
 render._withStripped = true;
 
@@ -41434,7 +41426,7 @@ var render = function render() {
     staticClass: "row d-flex justify-content-between"
   }, _vm._l(_vm.categories, function (category) {
     return _c("CategoriesTop", {
-      key: category,
+      key: category.id,
       staticClass: "myCategory",
       attrs: {
         img: category.img,

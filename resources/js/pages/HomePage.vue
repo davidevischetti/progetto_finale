@@ -4,7 +4,7 @@
         <Jumbotrone></Jumbotrone>
         <div class="container my-4 ">
             <div class="row d-flex justify-content-between  ">
-            <CategoriesTop v-for="category in categories" :key="category"
+            <CategoriesTop v-for="category in categories" :key="category.id"
             :img="category.img"
             :name="category.name"
             class="myCategory" />

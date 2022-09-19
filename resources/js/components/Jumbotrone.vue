@@ -5,12 +5,6 @@
     <div class="container">
         <h1 class="text-center text-white ">Dove vuoi, quando vuoi. Direttamente dal divano di casa tua.</h1>
     </div>
-    <div class="d-flex flex-row">
-        <div v-for="category in categories" :key="category" class="">
-            <h1 class="text-white">ciao</h1>
-        </div> 
-    </div>
-
   </div>
 </div>
 </template>
