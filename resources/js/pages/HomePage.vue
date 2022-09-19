@@ -4,7 +4,7 @@
         <Jumbotrone></Jumbotrone>
         <div class="container my-4"  >
             <div class=" row d-flex justify-content-between">
-                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 border-0 text-decoration-none text-dark"  v-for="category in categories" :key="category.id"  @click="activeBorder(category.id)" :class= "category === activeCard ? 'active':''">
+                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i"  @click="activeBorder(i)" :class= "i === activeCard ? 'myactive' : ''">
                     <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
                     <div class="card-body">
                         <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
@@ -74,7 +74,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 idRistorante : null,
 
                 
-                activeCard: 0,
+                activeCard: -1,
 
 
             }
@@ -142,9 +142,6 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     .myCateg{
         width: 12rem;
         height: 12rem;
-        a:active{
-            color:blue;
-        }
     }
 
     .myCategImg{
@@ -159,5 +156,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         height: 40px;
     }
 
-
+    .card.myactive{
+        border: 3px solid red; 
+    }
 </style>

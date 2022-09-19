@@ -5226,7 +5226,7 @@ __webpack_require__.r(__webpack_exports__);
       arrInfoRest: [],
       arrPlateRest: [],
       idRistorante: null,
-      activeCard: 0
+      activeCard: -1
     };
   },
   created: function created() {
@@ -5495,11 +5495,11 @@ var render = function render() {
     staticClass: "container my-4"
   }, [_c("div", {
     staticClass: "row d-flex justify-content-between"
-  }, _vm._l(_vm.categories, function (category) {
+  }, _vm._l(_vm.categories, function (category, i) {
     return _c("a", {
-      key: category.id,
-      staticClass: "card myCateg col-4 border-0 text-decoration-none text-dark",
-      "class": category === _vm.activeCard ? "active" : "",
+      key: i,
+      staticClass: "card myCateg col-4 text-decoration-none text-dark",
+      "class": i === _vm.activeCard ? "myactive" : "",
       attrs: {
         href: "#"
       },
@@ -5508,7 +5508,7 @@ var render = function render() {
           $event.preventDefault();
           return _vm.assegnaValoreIdCategory(category.id);
         }, function ($event) {
-          return _vm.activeBorder(category.id);
+          return _vm.activeBorder(i);
         }]
       }
     }, [_c("img", {
@@ -10915,7 +10915,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n}\n.myCateg a[data-v-04c29797]:active {\n  color: blue;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}", ""]);
+exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid red;\n}", ""]);
 
 // exports
 
@@ -27802,8 +27802,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
