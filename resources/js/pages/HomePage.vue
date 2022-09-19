@@ -2,6 +2,14 @@
     <div id="myHompage">
 
         <Jumbotrone></Jumbotrone>
+        <div class="container my-4 ">
+            <div class="row d-flex justify-content-between  ">
+            <CategoriesTop v-for="category in categories" :key="category"
+            :img="category.img"
+            :name="category.name"
+            class="myCategory" />
+            </div>
+        </div>
         <ListaRisto></ListaRisto>
         <Footer></Footer>
 
@@ -52,13 +60,14 @@
 <script>
 
 import Jumbotrone from '../components/Jumbotrone.vue';
+import CategoriesTop from '../components/CategoriesTop.vue'
 import ListaRisto from '../components/ListaRisto.vue';
-import Footer from './Footer.vue';
+
     export default {
         name: 'HomePage',
         components:{
-
-            Jumbotrone,
+            Jumbotrone,    
+            CategoriesTop,
             ListaRisto,
             Footer,
         },
@@ -131,4 +140,5 @@ import Footer from './Footer.vue';
 </script>
 
 <style lang="scss" scoped>
+
 </style>
