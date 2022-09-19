@@ -66,10 +66,9 @@ import ListaRisto from '../components/ListaRisto.vue';
     export default {
         name: 'HomePage',
         components:{
-            Jumbotrone,    
+            Jumbotrone,
             CategoriesTop,
             ListaRisto,
-            Footer,
         },
         data() {
             return {

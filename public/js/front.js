@@ -41075,8 +41075,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Jumbotrone: _components_Jumbotrone_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     CategoriesTop: _components_CategoriesTop_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    ListaRisto: _components_ListaRisto_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Footer: Footer
+    ListaRisto: _components_ListaRisto_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -65716,8 +65715,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
