@@ -1,6 +1,14 @@
 <template>
     <div>
-        <h1>{{ arrRestInfo.infoRestaurant.name }}</h1>
+        <!-- <h1>{{ arrRestInfo.name }}</h1> -->
+        {{ arrRestInfo.name}}
+
+        <ul>
+            <li v-for="plate in arrRestPlate" :key="plate.id">
+                {{plate.name}}
+            </li>
+        </ul>
+
     </div>
 </template>
 
@@ -10,40 +18,27 @@ export default {
 
     // components: {
     // },
-     props:['id'],
+     props:{
+        id: Number,
+     },
     data() {
         return {
             // idRistorante: id,
             arrRestInfo: null,
-            arrRestPlate: [],
+            arrRestPlate: null,
         }
     },
-    created:{ 
-        
-        getInfoRest(){
-                axios.get('/api/category/restaurants/' + this.id).then(response => {
-                    if (response.data.success) {
-                        this.arrRestInfo = response.data.infoRestaurant
-                        // this.arrPlateRest = response.data.plateRestaurant
-                    }
-                })
-            },
-    },
-    methods:{
-       
-            getPlateRest(){
-                axios.get('/api/plates' + '?userId=' + this.idRistorante).then(response => {
-                    this.arrRestPlate = response.data.data
-                    // if (response.data.success) {
-                    // }
-                })
-            },
-            // assegnaValoreIdRest($num){
-            //     this.idRistorante = $num;
-            //     this.getInfoRest();
-            //     this.getPlateRest();
-            // },
-    }}
+    created(){
+
+        axios.get('/api/category/restaurants/' + this.id).then(response => {
+            if (response.data.success) {
+                this.arrRestInfo = response.data.infoRestaurant
+                this.arrRestPlate = response.data.plates
+            }
+        })
+    }
+}
+
 </script>
 
 <style lang="scss" scoped>

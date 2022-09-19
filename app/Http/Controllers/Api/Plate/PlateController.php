@@ -15,4 +15,11 @@ class PlateController extends Controller
         $plate = Plate::all()->where('user_id', $user_id)->all();
         return PlateResource::collection($plate);
     }
+
+    // public function menu(Request $request) {
+    //     $user_id = $request->get('userId');
+
+
+    // }
+
 }

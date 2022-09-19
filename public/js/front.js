@@ -5277,9 +5277,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     assegnaValoreIdRest: function assegnaValoreIdRest($num) {
-      this.idRistorante = $num;
-      this.getInfoRest();
-      this.getPlateRest();
+      this.idRistorante = $num; // this.getInfoRest();
+      // this.getPlateRest();
     },
     activeBorder: function activeBorder(element) {
       this.activeCard = element;
@@ -5306,39 +5305,25 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ShowRestaurant',
   // components: {
   // },
-  props: ['id'],
+  props: {
+    id: Number
+  },
   data: function data() {
     return {
       // idRistorante: id,
       arrRestInfo: null,
-      arrRestPlate: []
+      arrRestPlate: null
     };
   },
-  created: {
-    getInfoRest: function getInfoRest() {
-      var _this = this;
+  created: function created() {
+    var _this = this;
 
-      axios.get('/api/category/restaurants/' + this.id).then(function (response) {
-        if (response.data.success) {
-          _this.arrRestInfo = response.data.infoRestaurant; // this.arrPlateRest = response.data.plateRestaurant
-        }
-      });
-    }
-  },
-  methods: {
-    getPlateRest: function getPlateRest() {
-      var _this2 = this;
-
-      axios.get('/api/plates' + '?userId=' + this.idRistorante).then(function (response) {
-        _this2.arrRestPlate = response.data.data; // if (response.data.success) {
-        // }
-      });
-    } // assegnaValoreIdRest($num){
-    //     this.idRistorante = $num;
-    //     this.getInfoRest();
-    //     this.getPlateRest();
-    // },
-
+    axios.get('/api/category/restaurants/' + this.id).then(function (response) {
+      if (response.data.success) {
+        _this.arrRestInfo = response.data.infoRestaurant;
+        _this.arrRestPlate = response.data.plates;
+      }
+    });
   }
 });
 
@@ -5595,13 +5580,7 @@ var render = function render() {
     })]), _vm._v(" "), _c("div", {
       staticClass: "col-md-8"
     }, [_c("div", {
-      staticClass: "card-body",
-      on: {
-        click: function click($event) {
-          $event.preventDefault();
-          return _vm.assegnaValoreIdRest(rest.id);
-        }
-      }
+      staticClass: "card-body"
     }, [_c("router-link", {
       staticClass: "card-title",
       attrs: {
@@ -5651,7 +5630,11 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h1", [_vm._v(_vm._s(_vm.arrRestInfo.infoRestaurant.name))])]);
+  return _c("div", [_vm._v("\n    " + _vm._s(_vm.arrRestInfo.name) + "\n\n    "), _c("ul", _vm._l(_vm.arrRestPlate, function (plate) {
+    return _c("li", {
+      key: plate.id
+    }, [_vm._v("\n            " + _vm._s(plate.name) + "\n        ")]);
+  }), 0)]);
 };
 
 var staticRenderFns = [];
@@ -27954,8 +27937,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\OneDrive\Desktop\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

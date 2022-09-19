@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Models\Plate;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,11 +55,14 @@ class RestaurantController extends Controller
     public function show($id){
 
 
-        $infoRestaurant = User::find($id)->where('id', $id)->get();
+        $infoRestaurant = User::where('id', $id)->first();
+        $plate = Plate::where('user_id', $id)->get();
+
 
         return response()->json([
             'success' => true,
             'infoRestaurant' => $infoRestaurant,
+            'plates' => $plate
         ]);
 
     }

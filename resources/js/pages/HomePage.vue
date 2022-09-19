@@ -23,13 +23,13 @@
             <div class="row">
                 <div class="col-6">
                     <div v-for="rest in arrRestaurants" :key="rest.id" class="card  mb-3 myRisto" >
-                    
+
                         <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                         <div class="col-md-4">
                             <img :src="rest.img" :alt="rest.name" class="myRistoImg" >
                         </div>
                         <div class="col-md-8">
-                            <div class="card-body"  @click.prevent="assegnaValoreIdRest(rest.id)">
+                            <div class="card-body">
                                 <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title">{{rest.name}}</router-link>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         name: 'HomePage',
         components:{
             Jumbotrone,
-            
+
         },
         data() {
 
@@ -76,7 +76,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 arrPlateRest: [],
                 idRistorante : null,
 
-                
+
                 activeCard: 0,
                 isActive: false,
 
@@ -127,8 +127,8 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             },
             assegnaValoreIdRest($num){
                 this.idRistorante = $num;
-                this.getInfoRest();
-                this.getPlateRest();
+                // this.getInfoRest();
+                // this.getPlateRest();
             },
 
             activeBorder(element) {
@@ -137,7 +137,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 // some code to filter users
                 console.log("funziona");
                 console.log(element);
-            } 
+            }
         }
     }
 </script>
@@ -150,9 +150,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
 
     .myCategImg{
-        height: 100%;  
+        height: 100%;
     }
-    
+
     .myRisto{
         max-width: 540px;
     }
@@ -162,6 +162,6 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
 
     .card.myactive{
-        border: 3px solid #d43a1c; 
+        border: 3px solid #d43a1c;
     }
 </style>
