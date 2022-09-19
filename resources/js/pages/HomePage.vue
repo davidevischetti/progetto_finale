@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <div v-for="rest in arrRestaurants" :key="rest.id" class="card  mb-3 myRisto" >
+                    <div v-for="rest in arrRestaurants" :key="rest.id" class="card mb-3 myRisto" >
 
                         <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                         <div class="col-md-4">
@@ -39,7 +39,7 @@
                 <!-- lista piatti -->
                 <div class="col-6">
                         <ul class="list-group">
-                            <div v-for="plate in arrPlateRest" :key="plate.id"  class="card  mb-2" style="width: 18rem;">
+                            <div v-for="plate in arrPlateRest" :key="plate.id"  class="card mb-2" style="width: 18rem;">
                                 <li  class="card-body list-group-item">
                                     {{plate.namePlate}}
                                 </li>
