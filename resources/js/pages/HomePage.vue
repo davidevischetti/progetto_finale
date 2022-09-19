@@ -2,73 +2,61 @@
     <div id="myHompage">
 
         <Jumbotrone></Jumbotrone>
-        <div class="container my-4 ">
-            <div class="row d-flex justify-content-between  ">
-            <CategoriesTop v-for="category in categories" :key="category.id"
-            :img="category.img"
-            :name="category.name"
-            class="myCategory" />
+        <div class="container my-4"  >
+            <div class=" row d-flex justify-content-between">
+                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 border-0 text-decoration-none text-dark" v-for="category in categories" :key="category.id">
+                <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
+                <div class="card-body">
+                    <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
+                </div>
+            </a>
             </div>
         </div>
-        <ListaRisto></ListaRisto>
-        <Footer></Footer>
 
-        <div class="d-flex justify-content-center">
+        <!-- TODO: stampa di ristoranti randomici nella homepage prima della selezione categories -->
+        <!-- TODO: stampa immagini da storage -->
 
-            <div>
-                <!-- lista categorie -->
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(1)" >italiano</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(2)" >pizza</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(3)" >giapponese</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(4)" >messicano</a>
-                </div>
-                <div>
-                    <a href="#" @click.prevent="assegnaValoreIdCategory(5)" >kebab</a>
-                </div>
-            </div>
-
-            <!-- lista ristoranti -->
-            <div>
-                <div v-for="rest in arrRestaurants" :key="rest.id">
-                    <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                    <a href="#" @click.prevent="assegnaValoreIdRest(1)">{{rest.name}}</a>
-                </div>
-            </div>
-
-            <!-- lista piatti -->
-            <div>
-                <ul>
-                    <div v-for="plate in arrPlateRest" :key="plate.id">
-                        <li>
-                            {{plate.namePlate}}
-                        </li>
+    <!-- lista ristoranti -->
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div v-for="rest in arrRestaurants" :key="rest.id" class="card  mb-3 myRisto" >
+                    
+                        <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
+                        <div class="col-md-4">
+                            <img :src="rest.img" :alt="rest.name" class="myRistoImg" >
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a href="#" @click.prevent="assegnaValoreIdRest(rest.id)" class="card-title">{{rest.name}}</a>
+                            </div>
+                        </div>
                     </div>
-                </ul>
+                </div>
+
+                <!-- lista piatti -->
+                <div class="col-6">
+                        <ul class="list-group">
+                            <div v-for="plate in arrPlateRest" :key="plate.id"  class="card  mb-2" style="width: 18rem;">
+                                <li  class="card-body list-group-item">
+                                    {{plate.namePlate}}
+                                </li>
+                            </div>
+                        </ul>
+                </div>
             </div>
         </div>
-
     </div>
 </template>
 
 <script>
 
 import Jumbotrone from '../components/Jumbotrone.vue';
-import CategoriesTop from '../components/CategoriesTop.vue'
-import ListaRisto from '../components/ListaRisto.vue';
 
     export default {
         name: 'HomePage',
         components:{
             Jumbotrone,
-            CategoriesTop,
-            ListaRisto,
         },
         data() {
             return {
@@ -139,5 +127,21 @@ import ListaRisto from '../components/ListaRisto.vue';
 </script>
 
 <style lang="scss" scoped>
+    .myCateg{
+        width: 12rem;
+        height: 12rem;
 
+    }
+
+    .myCategImg{
+        height: 100%;  
+    }
+    
+    .myRisto{
+        max-width: 540px;
+    }
+    .myRistoImg{
+        width: 80px;
+        height: 40px;
+    }
 </style>
