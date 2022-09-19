@@ -4,7 +4,7 @@
         <Jumbotrone></Jumbotrone>
         <div class="container my-4"  >
             <div class=" row d-flex justify-content-between">
-                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i"  @click="activeBorder(i)" :class= "i === activeCard ? 'myactive' : ''">
+                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i"  @click="activeBorder(i)" :class= "i == activeCard && isActive ? 'myactive' : ''">
                     <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
                     <div class="card-body">
                         <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
@@ -15,6 +15,8 @@
 
         <!-- TODO: stampa di ristoranti randomici nella homepage prima della selezione categories -->
         <!-- TODO: stampa immagini da storage -->
+        <!-- TODO:al secondo click l'active si deve togliere -->
+        <!-- TODO:le categorie non devono essere esclusive non si possono selezionare più categorie contemporaneamente -->
 
     <!-- lista ristoranti -->
         <div class="container">
@@ -27,8 +29,8 @@
                             <img :src="rest.img" :alt="rest.name" class="myRistoImg" >
                         </div>
                         <div class="col-md-8">
-                            <div class="card-body">
-                                <a href="#" @click.prevent="assegnaValoreIdRest(rest.id)" class="card-title">{{rest.name}}</a>
+                            <div class="card-body"  @click.prevent="assegnaValoreIdRest(rest.id)">
+                                <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title">{{rest.name}}</router-link>
                             </div>
                         </div>
                     </div>
@@ -57,6 +59,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         name: 'HomePage',
         components:{
             Jumbotrone,
+            
         },
         data() {
 
@@ -74,7 +77,8 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 idRistorante : null,
 
                 
-                activeCard: -1,
+                activeCard: 0,
+                isActive: false,
 
 
             }
@@ -129,7 +133,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
             activeBorder(element) {
                 this.activeCard = element;
-                element.classList
+                this.isActive = !this.isActive;
                 // some code to filter users
                 console.log("funziona");
                 console.log(element);
@@ -142,6 +146,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     .myCateg{
         width: 12rem;
         height: 12rem;
+        border: none;
     }
 
     .myCategImg{
@@ -157,6 +162,6 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
 
     .card.myactive{
-        border: 3px solid red; 
+        border: 3px solid #d43a1c; 
     }
 </style>
