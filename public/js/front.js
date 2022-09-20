@@ -5301,6 +5301,7 @@ __webpack_require__.r(__webpack_exports__);
     resetCategory: function resetCategory() {
       console.log("Ciao");
       this.arrRestaurants = [];
+      this.isActive = false;
       console.log(this.arrRestaurants);
     }
   }
@@ -5549,9 +5550,9 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-2"
+    staticClass: "col-1 d-flex align-items-center justify-content-center my-4 myButton"
   }, [_c("button", {
-    staticClass: "btn btn-primary",
+    staticClass: "btn btn-primary border-0 my_btn",
     on: {
       click: function click($event) {
         $event.preventDefault();
@@ -5559,7 +5560,7 @@ var render = function render() {
       }
     }
   }, [_vm._v("Reset")])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
+    staticClass: "col-11"
   }, [_c("div", {
     staticClass: "row d-flex justify-content-between my-4"
   }, _vm._l(_vm.categories, function (category, i) {
@@ -5630,9 +5631,11 @@ var render = function render() {
       key: rand.id,
       staticClass: "card mb-3 myRisto"
     }, [_c("div", {
-      staticClass: "col-md-4"
+      staticClass: "row g-0"
+    }, [_c("div", {
+      staticClass: "col-md-4 d-flex align-items-center"
     }, [_c("img", {
-      staticClass: "myRistoImg",
+      staticClass: "myRistoImg img-fluid rounded",
       attrs: {
         src: rand.img,
         alt: rand.name
@@ -5640,9 +5643,9 @@ var render = function render() {
     })]), _vm._v(" "), _c("div", {
       staticClass: "col-md-8"
     }, [_c("div", {
-      staticClass: "card-body"
+      staticClass: "card-body ms-2"
     }, [_c("router-link", {
-      staticClass: "card-title",
+      staticClass: "card-title text-decoration-none text-dark text-capitalize",
       attrs: {
         to: {
           name: "show",
@@ -5651,7 +5654,9 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v(_vm._s(rand.name))])], 1)])]);
+    }, [_c("div", {
+      staticClass: "fs-5 fw-bold"
+    }, [_vm._v(_vm._s(rand.name))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(rand.address))])])], 1)])])]);
   }), 0)])])])])], 1);
 };
 
@@ -11082,7 +11087,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}\n.myprova-null[data-v-04c29797] {\n  border: 3px solid aqua;\n}\n.myprova-full[data-v-04c29797] {\n  border: 3px solid green;\n}", ""]);
+exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 12rem;\n  height: auto;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}\n.myButton[data-v-04c29797] {\n  height: 12rem;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}", ""]);
 
 // exports
 
@@ -28473,8 +28478,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

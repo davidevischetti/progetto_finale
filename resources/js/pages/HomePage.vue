@@ -6,14 +6,15 @@
             <div class="row">
 
                 <!-- Pulsante reset filtri -->
-                <div class="col-2">
-                    <button class="btn btn-primary" @click.prevent="resetCategory()">Reset</button>
+                <div class="col-1 d-flex align-items-center justify-content-center my-4 myButton">
+                    <button class="btn btn-primary border-0 my_btn" @click.prevent="resetCategory()">Reset</button>
                 </div>
 
                 <!-- Categorie e Lista ristoranti -->
-                <div class="col">
+                <div class="col-11">
                     <!-- Lista Categorie -->
                     <div class=" row d-flex justify-content-between my-4">
+
                         <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i"  @click="activeBorder(i)" :class= "i == activeCard && isActive ? 'myactive' : ''">
                             <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
                             <div class="card-body">
@@ -44,15 +45,19 @@
                     <div class="row" :class="arrRestaurants.length != 0 ? 'd-none' : ''">
                         <div class="col-6">
                             <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto" >
-
-                                <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                <div class="col-md-4">
-                                    <img :src="rand.img" :alt="rand.name" class="myRistoImg" >
+                                <div class="row g-0">
+                                    <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
+                                <div class="col-md-4 d-flex align-items-center ">
+                                    <img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded" >
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-body">
-                                        <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title">{{rand.name}}</router-link>
+                                    <div class="card-body ms-2  ">
+                                        <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
+                                            <div class="fs-5 fw-bold">{{rand.name}}</div> 
+                                            <div>{{rand.address}}</div> 
+                                        </router-link>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -173,6 +178,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             resetCategory(){
                 console.log("Ciao");
                 this.arrRestaurants = [];
+                this.isActive = false;
                 console.log(this.arrRestaurants);
             }
         }
@@ -194,8 +200,8 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         max-width: 540px;
     }
     .myRistoImg{
-        width: 80px;
-        height: 40px;
+        width: 12rem;
+        height: auto;
     }
 
     .card.myactive{
@@ -203,11 +209,19 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         color: red !important; 
     }
 
-    .myprova-null{
-        border: 3px solid aqua;
+    .myButton{
+        height: 12rem;
     }
 
-    .myprova-full{
-        border: 3px solid green;
+    .my_btn{
+        background-color: #d43a1c;
+        color: white;
+        &:hover{
+            background-color: #ff5735;
+            color:white;
+        }
     }
+    // .my_list_risto{
+    //     min-height: 400px;
+    // }
 </style>
