@@ -66,6 +66,14 @@ class RestaurantController extends Controller
         ]);
 
     }
+    public function random() {
+        $randomRest = User::inRandomOrder()->limit(8)->get();
+
+        return response()->json([
+           'success' => true,
+            'randomRest' => $randomRest
+        ]);
+    }
 
 
 

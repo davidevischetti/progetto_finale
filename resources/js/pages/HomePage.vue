@@ -53,6 +53,7 @@
 
 <script>
 
+import isFlattenable from 'lodash/_isFlattenable';
 import Jumbotrone from '../components/Jumbotrone.vue';
 
     export default {
@@ -80,18 +81,25 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 activeCard: 0,
                 isActive: false,
 
+                arrRandomRest: null
 
             }
         },
         created() {
             this.getCategory();
+            axios.get('/api/restaurant/random').then(response => {
+                if (response.data.success) {
+                    this.arrRandomRest = response.data.randomRest
+                }
+            })
         },
         methods: {
+
             // chiamata per mostrare le categorie
             getCategory(){
                 axios.get('/api/categories').then(response => {
-                if (response.data.success) {
-                    this.categories = response.data.categories
+                    if (response.data.success) {
+                        this.categories = response.data.categories
                     }
                 })
             },
