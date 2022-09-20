@@ -5262,8 +5262,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(function (response) {
         if (response.data.success) {
           _this3.arrRestaurants = response.data.arrRestaurants;
-        } else if (_this3.arrRestaurants.length != 0) {
-          _this3.arrRestaurants = null;
         }
       });
     },
@@ -5299,6 +5297,11 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log("funziona");
       console.log(element);
+    },
+    resetCategory: function resetCategory() {
+      console.log("Ciao");
+      this.arrRestaurants = [];
+      console.log(this.arrRestaurants);
     }
   }
 });
@@ -5542,9 +5545,23 @@ var render = function render() {
       id: "myHompage"
     }
   }, [_c("Jumbotrone"), _vm._v(" "), _c("div", {
-    staticClass: "container my-4"
+    staticClass: "container"
   }, [_c("div", {
-    staticClass: "row d-flex justify-content-between"
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-2"
+  }, [_c("button", {
+    staticClass: "btn btn-primary",
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.resetCategory();
+      }
+    }
+  }, [_vm._v("Reset")])]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "row d-flex justify-content-between my-4"
   }, _vm._l(_vm.categories, function (category, i) {
     return _c("a", {
       key: i,
@@ -5572,9 +5589,7 @@ var render = function render() {
     }, [_c("p", {
       staticClass: "card-text text-capitalize text-center fs-5"
     }, [_vm._v(" " + _vm._s(category.name) + " ")])])]);
-  }), 0)]), _vm._v(" "), _c("div", {
-    staticClass: "container"
-  }, [_c("div", {
+  }), 0), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-6"
@@ -5605,11 +5620,9 @@ var render = function render() {
         }
       }
     }, [_vm._v(_vm._s(rest.name))])], 1)])]);
-  }), 0)])]), _vm._v(" "), _c("div", {
-    staticClass: "container",
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row",
     "class": _vm.arrRestaurants.length != 0 ? "d-none" : ""
-  }, [_c("div", {
-    staticClass: "row"
   }, [_c("div", {
     staticClass: "col-6"
   }, _vm._l(_vm.arrRandomRest, function (rand) {
@@ -5639,7 +5652,7 @@ var render = function render() {
         }
       }
     }, [_vm._v(_vm._s(rand.name))])], 1)])]);
-  }), 0)])])], 1);
+  }), 0)])])])])], 1);
 };
 
 var staticRenderFns = [];
@@ -11069,7 +11082,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}", ""]);
+exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}\n.myprova-null[data-v-04c29797] {\n  border: 3px solid aqua;\n}\n.myprova-full[data-v-04c29797] {\n  border: 3px solid green;\n}", ""]);
 
 // exports
 
