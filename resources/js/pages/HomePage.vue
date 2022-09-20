@@ -42,7 +42,7 @@
                     </div>
 
                     <!-- Lista ristoranti random -->
-                    <div class="row" :class="arrRestaurants.length != 0 ? 'd-none' : ''">
+                    <div class="row" v-if="arrRestaurants.length == 0">
                         <div class="col-6">
                             <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto" >
                                 <div class="row g-0">

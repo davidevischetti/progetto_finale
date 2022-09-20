@@ -5621,9 +5621,8 @@ var render = function render() {
         }
       }
     }, [_vm._v(_vm._s(rest.name))])], 1)])]);
-  }), 0)]), _vm._v(" "), _c("div", {
-    staticClass: "row",
-    "class": _vm.arrRestaurants.length != 0 ? "d-none" : ""
+  }), 0)]), _vm._v(" "), _vm.arrRestaurants.length == 0 ? _c("div", {
+    staticClass: "row"
   }, [_c("div", {
     staticClass: "col-6"
   }, _vm._l(_vm.arrRandomRest, function (rand) {
@@ -5657,7 +5656,7 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "fs-5 fw-bold"
     }, [_vm._v(_vm._s(rand.name))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(rand.address))])])], 1)])])]);
-  }), 0)])])])])], 1);
+  }), 0)]) : _vm._e()])])])], 1);
 };
 
 var staticRenderFns = [];
