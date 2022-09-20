@@ -28,26 +28,55 @@ class RestaurantController extends Controller
 
     // api che restituisce le i ristoranti da visualizzare (con anche i piatti) nel json
     public function restaurants(Request $request){
-
-
-        $category = $request->get('category');
-
         $restaurants= User::all();
         foreach( $restaurants as $restaurant){
             $restaurant->img = $this->fixImageUrl($restaurant->img);
         }
 
 
-        $arrRestaurants = User::join('category_user', 'users.id', '=', 'category_user.user_id')
-                            ->join('categories', 'category_user.category_id', '=', 'categories.id')
-                            ->select('users.*','categories.name as categoryName', 'categories.id as categoryId')
-        ->where('category_id', $category)->get();
-        // ->where('category_id', $category)->with(['plates'])->get();
+        $category = $request->get('category');
+        $arrCategories = explode('-',$category);
 
+
+
+        $arrProva = [];
+        $arrIdsRest = [];
+
+        $arrRest = User::whereHas('category', function($q){
+            $q->where('categories.id', 5);
+        })->get();
+
+        foreach ($arrRest as $res) {
+            $arrProva[] = $res->id;
+        }
+
+        
+        $arrRest = User::whereHas('category', function($q){
+            $q->where('categories.id', 2);
+        })->get();
+
+        foreach ($arrRest as $res) {
+            $arrProva[] = $res->id;
+        }
+        // dump($arrProva);
+
+        $userIdsCount = array_count_values($arrProva);
+        // dump($userIdsCount);
+
+        foreach ($userIdsCount as $item => $coutId) {
+            if($coutId == 2) {
+                $arrIdsRest[] = $item;
+            }
+        }
+
+        // dump($arrIdsRest);
+        
+        $userFilter = User::find($arrIdsRest)->all();
 
         return response()->json([
             'success' => true,
-            'arrRestaurants' => $arrRestaurants
+            // 'arrRestaurants' => $arrRest,
+            'userFilter' => $userFilter
         ]);
     }
 
@@ -76,5 +105,10 @@ class RestaurantController extends Controller
     }
 
 
+
+
+
+
+    
 
 }
