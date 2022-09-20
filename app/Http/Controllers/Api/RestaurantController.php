@@ -33,51 +33,43 @@ class RestaurantController extends Controller
             $restaurant->img = $this->fixImageUrl($restaurant->img);
         }
 
-
-        $category = $request->get('category');
-        $arrCategories = explode('-',$category);
-
-
-
-        $arrProva = [];
-        $arrIdsRest = [];
-
-        $arrRest = User::whereHas('category', function($q){
-            $q->where('categories.id', 5);
-        })->get();
-
-        foreach ($arrRest as $res) {
-            $arrProva[] = $res->id;
-        }
-
         
-        $arrRest = User::whereHas('category', function($q){
-            $q->where('categories.id', 2);
-        })->get();
+        $category = $request->get('category'); // prende i dati dalla request 
+        $arrCategories = explode('-',$category); //divide il contenuto della request
 
-        foreach ($arrRest as $res) {
-            $arrProva[] = $res->id;
-        }
-        // dump($arrProva);
+        // dichiarazione array
+        $arrRestIds = [];     
+        $arrFilteredIds = [];
 
-        $userIdsCount = array_count_values($arrProva);
-        // dump($userIdsCount);
 
-        foreach ($userIdsCount as $item => $coutId) {
-            if($coutId == 2) {
-                $arrIdsRest[] = $item;
+        // richiamo 
+        foreach($arrCategories as $category){
+            $arrRest = User::whereHas('category', function($q) use($category){
+                $q->where('categories.id', $category);
+            })->get();
+
+            foreach ($arrRest as $res) {
+                $arrRestIds[] = $res->id;
             }
         }
 
-        // dump($arrIdsRest);
-        
-        $userFilter = User::find($arrIdsRest)->all();
+        $restIdsCount = array_count_values($arrRestIds); // conta quante volte si ripete ogni valore nell'array
+
+
+        foreach ($restIdsCount as $id => $coutId) {
+            if($coutId == count($arrCategories)) {
+                $arrFilteredIds[] = $id;
+            }
+        }
+
+        $restFiltered = User::find($arrFilteredIds)->all();
 
         return response()->json([
             'success' => true,
-            // 'arrRestaurants' => $arrRest,
-            'userFilter' => $userFilter
+            'restFiltered' => $restFiltered,
         ]);
+
+
     }
 
 
