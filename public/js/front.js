@@ -5262,6 +5262,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(function (response) {
         if (response.data.success) {
           _this3.arrRestaurants = response.data.arrRestaurants;
+        } else if (_this3.arrRestaurants.length != 0) {
+          _this3.arrRestaurants = null;
         }
       });
     },
@@ -5293,7 +5295,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     activeBorder: function activeBorder(element) {
       this.activeCard = element;
-      this.isActive = !this.isActive; // some code to filter users
+      this.isActive = true; // some code to filter users
 
       console.log("funziona");
       console.log(element);
@@ -5603,21 +5605,41 @@ var render = function render() {
         }
       }
     }, [_vm._v(_vm._s(rest.name))])], 1)])]);
-  }), 0), _vm._v(" "), _c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
+    staticClass: "container",
+    "class": _vm.arrRestaurants.length != 0 ? "d-none" : ""
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
     staticClass: "col-6"
-  }, [_c("ul", {
-    staticClass: "list-group"
-  }, _vm._l(_vm.arrPlateRest, function (plate) {
+  }, _vm._l(_vm.arrRandomRest, function (rand) {
     return _c("div", {
-      key: plate.id,
-      staticClass: "card mb-2",
-      staticStyle: {
-        width: "18rem"
+      key: rand.id,
+      staticClass: "card mb-3 myRisto"
+    }, [_c("div", {
+      staticClass: "col-md-4"
+    }, [_c("img", {
+      staticClass: "myRistoImg",
+      attrs: {
+        src: rand.img,
+        alt: rand.name
       }
-    }, [_c("li", {
-      staticClass: "card-body list-group-item"
-    }, [_vm._v("\n                                " + _vm._s(plate.namePlate) + "\n                            ")])]);
-  }), 0)])])])], 1);
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-8"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("router-link", {
+      staticClass: "card-title",
+      attrs: {
+        to: {
+          name: "show",
+          params: {
+            id: rand.id
+          }
+        }
+      }
+    }, [_vm._v(_vm._s(rand.name))])], 1)])]);
+  }), 0)])])], 1);
 };
 
 var staticRenderFns = [];
@@ -11047,7 +11069,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n}", ""]);
+exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 80px;\n  height: 40px;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}", ""]);
 
 // exports
 
@@ -28438,8 +28460,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\aless\Desktop\p2\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\aless\Desktop\p2\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

@@ -35,16 +35,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- lista piatti -->
+        <div class="container" :class="arrRestaurants.length != 0 ? 'd-none' : ''">
+            <div class="row">
                 <div class="col-6">
-                        <ul class="list-group">
-                            <div v-for="plate in arrPlateRest" :key="plate.id"  class="card mb-2" style="width: 18rem;">
-                                <li  class="card-body list-group-item">
-                                    {{plate.namePlate}}
-                                </li>
+                    <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto" >
+
+                        <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
+                        <div class="col-md-4">
+                            <img :src="rand.img" :alt="rand.name" class="myRistoImg" >
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title">{{rand.name}}</router-link>
                             </div>
-                        </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,7 +117,10 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(response => {
                 if (response.data.success) {
                     this.arrRestaurants = response.data.arrRestaurants
-                    }
+                } else if(this.arrRestaurants.length != 0) {
+                     this.arrRestaurants = null;
+                }
+                
                 })
             },
             assegnaValoreIdCategory($num){
@@ -141,7 +152,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
             activeBorder(element) {
                 this.activeCard = element;
-                this.isActive = !this.isActive;
+                this.isActive = true;
                 // some code to filter users
                 console.log("funziona");
                 console.log(element);
@@ -171,5 +182,6 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
     .card.myactive{
         border: 3px solid #d43a1c;
+        color: red !important; 
     }
 </style>
