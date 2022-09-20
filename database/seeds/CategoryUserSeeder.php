@@ -18,7 +18,7 @@ class CategoryUserSeeder extends Seeder
         $categories = Category::all()->pluck('id');
 
         foreach ($users as $user) {
-            $userCategories = $faker->randomElements($categories, rand(1, 2));
+            $userCategories = $faker->randomElements($categories, rand(1, 3));
 
             foreach ($userCategories as $userCategory) {
                 $user->category()->attach($userCategory);

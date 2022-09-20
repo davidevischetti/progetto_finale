@@ -42,12 +42,13 @@ class RestaurantController extends Controller
         $arrFilteredIds = [];
 
 
-        // richiamo 
+        // Cicliamo la request pushando gli id dei ristoranti in un array, controllando che i valori passati nella request corrispondano alle categorie del ristorante
         foreach($arrCategories as $category){
             $arrRest = User::whereHas('category', function($q) use($category){
                 $q->where('categories.id', $category);
             })->get();
 
+            // push id del ristorante nell'array
             foreach ($arrRest as $res) {
                 $arrRestIds[] = $res->id;
             }
@@ -55,7 +56,7 @@ class RestaurantController extends Controller
 
         $restIdsCount = array_count_values($arrRestIds); // conta quante volte si ripete ogni valore nell'array
 
-
+        // pushiamo in un array gli id dei ristoranti che risultano matchati con tutte le categorie richieste
         foreach ($restIdsCount as $id => $coutId) {
             if($coutId == count($arrCategories)) {
                 $arrFilteredIds[] = $id;
