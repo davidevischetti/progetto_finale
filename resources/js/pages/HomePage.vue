@@ -4,7 +4,7 @@
         <Jumbotrone></Jumbotrone>
         <div class="container my-4"  >
             <div class=" row d-flex justify-content-between">
-                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i"  @click="activeBorder(i)" :class= "i == activeCard && isActive ? 'myactive' : ''">
+                <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i"  @click="activeBorder(i)" :class="i == activeCard && isActive ? 'myactive' : ''">
                     <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
                     <div class="card-body">
                         <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
@@ -53,7 +53,6 @@
 
 <script>
 
-import isFlattenable from 'lodash/_isFlattenable';
 import Jumbotrone from '../components/Jumbotrone.vue';
 
     export default {
@@ -70,7 +69,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
                 // ristoranti filtrati
                 arrRestaurants: [], // ristoranti filtrati in base alla categoria
-                idcategory: null, // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+                idcategory: [], // id categoria che si trova nella funzione di ogni categoria per la chiamata api
 
                 // piatti filtrati in base al ristorante
                 arrInfoRest: [],
@@ -113,38 +112,19 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 })
             },
             assegnaValoreIdCategory($num){
-                this.idcategory = $num;
-                this.getRest();
-            },
+                if (this.idcategory.includes($num)) {
+                    let position = this.idcategory.indexOf($num)
+                    this.idcategory.splice(position, 1)
+                } else {
+                    this.idcategory.push($num);
+                }
 
-            // chiamata per i ristoranti in base alla categoria
-            getInfoRest(){
-                axios.get('/api/category/restaurants/' + this.idRistorante).then(response => {
-                    if (response.data.success) {
-                        this.arrInfoRest = response.data.infoRestaurant
-                        // this.arrPlateRest = response.data.plateRestaurant
-                    }
-                })
-            },
-            getPlateRest(){
-                axios.get('/api/plates' + '?userId=' + this.idRistorante).then(response => {
-                    this.arrPlateRest = response.data.data
-                    // if (response.data.success) {
-                    // }
-                })
-            },
-            assegnaValoreIdRest($num){
-                this.idRistorante = $num;
-                // this.getInfoRest();
-                // this.getPlateRest();
+                this.getRest();
             },
 
             activeBorder(element) {
                 this.activeCard = element;
                 this.isActive = !this.isActive;
-                // some code to filter users
-                console.log("funziona");
-                console.log(element);
             }
         }
     }

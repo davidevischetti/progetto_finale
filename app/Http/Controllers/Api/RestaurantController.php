@@ -35,7 +35,9 @@ class RestaurantController extends Controller
 
         
         $category = $request->get('category'); // prende i dati dalla request 
-        $arrCategories = explode('-',$category); //divide il contenuto della request
+        $arrCategories = explode(',',$category); //divide il contenuto della request
+
+        // dump($arrCategories);
 
         // dichiarazione array
         $arrRestIds = [];     
@@ -67,9 +69,10 @@ class RestaurantController extends Controller
 
         return response()->json([
             'success' => true,
-            'restFiltered' => $restFiltered,
+            'arrRestaurants' => $restFiltered,
         ]);
 
+        
 
     }
 
