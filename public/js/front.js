@@ -5541,6 +5541,40 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
+    staticClass: "col-12 ciao"
+  }, [_c("div", {
+    staticClass: "row d-flex justify-content-between my-4"
+  }, _vm._l(_vm.categories, function (category, i) {
+    return _c("div", {
+      key: i,
+      staticClass: "col-2 text-decoration-none text-dark",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.assegnaValoreIdCategory(category.id);
+        }
+      }
+    }, [_c("div", {
+      staticClass: "card myCateg",
+      "class": _vm.arrElements.includes(i) && _vm.arrTrueOrFalse ? "myactive" : "",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.activeBorder(i);
+        }
+      }
+    }, [_c("img", {
+      staticClass: "card-img rounded-3 myCategImg",
+      attrs: {
+        src: category.img,
+        alt: category.name
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "card-img-overlay"
+    }, [_c("p", {
+      staticClass: "card-text text-capitalize text-center fs-5"
+    }, [_vm._v(" " + _vm._s(category.name) + " ")])])])]);
+  }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "col-1 d-flex align-items-center justify-content-center my-4 myButton"
   }, [_c("button", {
     staticClass: "btn btn-primary border-0 my_btn",
@@ -5553,40 +5587,6 @@ var render = function render() {
   }, [_vm._v("Reset")])]), _vm._v(" "), _c("div", {
     staticClass: "col-11"
   }, [_c("div", {
-    staticClass: "row d-flex justify-content-between my-4"
-  }, _vm._l(_vm.categories, function (category, i) {
-    return _c("a", {
-      key: i,
-      staticClass: "col-4 text-decoration-none text-dark",
-      attrs: {
-        href: "#"
-      },
-      on: {
-        click: function click($event) {
-          $event.preventDefault();
-          return _vm.assegnaValoreIdCategory(category.id);
-        }
-      }
-    }, [_c("div", {
-      staticClass: "card myCateg",
-      "class": _vm.arrElements.includes(i) && _vm.arrTrueOrFalse ? "myactive" : "",
-      on: {
-        click: function click($event) {
-          return _vm.activeBorder(i);
-        }
-      }
-    }, [_c("img", {
-      staticClass: "card-img-top rounded-3 myCategImg",
-      attrs: {
-        src: category.img,
-        alt: category.name
-      }
-    }), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("p", {
-      staticClass: "card-text text-capitalize text-center fs-5"
-    }, [_vm._v(" " + _vm._s(category.name) + " ")])])])]);
-  }), 0), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-6"
@@ -11092,7 +11092,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 12rem;\n  height: auto;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}\n.myButton[data-v-04c29797] {\n  height: 12rem;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}", ""]);
+exports.push([module.i, ".ciao[data-v-04c29797] {\n  margin-top: -250px;\n}\n.myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 12rem;\n  height: auto;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}\n.myButton[data-v-04c29797] {\n  height: 12rem;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}", ""]);
 
 // exports
 

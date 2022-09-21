@@ -5,26 +5,29 @@
         <div class="container">
             <div class="row">
 
+                
+                <!-- Categorie e Lista ristoranti -->
+                <div class="col-12 ciao">
+                    <!-- Lista Categorie -->
+                    <div class="row d-flex justify-content-between my-4">
+                        <div @click.prevent="assegnaValoreIdCategory(category.id)" class="col-2 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
+                            <div class="card myCateg" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
+                                <img :src="category.img" :alt="category.name" class="card-img  rounded-3 myCategImg">
+                                <div class="card-img-overlay">
+                                    <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Pulsante reset filtri -->
                 <div class="col-1 d-flex align-items-center justify-content-center my-4 myButton">
                     <button class="btn btn-primary border-0 my_btn" @click.prevent="resetCategory()">Reset</button>
                 </div>
 
-                <!-- Categorie e Lista ristoranti -->
                 <div class="col-11">
-                    <!-- Lista Categorie -->
-                    <div class=" row d-flex justify-content-between my-4">
-                        <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg" @click="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
-                                <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
-                                <div class="card-body">
-                                    <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
-                                </div>
-                            </div>
-
-                        </a>
-                    </div>
-
                     <!-- lista ristoranti -->
                     <div class="row">
                         <div class="col-6">
@@ -196,6 +199,11 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 </script>
 
 <style lang="scss" scoped>
+
+    .ciao{
+        margin-top: -250px;
+    }
+
     .myCateg{
         width: 12rem;
         height: 12rem;
