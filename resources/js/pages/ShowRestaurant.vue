@@ -1,12 +1,14 @@
 <template>
     <div id="showRestaurant">
         <div class="container">
-            <ul class="list-unstyled p-4 text-center border-bottom border-5 rounded-0 myBorder">   
+            <ul class="list-unstyled p-4 text-center border-bottom border-5 rounded-0 myBorder"> 
+                <!-- TODO: sarebbe carino riuscire a mettere la foto come una sorta di jumbotron usando il componente già creato -->
                 <li class="border-0"><img :src="arrRestInfo.img" :alt="arrRestInfo.name" class=" risto_img" ></li>
                 <li class="border-0"><h1>{{arrRestInfo.name}}</h1></li>
                 <li class="border-0"><h3>{{arrRestInfo.address}}</h3></li>
             </ul>
 
+            <!-- TODO: aggiungere overflow-scroll per fare lo scroll solo dei piatti oppure alla pagina intera senza le info dei risto-->
 
             <div class="d-flex justify-content-between" >
                 <div class="row col-6">
@@ -48,6 +50,9 @@
 
 </template>
 
+<!-- TODO: implementare funzione che collega i piatti alla sezione carrello nella pagina -->
+<!-- TODO: il button "procedi la pagamento" deve collegarsi al componente carrello e caricare quella pagina -->
+
 <script>
 export default {
     name: 'ShowRestaurant',
@@ -81,6 +86,7 @@ export default {
     #showRestaurant{
         background-color: #ffe6d8;
         // height: 100vh;
+        // TODO: bisogna dare una misura alla NavBar così da fare con il calc() altrimenti non si riesce a fare lo scroll
     }
     .myBorder{
         border-color: #d43a1c !important;

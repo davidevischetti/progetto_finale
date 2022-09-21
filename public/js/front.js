@@ -27825,6 +27825,11 @@ var routes = [{
   component: _pages_ShowRestaurant_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
   props: true
 } // {
+//     path: '/carrello',
+//     name: 'carrello',
+//     component: CarrelloComp, fare import del componente
+// }, 
+// {
 //     path: '/contacts',
 //     name: 'contacts',
 //     component: NavBar,

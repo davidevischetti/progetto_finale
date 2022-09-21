@@ -30,6 +30,12 @@ require('./bootstrap');
             component: ShowRestaurant,
             props: true,
         },
+
+        // {
+        //     path: '/carrello',
+        //     name: 'carrello',
+        //     component: CarrelloComp, fare import del componente
+        // }, 
         // {
         //     path: '/contacts',
         //     name: 'contacts',
