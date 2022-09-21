@@ -15,7 +15,7 @@
                     <!-- Lista Categorie -->
                     <div class=" row d-flex justify-content-between my-4">
                         <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg" @click="activeBorder(i)" :class="activeCard.includes(i) && trueOrFalse ? 'myactive' : ''">
+                            <div class="card myCateg" @click="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
                                 <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
                                 <div class="card-body">
                                     <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
@@ -29,15 +29,22 @@
                     <div class="row">
                         <div class="col-6">
                             <div v-for="rest in arrRestaurants" :key="rest.id" class="card mb-3 myRisto" >
-
-                                <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                <div class="col-md-4">
-                                    <img :src="rest.img" :alt="rest.name" class="myRistoImg" >
+                                <div class="row g-0">
+                                    <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
+                                <div class="col-md-4 d-flex align-items-center ">
+                                    <img :src="rest.img" :alt="rest.name" class="myRistoImg img-fluid rounded" >
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-body">
-                                        <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title">{{rest.name}}</router-link>
+                                    <div class="card-body ms-2  ">
+                                        <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
+                                            <div class="fs-5 fw-bold">{{rest.name}}</div>
+                                            <div>{{rest.address}}</div>
+                                            <div v-for="category in rest.category">
+                                                {{category.name}}
+                                            </div>
+                                        </router-link>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -57,6 +64,9 @@
                                         <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                             <div class="fs-5 fw-bold">{{rand.name}}</div>
                                             <div>{{rand.address}}</div>
+                                            <div v-for="category in rand.category">
+                                                {{category.name}}
+                                            </div>
                                         </router-link>
                                     </div>
                                 </div>
@@ -99,6 +109,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 // ristoranti filtrati
                 arrRestaurants: [], // ristoranti filtrati in base alla categoria
                 idcategory: null, // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+
 
                 // piatti filtrati in base al ristorante
                 arrInfoRest: [],
@@ -173,7 +184,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             activeBorder(element) {
                 // activeCard =     [1,4,3,2]
                 // arrTrueOrFalse = [true, true, true, true]
-                // index = activeCard.indexOf(element)  -----> "index = 0"
+                // index = activeCard.indexOf(element)  -----> "index = 1"
                 // if (arrTrueOrFalse[index] == true)
                 // activeCard.splice(index, 1)
                 // arrTrueOrFalse.splice(index, 1)
@@ -182,23 +193,27 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                     this.arrElements.push(element);
                     this.arrTrueOrFalse.push(true);
 
-                    this.index = arrElements.indexOf(element);
-
-                    if(this.arrTrueOrFalse[this.index] == true) {
-                        this.arrElements.splice(this.index, 1)
-                        this.arrTrueOrFalse.splice(this.index, 1)
-                    }
+                    this.index = this.arrElements.indexOf(element);
+                } else if (this.arrTrueOrFalse[0] === true){ // this.arrTrueOrFalse[0]
+                    this.index = this.arrElements.indexOf(element);
+                    this.arrTrueOrFalse.splice(0, 1)
+                    this.arrElements.splice(this.index, 1)
                 }
 
+                
+                console.log(this.arrElements);
+                console.log(this.arrTrueOrFalse);
+                console.log(this.index);
+
+                
 
 
             },
 
             resetCategory(){
-                console.log("Ciao");
-                this.arrRestaurants = [];
-                this.isActive = false;
-                console.log(this.arrRestaurants);
+                this.arrElements = [];
+                this.arrTrueOrFalse = [];
+                this.arrRestaurants = []; 
             }
         }
     }

@@ -5292,26 +5292,29 @@ __webpack_require__.r(__webpack_exports__);
     activeBorder: function activeBorder(element) {
       // activeCard =     [1,4,3,2]
       // arrTrueOrFalse = [true, true, true, true]
-      // index = activeCard.indexOf(element)  -----> "index = 0"
+      // index = activeCard.indexOf(element)  -----> "index = 1"
       // if (arrTrueOrFalse[index] == true)
       // activeCard.splice(index, 1)
       // arrTrueOrFalse.splice(index, 1)
       if (!this.arrElements.includes(element)) {
         this.arrElements.push(element);
         this.arrTrueOrFalse.push(true);
-        this.index = arrElements.indexOf(element);
-
-        if (this.arrTrueOrFalse[this.index] == true) {
-          this.arrElements.splice(this.index, 1);
-          this.arrTrueOrFalse.splice(this.index, 1);
-        }
+        this.index = this.arrElements.indexOf(element);
+      } else if (this.arrTrueOrFalse[0] === true) {
+        // this.arrTrueOrFalse[0]
+        this.index = this.arrElements.indexOf(element);
+        this.arrTrueOrFalse.splice(0, 1);
+        this.arrElements.splice(this.index, 1);
       }
+
+      console.log(this.arrElements);
+      console.log(this.arrTrueOrFalse);
+      console.log(this.index);
     },
     resetCategory: function resetCategory() {
-      console.log("Ciao");
+      this.arrElements = [];
+      this.arrTrueOrFalse = [];
       this.arrRestaurants = [];
-      this.isActive = false;
-      console.log(this.arrRestaurants);
     }
   }
 });
@@ -5587,7 +5590,7 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "card myCateg",
-      "class": _vm.activeCard.includes(i) && _vm.trueOrFalse ? "myactive" : "",
+      "class": _vm.arrElements.includes(i) && _vm.arrTrueOrFalse ? "myactive" : "",
       on: {
         click: function click($event) {
           return _vm.activeBorder(i);
@@ -5613,9 +5616,11 @@ var render = function render() {
       key: rest.id,
       staticClass: "card mb-3 myRisto"
     }, [_c("div", {
-      staticClass: "col-md-4"
+      staticClass: "row g-0"
+    }, [_c("div", {
+      staticClass: "col-md-4 d-flex align-items-center"
     }, [_c("img", {
-      staticClass: "myRistoImg",
+      staticClass: "myRistoImg img-fluid rounded",
       attrs: {
         src: rest.img,
         alt: rest.name
@@ -5623,9 +5628,9 @@ var render = function render() {
     })]), _vm._v(" "), _c("div", {
       staticClass: "col-md-8"
     }, [_c("div", {
-      staticClass: "card-body"
+      staticClass: "card-body ms-2"
     }, [_c("router-link", {
-      staticClass: "card-title",
+      staticClass: "card-title text-decoration-none text-dark text-capitalize",
       attrs: {
         to: {
           name: "show",
@@ -5634,7 +5639,11 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v(_vm._s(rest.name))])], 1)])]);
+    }, [_c("div", {
+      staticClass: "fs-5 fw-bold"
+    }, [_vm._v(_vm._s(rest.name))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(rest.address))]), _vm._v(" "), _vm._l(rest.category, function (category) {
+      return _c("div", [_vm._v("\n                                            " + _vm._s(category.name) + "\n                                        ")]);
+    })], 2)], 1)])])]);
   }), 0)]), _vm._v(" "), _vm.arrRestaurants.length == 0 ? _c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -5669,7 +5678,9 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "fs-5 fw-bold"
-    }, [_vm._v(_vm._s(rand.name))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(rand.address))])])], 1)])])]);
+    }, [_vm._v(_vm._s(rand.name))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(rand.address))]), _vm._v(" "), _vm._l(rand.category, function (category) {
+      return _c("div", [_vm._v("\n                                            " + _vm._s(category.name) + "\n                                        ")]);
+    })], 2)], 1)])])]);
   }), 0)]) : _vm._e()])])])], 1);
 };
 
@@ -28125,8 +28136,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\boolean\esercizi\back_end\final_project\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! D:\boolean\esercizi\back_end\final_project\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\aless\Desktop\p2\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\Desktop\p2\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
