@@ -57,8 +57,8 @@ export default {
     data() {
         return {
             // idRistorante: id,
-            arrRestInfo: null,
-            arrRestPlate: null,
+            arrRestInfo: [],
+            arrRestPlate: [],
         }
     },
     created(){
