@@ -5579,7 +5579,7 @@ var render = function render() {
       }
     }
   }, [_vm._v("Cancella filtri")])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12"
+    staticClass: "col-12 heightScroll overflow-scroll"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {}, _vm._l(_vm.arrRestaurants, function (rest) {
@@ -5720,7 +5720,7 @@ var render = function render() {
   }, [_c("h3", [_vm._v(_vm._s(_vm.arrRestInfo.address))])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-between"
   }, [_c("div", {
-    staticClass: "row col-6"
+    staticClass: "row col-6 heightScroll overflow-scroll"
   }, [_c("ul", {
     staticClass: "list-group mb-5 p-4"
   }, _vm._l(_vm.arrRestPlate, function (plate) {
@@ -5763,7 +5763,7 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "col-6 mb-5 p-4"
   }, [_c("ul", {
-    staticClass: "list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded"
+    staticClass: "list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded heightScroll overflow-scroll"
   }, [_c("li", {
     staticClass: "list-group-item text-center fs-3 fw-bold"
   }, [_vm._v("carrello")]), _vm._v(" "), _c("li", {
@@ -11115,7 +11115,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -130px;\n}\n.myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 12rem;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n}\n.myShadow[data-v-04c29797] {\n  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
+exports.push([module.i, ".heightScroll[data-v-04c29797] {\n  height: calc(50vh - 40px);\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -130px;\n}\n.myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 12rem;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n}\n.myShadow[data-v-04c29797] {\n  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
 
 // exports
 
@@ -11134,7 +11134,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#showRestaurant[data-v-c1f7c23a] {\n  background-color: #ffe6d8;\n}\n.myBorder[data-v-c1f7c23a] {\n  border-color: #d43a1c !important;\n}\n.btn_color[data-v-c1f7c23a] {\n  background-color: #d43a1c;\n  color: white;\n}\n.btn_color[data-v-c1f7c23a]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.risto_img[data-v-c1f7c23a] {\n  height: 15rem;\n}", ""]);
+exports.push([module.i, ".heightScroll[data-v-c1f7c23a] {\n  height: calc(50vh - 40px);\n}\n#showRestaurant[data-v-c1f7c23a] {\n  background-color: #ffe6d8;\n}\n.myBorder[data-v-c1f7c23a] {\n  border-color: #d43a1c !important;\n}\n.btn_color[data-v-c1f7c23a] {\n  background-color: #d43a1c;\n  color: white;\n}\n.btn_color[data-v-c1f7c23a]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.risto_img[data-v-c1f7c23a] {\n  height: 15rem;\n}", ""]);
 
 // exports
 

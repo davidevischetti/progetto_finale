@@ -26,7 +26,8 @@
                     <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
                 </div>
 
-                <div class="col-12">
+
+                <div class="col-12 heightScroll overflow-scroll">
                     <!-- lista ristoranti -->
                     <div class="row">
                         <div class="">
@@ -56,7 +57,7 @@
                         <div class="col-6">
                             <!-- TODO: fix scritta -->
                             <div class="alert alert-danger" role="alert">
-                              <span>Mi dispiace la tua ricerca non ha prodotto risultati. <strong>Riprova</strong></span>
+                            <span>Mi dispiace la tua ricerca non ha prodotto risultati. <strong>Riprova</strong></span>
                             </div>
                         </div>
 
@@ -68,7 +69,7 @@
                                 <div class="row">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                                     <div class="col-md-4 p-0 contain_img">
-                                       <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
+                                    <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
@@ -84,7 +85,6 @@
                                 </div>
                             </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -192,6 +192,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 </script>
 
 <style lang="scss" scoped>
+    .heightScroll {
+        height: calc(50vh - 40px);
+    }
     #myHomepage{
         background-color: #FFE6D8;
     }
