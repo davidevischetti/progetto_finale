@@ -5566,18 +5566,23 @@ var render = function render() {
   }, _vm._l(_vm.categories, function (category, i) {
     return _c("a", {
       key: i,
-      staticClass: "card myCateg col-4 text-decoration-none text-dark",
-      "class": i == _vm.activeCard && _vm.isActive ? "myactive" : "",
+      staticClass: "col-4 text-decoration-none text-dark",
       attrs: {
         href: "#"
       },
       on: {
-        click: [function ($event) {
+        click: function click($event) {
           $event.preventDefault();
           return _vm.assegnaValoreIdCategory(category.id);
-        }, function ($event) {
+        }
+      }
+    }, [_c("div", {
+      staticClass: "card myCateg",
+      "class": i == _vm.activeCard && _vm.isActive ? "myactive" : "",
+      on: {
+        click: function click($event) {
           return _vm.activeBorder(i);
-        }]
+        }
       }
     }, [_c("img", {
       staticClass: "card-img-top rounded-3 myCategImg",
@@ -5589,7 +5594,7 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("p", {
       staticClass: "card-text text-capitalize text-center fs-5"
-    }, [_vm._v(" " + _vm._s(category.name) + " ")])])]);
+    }, [_vm._v(" " + _vm._s(category.name) + " ")])])])]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {

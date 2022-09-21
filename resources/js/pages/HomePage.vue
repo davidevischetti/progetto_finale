@@ -14,12 +14,14 @@
                 <div class="col-11">
                     <!-- Lista Categorie -->
                     <div class=" row d-flex justify-content-between my-4">
-
-                        <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="card myCateg col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i"  @click="activeBorder(i)" :class= "i == activeCard && isActive ? 'myactive' : ''">
-                            <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
-                            <div class="card-body">
-                                <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
+                        <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
+                            <div class="card myCateg" @click="activeBorder(i)" :class= "i == activeCard && isActive ? 'myactive' : ''">
+                                <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
+                                <div class="card-body">
+                                    <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
+                                </div>
                             </div>
+
                         </a>
                     </div>
 
