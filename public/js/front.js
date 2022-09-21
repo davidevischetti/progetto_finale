@@ -5274,12 +5274,6 @@ __webpack_require__.r(__webpack_exports__);
       this.getRest();
     },
     activeBorder: function activeBorder(element) {
-      // activeCard =     [1,4,3,2]
-      // arrTrueOrFalse = [true, true, true, true]
-      // index = activeCard.indexOf(element)  -----> "index = 1"
-      // if (arrTrueOrFalse[index] == true)
-      // activeCard.splice(index, 1)
-      // arrTrueOrFalse.splice(index, 1)
       if (!this.arrElements.includes(element)) {
         this.arrElements.push(element);
         this.arrTrueOrFalse.push(true);
@@ -5534,14 +5528,14 @@ var render = function render() {
 
   return _c("div", {
     attrs: {
-      id: "myHompage"
+      id: "myHomepage"
     }
   }, [_c("Jumbotrone"), _vm._v(" "), _c("div", {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-12 ciao"
+    staticClass: "col-12 categories_on"
   }, [_c("div", {
     staticClass: "row d-flex justify-content-between my-4"
   }, _vm._l(_vm.categories, function (category, i) {
@@ -5564,28 +5558,28 @@ var render = function render() {
         }
       }
     }, [_c("img", {
-      staticClass: "card-img rounded-3 myCategImg",
+      staticClass: "card-img myCategImg",
       attrs: {
         src: category.img,
         alt: category.name
       }
     }), _vm._v(" "), _c("div", {
-      staticClass: "card-img-overlay"
+      staticClass: "card-img-overlay p-0 d-flex align-items-end"
     }, [_c("p", {
-      staticClass: "card-text text-capitalize text-center fs-5"
+      staticClass: "card-text text-capitalize text-center fs-4 my_text_cat col-12"
     }, [_vm._v(" " + _vm._s(category.name) + " ")])])])]);
   }), 0)]), _vm._v(" "), _c("div", {
-    staticClass: "col-1 d-flex align-items-center justify-content-center my-4 myButton"
+    staticClass: "col-12 d-flex align-items-center justify-content-start my-4 myButton"
   }, [_c("button", {
-    staticClass: "btn btn-primary border-0 my_btn",
+    staticClass: "btn btn-primary border-0 rounded-pill px-4 my_btn",
     on: {
       click: function click($event) {
         $event.preventDefault();
         return _vm.resetCategory();
       }
     }
-  }, [_vm._v("Reset")])]), _vm._v(" "), _c("div", {
-    staticClass: "col-11"
+  }, [_vm._v("Cancella filtri")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -5623,7 +5617,9 @@ var render = function render() {
     }, [_vm._v(_vm._s(rest.name))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(rest.address))]), _vm._v(" "), _vm._l(rest.category, function (category) {
       return _c("div", [_vm._v("\n                                            " + _vm._s(category.name) + "\n                                        ")]);
     })], 2)], 1)])])]);
-  }), 0)]), _vm._v(" "), _vm.arrRestaurants.length == 0 && _vm.arrElements.length == 0 ? _c("div", {
+  }), 0)]), _vm._v(" "), _vm.arrRestaurants.length == 0 && _vm.arrElements.length > 1 ? _c("div", {
+    staticClass: "row"
+  }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _vm.arrRestaurants.length == 0 && _vm.arrElements.length == 0 ? _c("div", {
     staticClass: "row justify-content-between"
   }, _vm._l(_vm.arrRandomRest, function (rand) {
     return _c("div", {
@@ -5658,14 +5654,22 @@ var render = function render() {
     }, [_vm._v(_vm._s(rand.name))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(rand.address))]), _vm._v(" "), _vm._l(rand.category, function (category) {
       return _c("div", [_vm._v("\n                                                " + _vm._s(category.name) + "\n                                            ")]);
     })], 2)], 1)])])]);
-  }), 0) : _vm.arrRestaurants.length == 0 && _vm.arrElements.length != 0 ? _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-6"
-  }, [_vm._v("\n                        ciao\n                    ")])]) : _vm._e()])])])], 1);
+  }), 0) : _vm._e()])])])], 1);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "alert alert-danger",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v("\n                            La tua ricerca non ha prodotto risultati.\n                        ")])]);
+}];
 render._withStripped = true;
 
 
@@ -5771,7 +5775,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("NavBar"), _vm._v(" "), _c("div", [_c("router-view")], 1), _vm._v(" "), _c("Footer")], 1);
+  return _c("div", [_c("NavBar"), _vm._v(" "), _c("router-view"), _vm._v(" "), _c("Footer")], 1);
 };
 
 var staticRenderFns = [];
@@ -11092,7 +11096,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".ciao[data-v-04c29797] {\n  margin-top: -250px;\n}\n.myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 12rem;\n  height: auto;\n}\n.card.myactive[data-v-04c29797] {\n  border: 3px solid #d43a1c;\n  color: red !important;\n}\n.myButton[data-v-04c29797] {\n  height: 12rem;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}", ""]);
+exports.push([module.i, ".categories_on[data-v-04c29797] {\n  margin-top: -130px;\n}\n.myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 12rem;\n  height: auto;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}", ""]);
 
 // exports
 
@@ -28117,8 +28121,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\aless\Desktop\p2\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\aless\Desktop\p2\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

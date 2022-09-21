@@ -1,20 +1,19 @@
 <template>
-    <div id="myHompage">
+    <div id="myHomepage">
 
         <Jumbotrone></Jumbotrone>
         <div class="container">
             <div class="row">
-
-                
+              
                 <!-- Categorie e Lista ristoranti -->
-                <div class="col-12 ciao">
+                <div class="col-12 categories_on">
                     <!-- Lista Categorie -->
                     <div class="row d-flex justify-content-between my-4">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" class="col-2 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
                             <div class="card myCateg" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
-                                <img :src="category.img" :alt="category.name" class="card-img  rounded-3 myCategImg">
-                                <div class="card-img-overlay">
-                                    <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
+                                <img :src="category.img" :alt="category.name" class="card-img myCategImg">
+                                <div class="card-img-overlay p-0 d-flex align-items-end">
+                                    <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
                                 </div>
                             </div>
 
@@ -23,11 +22,11 @@
                 </div>
                 
                 <!-- Pulsante reset filtri -->
-                <div class="col-1 d-flex align-items-center justify-content-center my-4 myButton">
-                    <button class="btn btn-primary border-0 my_btn" @click.prevent="resetCategory()">Reset</button>
+                <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
+                    <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
                 </div>
 
-                <div class="col-11">
+                <div class="col-12">
                     <!-- lista ristoranti -->
                     <div class="row">
                         <div class="col-6">
@@ -53,6 +52,16 @@
                         </div>
                     </div>
 
+                    <div class="row" v-if="arrRestaurants.length == 0 && arrElements.length > 1">
+                        <div class="col-6">
+                            <!-- TODO: fix scritta -->
+                            <div class="alert alert-danger" role="alert">
+                                La tua ricerca non ha prodotto risultati.
+                            </div>
+                        </div>
+
+                    </div>
+
                     <!-- Lista ristoranti random -->
                     <div class="row justify-content-between" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
                             <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto col-5 " >
@@ -75,13 +84,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="row" v-else-if="arrRestaurants.length == 0 && arrElements.length != 0">
-                        <div class="col-6">
-                            <!-- TODO: fix scritta -->
-                            ciao
-                        </div>
-
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -171,13 +174,6 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
 
             activeBorder(element) {
-                // activeCard =     [1,4,3,2]
-                // arrTrueOrFalse = [true, true, true, true]
-                // index = activeCard.indexOf(element)  -----> "index = 1"
-                // if (arrTrueOrFalse[index] == true)
-                // activeCard.splice(index, 1)
-                // arrTrueOrFalse.splice(index, 1)
-
                 if(!this.arrElements.includes(element)) {
                     this.arrElements.push(element);
                     this.arrTrueOrFalse.push(true);
@@ -200,18 +196,22 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
 <style lang="scss" scoped>
 
-    .ciao{
-        margin-top: -250px;
+    .categories_on{
+        margin-top: -130px;
     }
 
     .myCateg{
         width: 12rem;
         height: 12rem;
         border: none;
+        border-radius: 10px !important;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
     }
 
     .myCategImg{
         height: 100%;
+        object-fit: cover;
     }
 
     .myRisto{
@@ -222,13 +222,16 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         height: auto;
     }
 
-    .card.myactive{
-        border: 3px solid #d43a1c;
+    .myCateg.myactive{
+        //margin-top: -36px;
+        //transition: all 0.2s ease-in-out;
+        transform:translate(0, -36px);
+        border-bottom: 5px solid #d43a1c;
         color: red !important;
     }
 
     .myButton{
-        height: 12rem;
+        //height: 12rem;
     }
 
     .my_btn{
@@ -239,7 +242,15 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             color:white;
         }
     }
-    // .my_list_risto{
-    //     min-height: 400px;
-    // }
+    
+    .my_text_cat{
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 5px 0;
+        border-radius: 0 0 5px 5px;
+    }
+
+    #myHomepage{
+        background-color: #FFE6D8;
+    }
 </style>
