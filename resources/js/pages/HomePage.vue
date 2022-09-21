@@ -51,28 +51,33 @@
                     </div>
 
                     <!-- Lista ristoranti random -->
-                    <div class="row" v-if="arrRestaurants.length == 0">
-                        <div class="col-6">
-                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto" >
+                    <div class="row justify-content-between" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
+                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto col-5 " >
                                 <div class="row g-0">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                <div class="col-md-4 d-flex align-items-center ">
-                                    <img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded" >
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body ms-2  ">
-                                        <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
-                                            <div class="fs-5 fw-bold">{{rand.name}}</div>
-                                            <div>{{rand.address}}</div>
-                                            <div v-for="category in rand.category">
-                                                {{category.name}}
-                                            </div>
-                                        </router-link>
+                                    <div class="col-md-4 d-flex align-items-center ">
+                                        <img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body ms-2  ">
+                                            <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
+                                                <div class="fs-5 fw-bold">{{rand.name}}</div>
+                                                <div>{{rand.address}}</div>
+                                                <div v-for="category in rand.category">
+                                                    {{category.name}}
+                                                </div>
+                                            </router-link>
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
                             </div>
+                    </div>
+                    <div class="row" v-else-if="arrRestaurants.length == 0 && arrElements.length != 0">
+                        <div class="col-6">
+                            <!-- TODO: fix scritta -->
+                            ciao
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -83,20 +88,6 @@
         <!-- TODO: stampa immagini da storage -->
         <!-- TODO:al secondo click l'active si deve togliere -->
         <!-- TODO:le categorie non devono essere esclusive non si possono selezionare più categorie contemporaneamente -->
-
-
-
-
-    </div>
-
-
-        <!-- TODO: stampa di ristoranti randomici nella homepage prima della selezione categories -->
-        <!-- TODO: stampa immagini da storage -->
-        <!-- TODO:al secondo click l'active si deve togliere -->
-        <!-- TODO:le categorie non devono essere esclusive non si possono selezionare più categorie contemporaneamente -->
-
-
-
 
     </div>
 </template>

@@ -65,7 +65,7 @@ class RestaurantController extends Controller
             }
         }
 
-        $restFiltered = User::find($arrFilteredIds)->all();
+        $restFiltered = User::with(['category'])->find($arrFilteredIds)->all();
 
         return response()->json([
             'success' => true,
