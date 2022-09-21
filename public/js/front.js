@@ -5299,17 +5299,12 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.arrElements.includes(element)) {
         this.arrElements.push(element);
         this.arrTrueOrFalse.push(true);
-        this.index = this.arrElements.indexOf(element);
       } else if (this.arrTrueOrFalse[0] === true) {
         // this.arrTrueOrFalse[0]
         this.index = this.arrElements.indexOf(element);
         this.arrTrueOrFalse.splice(0, 1);
         this.arrElements.splice(this.index, 1);
       }
-
-      console.log(this.arrElements);
-      console.log(this.arrTrueOrFalse);
-      console.log(this.index);
     },
     resetCategory: function resetCategory() {
       this.arrElements = [];
