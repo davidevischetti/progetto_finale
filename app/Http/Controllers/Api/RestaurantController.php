@@ -38,9 +38,9 @@ class RestaurantController extends Controller
         }
 
 
-        $arrRestaurants = User::join('category_user', 'users.id', '=', 'category_user.user_id')
+        $arrRestaurants = User::with(['category'])->join('category_user', 'users.id', '=', 'category_user.user_id')
                             ->join('categories', 'category_user.category_id', '=', 'categories.id')
-                            ->select('users.*','categories.name as categoryName', 'categories.id as categoryId')
+                            ->select('users.*')
         ->where('category_id', $category)->get();
         // ->where('category_id', $category)->with(['plates'])->get();
 
@@ -67,7 +67,7 @@ class RestaurantController extends Controller
 
     }
     public function random() {
-        $randomRest = User::inRandomOrder()->limit(8)->get();
+        $randomRest = User::with(['category'])->inRandomOrder()->limit(8)->get();
 
         return response()->json([
            'success' => true,

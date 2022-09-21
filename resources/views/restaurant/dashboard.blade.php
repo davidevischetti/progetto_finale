@@ -6,8 +6,17 @@
 
     <div class="row justify-content-start">
 
+        {{-- TODO: aggiungere funzione per mandare il messaggio di avvenuto login/register  --}}
+
+            @if (session('registrato'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('registrato') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+
         <h1 class="mb-4 text-center">
-            Menu online
+            Menu
         </h1>
 
         <div class="col-2">

@@ -80,6 +80,8 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-        return redirect(route('restaurant.dashboard'));
+        return redirect()->route('restaurant.dashboard')->with([
+            'registrato' => 'Registrazione avvenuta',
+        ]);
     }
 }
