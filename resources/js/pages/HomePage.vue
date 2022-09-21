@@ -88,6 +88,17 @@
 
 
     </div>
+
+
+        <!-- TODO: stampa di ristoranti randomici nella homepage prima della selezione categories -->
+        <!-- TODO: stampa immagini da storage -->
+        <!-- TODO:al secondo click l'active si deve togliere -->
+        <!-- TODO:le categorie non devono essere esclusive non si possono selezionare più categorie contemporaneamente -->
+
+
+
+
+    </div>
 </template>
 
 <script>
@@ -108,7 +119,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
                 // ristoranti filtrati
                 arrRestaurants: [], // ristoranti filtrati in base alla categoria
-                idcategory: null, // id categoria che si trova nella funzione di ogni categoria per la chiamata api
+                idcategory: [], // id categoria che si trova nella funzione di ogni categoria per la chiamata api
 
 
                 // piatti filtrati in base al ristorante
@@ -154,30 +165,14 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 })
             },
             assegnaValoreIdCategory($num){
-                this.idcategory = $num;
-                this.getRest();
-            },
+                if (this.idcategory.includes($num)) {
+                    let position = this.idcategory.indexOf($num)
+                    this.idcategory.splice(position, 1)
+                } else {
+                    this.idcategory.push($num);
+                }
 
-            // chiamata per i ristoranti in base alla categoria
-            getInfoRest(){
-                axios.get('/api/category/restaurants/' + this.idRistorante).then(response => {
-                    if (response.data.success) {
-                        this.arrInfoRest = response.data.infoRestaurant
-                        // this.arrPlateRest = response.data.plateRestaurant
-                    }
-                })
-            },
-            getPlateRest(){
-                axios.get('/api/plates' + '?userId=' + this.idRistorante).then(response => {
-                    this.arrPlateRest = response.data.data
-                    // if (response.data.success) {
-                    // }
-                })
-            },
-            assegnaValoreIdRest($num){
-                this.idRistorante = $num;
-                // this.getInfoRest();
-                // this.getPlateRest();
+                this.getRest();
             },
 
 

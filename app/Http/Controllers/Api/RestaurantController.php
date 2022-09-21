@@ -28,27 +28,52 @@ class RestaurantController extends Controller
 
     // api che restituisce le i ristoranti da visualizzare (con anche i piatti) nel json
     public function restaurants(Request $request){
-
-
-        $category = $request->get('category');
-
         $restaurants= User::all();
         foreach( $restaurants as $restaurant){
             $restaurant->img = $this->fixImageUrl($restaurant->img);
         }
 
+        
+        $category = $request->get('category'); // prende i dati dalla request 
+        $arrCategories = explode(',',$category); //divide il contenuto della request
 
-        $arrRestaurants = User::with(['category'])->join('category_user', 'users.id', '=', 'category_user.user_id')
-                            ->join('categories', 'category_user.category_id', '=', 'categories.id')
-                            ->select('users.*')
-        ->where('category_id', $category)->get();
-        // ->where('category_id', $category)->with(['plates'])->get();
+        // dump($arrCategories);
 
+        // dichiarazione array
+        $arrRestIds = [];     
+        $arrFilteredIds = [];
+
+
+        // Cicliamo la request pushando gli id dei ristoranti in un array, controllando che i valori passati nella request corrispondano alle categorie del ristorante
+        foreach($arrCategories as $category){
+            $arrRest = User::whereHas('category', function($q) use($category){
+                $q->where('categories.id', $category);
+            })->get();
+
+            // push id del ristorante nell'array
+            foreach ($arrRest as $res) {
+                $arrRestIds[] = $res->id;
+            }
+        }
+
+        $restIdsCount = array_count_values($arrRestIds); // conta quante volte si ripete ogni valore nell'array
+
+        // pushiamo in un array gli id dei ristoranti che risultano matchati con tutte le categorie richieste
+        foreach ($restIdsCount as $id => $coutId) {
+            if($coutId == count($arrCategories)) {
+                $arrFilteredIds[] = $id;
+            }
+        }
+
+        $restFiltered = User::find($arrFilteredIds)->all();
 
         return response()->json([
             'success' => true,
-            'arrRestaurants' => $arrRestaurants
+            'arrRestaurants' => $restFiltered,
         ]);
+
+        
+
     }
 
 
