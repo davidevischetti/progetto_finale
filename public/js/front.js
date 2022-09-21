@@ -5229,7 +5229,7 @@ __webpack_require__.r(__webpack_exports__);
       arrInfoRest: [],
       arrPlateRest: [],
       idRistorante: null,
-      activeCard: 0,
+      activeCard: [],
       isActive: false,
       arrRandomRest: null
     };
@@ -5292,8 +5292,15 @@ __webpack_require__.r(__webpack_exports__);
       // this.getPlateRest();
     },
     activeBorder: function activeBorder(element) {
-      this.activeCard = element;
-      this.isActive = true; // some code to filter users
+      // this.isActive = false;
+      // if(this.isActive == false){
+      this.activeCard.push(element);
+      this.isActive = true; // }else{
+      //     index = this.activeCard.indexOf(element);
+      //     this.activeCard.splice(index, 1);
+      //     this.isActive = false;
+      // }
+      // some code to filter users
 
       console.log("funziona");
       console.log(element);
@@ -5578,7 +5585,7 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "card myCateg",
-      "class": i == _vm.activeCard && _vm.isActive ? "myactive" : "",
+      "class": _vm.activeCard.includes(i) && _vm.isActive ? "myactive" : "",
       on: {
         click: function click($event) {
           return _vm.activeBorder(i);

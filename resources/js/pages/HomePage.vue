@@ -15,7 +15,7 @@
                     <!-- Lista Categorie -->
                     <div class=" row d-flex justify-content-between my-4">
                         <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg" @click="activeBorder(i)" :class= "i == activeCard && isActive ? 'myactive' : ''">
+                            <div class="card myCateg" @click="activeBorder(i)" :class= "activeCard.includes(i) && isActive ? 'myactive' : ''">
                                 <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
                                 <div class="card-body">
                                     <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
@@ -107,7 +107,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 idRistorante : null,
 
 
-                activeCard: 0,
+                activeCard: [],
                 isActive: false,
 
                 arrRandomRest: null
@@ -170,8 +170,16 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             },
 
             activeBorder(element) {
-                this.activeCard = element;
-                this.isActive = true;
+                // this.isActive = false;
+                // if(this.isActive == false){
+                    this.activeCard.push(element); 
+                     this.isActive = true; 
+                // }else{
+                //     index = this.activeCard.indexOf(element);
+                //     this.activeCard.splice(index, 1);
+                //     this.isActive = false;
+                // }
+
                 // some code to filter users
                 console.log("funziona");
                 console.log(element);
