@@ -15,7 +15,7 @@
                     <!-- Lista Categorie -->
                     <div class=" row d-flex justify-content-between my-4">
                         <a href="#" @click.prevent="assegnaValoreIdCategory(category.id)" class="col-4 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg" @click="activeBorder(i)" :class= "activeCard.includes(i) && isActive ? 'myactive' : ''">
+                            <div class="card myCateg" @click="activeBorder(i)" :class="activeCard.includes(i) && trueOrFalse ? 'myactive' : ''">
                                 <img :src="category.img" :alt="category.name" class="card-img-top  rounded-3 myCategImg">
                                 <div class="card-body">
                                     <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
@@ -55,8 +55,8 @@
                                 <div class="col-md-8">
                                     <div class="card-body ms-2  ">
                                         <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
-                                            <div class="fs-5 fw-bold">{{rand.name}}</div> 
-                                            <div>{{rand.address}}</div> 
+                                            <div class="fs-5 fw-bold">{{rand.name}}</div>
+                                            <div>{{rand.address}}</div>
                                         </router-link>
                                     </div>
                                 </div>
@@ -67,22 +67,21 @@
                 </div>
             </div>
         </div>
-        
+
 
         <!-- TODO: stampa di ristoranti randomici nella homepage prima della selezione categories -->
         <!-- TODO: stampa immagini da storage -->
         <!-- TODO:al secondo click l'active si deve togliere -->
         <!-- TODO:le categorie non devono essere esclusive non si possono selezionare più categorie contemporaneamente -->
 
-    
 
-        
+
+
     </div>
 </template>
 
 <script>
 
-import isFlattenable from 'lodash/_isFlattenable';
 import Jumbotrone from '../components/Jumbotrone.vue';
 
     export default {
@@ -107,8 +106,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 idRistorante : null,
 
 
-                activeCard: [],
-                isActive: false,
+                arrElements: [],
+                arrTrueOrFalse: [],
+                index: null,
 
                 arrRandomRest: null
 
@@ -138,8 +138,8 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 axios.get('/api/category/restaurants' + '?category=' + this.idcategory).then(response => {
                 if (response.data.success) {
                     this.arrRestaurants = response.data.arrRestaurants
-                } 
-                
+                }
+
                 })
             },
             assegnaValoreIdCategory($num){
@@ -169,20 +169,29 @@ import Jumbotrone from '../components/Jumbotrone.vue';
                 // this.getPlateRest();
             },
 
-            activeBorder(element) {
-                // this.isActive = false;
-                // if(this.isActive == false){
-                    this.activeCard.push(element); 
-                     this.isActive = true; 
-                // }else{
-                //     index = this.activeCard.indexOf(element);
-                //     this.activeCard.splice(index, 1);
-                //     this.isActive = false;
-                // }
 
-                // some code to filter users
-                console.log("funziona");
-                console.log(element);
+            activeBorder(element) {
+                // activeCard =     [1,4,3,2]
+                // arrTrueOrFalse = [true, true, true, true]
+                // index = activeCard.indexOf(element)  -----> "index = 0"
+                // if (arrTrueOrFalse[index] == true)
+                // activeCard.splice(index, 1)
+                // arrTrueOrFalse.splice(index, 1)
+
+                if(!this.arrElements.includes(element)) {
+                    this.arrElements.push(element);
+                    this.arrTrueOrFalse.push(true);
+
+                    this.index = arrElements.indexOf(element);
+
+                    if(this.arrTrueOrFalse[this.index] == true) {
+                        this.arrElements.splice(this.index, 1)
+                        this.arrTrueOrFalse.splice(this.index, 1)
+                    }
+                }
+
+
+
             },
 
             resetCategory(){
@@ -216,7 +225,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
     .card.myactive{
         border: 3px solid #d43a1c;
-        color: red !important; 
+        color: red !important;
     }
 
     .myButton{
