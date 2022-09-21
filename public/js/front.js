@@ -5698,28 +5698,40 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
+    attrs: {
+      id: "showRestaurant"
+    }
+  }, [_c("div", {
     staticClass: "container"
   }, [_c("ul", {
-    staticClass: "list-group my-5 text-center border-bottom border-5 rounded-0 pb-3 myBorder"
+    staticClass: "list-unstyled p-4 text-center border-bottom border-5 rounded-0 myBorder"
   }, [_c("li", {
-    staticClass: "list-group-item border-0"
+    staticClass: "border-0"
+  }, [_c("img", {
+    staticClass: "risto_img",
+    attrs: {
+      src: _vm.arrRestInfo.img,
+      alt: _vm.arrRestInfo.name
+    }
+  })]), _vm._v(" "), _c("li", {
+    staticClass: "border-0"
   }, [_c("h1", [_vm._v(_vm._s(_vm.arrRestInfo.name))])]), _vm._v(" "), _c("li", {
-    staticClass: "list-group-item border-0"
+    staticClass: "border-0"
   }, [_c("h3", [_vm._v(_vm._s(_vm.arrRestInfo.address))])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-between"
   }, [_c("div", {
     staticClass: "row col-6"
   }, [_c("ul", {
-    staticClass: "list-group mb-5"
+    staticClass: "list-group mb-5 p-4"
   }, _vm._l(_vm.arrRestPlate, function (plate) {
     return _c("div", {
       key: plate.id,
-      staticClass: "list-group-flush mb-2"
+      staticClass: "list-group-flush mb-4 p-4 shadow bg-body rounded"
     }, [_c("li", {
-      staticClass: "list-group-item"
+      staticClass: "list-group-item d-flex justify-content-between"
     }, [_c("p", {
       staticClass: "fs-3 fw-bold"
-    }, [_vm._v(_vm._s(plate.name) + " \n                            "), _vm._m(0, true)])]), _vm._v(" "), _c("li", {
+    }, [_vm._v(_vm._s(plate.name) + " ")]), _vm._v(" "), _vm._m(0, true)]), _vm._v(" "), _c("li", {
       staticClass: "list-group-item"
     }, [_c("span", {
       staticClass: "fw-bold"
@@ -5732,7 +5744,7 @@ var render = function render() {
     }, [_c("span", {
       staticClass: "fw-bold"
     }, [_vm._v("Prezzo:")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(plate.price) + " € ")])])]);
-  }), 0)]), _vm._v(" "), _vm._m(1)])]);
+  }), 0)]), _vm._v(" "), _vm._m(1)])])]);
 };
 
 var staticRenderFns = [function () {
@@ -5749,14 +5761,14 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-6"
+    staticClass: "col-6 mb-5 p-4"
   }, [_c("ul", {
-    staticClass: "list-group text-capitalize border list-group-flush"
+    staticClass: "list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded"
   }, [_c("li", {
-    staticClass: "list-group-item text-center"
+    staticClass: "list-group-item text-center fs-3 fw-bold"
   }, [_vm._v("carrello")]), _vm._v(" "), _c("li", {
-    staticClass: "list-group-item"
-  }, [_vm._v("piatti inseriti:")]), _vm._v(" "), _c("li", {
+    staticClass: "list-group-item fw-bold"
+  }, [_vm._v("piatti inseriti")]), _vm._v(" "), _c("li", {
     staticClass: "list-group-item text-center"
   }, [_c("button", {
     staticClass: "btn btn_color text-capitalize"
@@ -11122,7 +11134,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".myBorder[data-v-c1f7c23a] {\n  border-color: #d43a1c !important;\n}\n.btn_color[data-v-c1f7c23a] {\n  background-color: #d43a1c;\n  color: white;\n}\n.btn_color[data-v-c1f7c23a]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.risto_img[data-v-c1f7c23a] {\n  height: 15rem;\n}", ""]);
+exports.push([module.i, "#showRestaurant[data-v-c1f7c23a] {\n  background-color: #ffe6d8;\n}\n.myBorder[data-v-c1f7c23a] {\n  border-color: #d43a1c !important;\n}\n.btn_color[data-v-c1f7c23a] {\n  background-color: #d43a1c;\n  color: white;\n}\n.btn_color[data-v-c1f7c23a]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.risto_img[data-v-c1f7c23a] {\n  height: 15rem;\n}", ""]);
 
 // exports
 
