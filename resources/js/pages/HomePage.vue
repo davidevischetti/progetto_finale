@@ -29,15 +29,15 @@
                 <div class="col-12">
                     <!-- lista ristoranti -->
                     <div class="row">
-                        <div class="col-6">
-                            <div v-for="rest in arrRestaurants" :key="rest.id" class="card mb-3 myRisto" >
-                                <div class="row g-0">
+                        <div class="">
+                            <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-6 mb-3 myRisto border-0 shadow bg-body rounded" >
+                                <div class="row">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                <div class="col-md-4 d-flex align-items-center ">
+                                <div class="col-md-4 p-0 contain_img">
                                     <img :src="rest.img" :alt="rest.name" class="myRistoImg img-fluid rounded" >
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-body ms-2  ">
+                                    <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                         <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                             <div class="fs-5 fw-bold">{{rest.name}}</div>
                                             <div>{{rest.address}}</div>
@@ -56,7 +56,7 @@
                         <div class="col-6">
                             <!-- TODO: fix scritta -->
                             <div class="alert alert-danger" role="alert">
-                                La tua ricerca non ha prodotto risultati.
+                              <span>Mi dispiace la tua ricerca non ha prodotto risultati. <strong>Riprova</strong></span>
                             </div>
                         </div>
 
@@ -64,14 +64,14 @@
 
                     <!-- Lista ristoranti random -->
                     <div class="row justify-content-between" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
-                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto col-5 " >
-                                <div class="row g-0">
+                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-4 myRisto col-6 border-0 shadow bg-body rounded" >
+                                <div class="row">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                    <div class="col-md-4 d-flex align-items-center ">
-                                        <img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded">
+                                    <div class="col-md-4 p-0 contain_img">
+                                       <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="card-body ms-2  ">
+                                        <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                             <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                                 <div class="fs-5 fw-bold">{{rand.name}}</div>
                                                 <div>{{rand.address}}</div>
@@ -89,11 +89,8 @@
             </div>
         </div>
 
-
-        <!-- TODO: stampa di ristoranti randomici nella homepage prima della selezione categories -->
         <!-- TODO: stampa immagini da storage -->
-        <!-- TODO:al secondo click l'active si deve togliere -->
-        <!-- TODO:le categorie non devono essere esclusive non si possono selezionare più categorie contemporaneamente -->
+        <!-- TODO: rivedere il lato responsive -->
 
     </div>
 </template>
@@ -195,7 +192,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 </script>
 
 <style lang="scss" scoped>
-
+    #myHomepage{
+        background-color: #FFE6D8;
+    }
     .categories_on{
         margin-top: -130px;
     }
@@ -215,11 +214,16 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
 
     .myRisto{
-        max-width: 540px;
+        max-width: 40rem;
+        height: 8rem !important;
+    }
+    .contain_img{
+        height: 8rem;
+        width: 12rem;
     }
     .myRistoImg{
-        width: 12rem;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
     }
 
     .myCateg.myactive{
@@ -230,9 +234,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         color: red !important;
     }
 
-    .myButton{
-        //height: 12rem;
-    }
+    // .myButton{
+    //     height: 12rem;
+    // }
 
     .my_btn{
         background-color: #d43a1c;
@@ -248,9 +252,5 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         color: white;
         padding: 5px 0;
         border-radius: 0 0 5px 5px;
-    }
-
-    #myHomepage{
-        background-color: #FFE6D8;
     }
 </style>

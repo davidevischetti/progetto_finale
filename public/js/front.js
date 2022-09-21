@@ -5313,8 +5313,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       // idRistorante: id,
-      arrRestInfo: null,
-      arrRestPlate: null
+      arrRestInfo: [],
+      arrRestPlate: []
     };
   },
   created: function created() {
@@ -5582,16 +5582,14 @@ var render = function render() {
     staticClass: "col-12"
   }, [_c("div", {
     staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-6"
-  }, _vm._l(_vm.arrRestaurants, function (rest) {
+  }, [_c("div", {}, _vm._l(_vm.arrRestaurants, function (rest) {
     return _c("div", {
       key: rest.id,
-      staticClass: "card mb-3 myRisto"
+      staticClass: "card col-6 mb-3 myRisto border-0 shadow bg-body rounded"
     }, [_c("div", {
-      staticClass: "row g-0"
+      staticClass: "row"
     }, [_c("div", {
-      staticClass: "col-md-4 d-flex align-items-center"
+      staticClass: "col-md-4 p-0 contain_img"
     }, [_c("img", {
       staticClass: "myRistoImg img-fluid rounded",
       attrs: {
@@ -5601,7 +5599,7 @@ var render = function render() {
     })]), _vm._v(" "), _c("div", {
       staticClass: "col-md-8"
     }, [_c("div", {
-      staticClass: "card-body ms-2"
+      staticClass: "card-body p-0 ms-2 h-100 d-flex align-items-center"
     }, [_c("router-link", {
       staticClass: "card-title text-decoration-none text-dark text-capitalize",
       attrs: {
@@ -5624,21 +5622,30 @@ var render = function render() {
   }, _vm._l(_vm.arrRandomRest, function (rand) {
     return _c("div", {
       key: rand.id,
-      staticClass: "card mb-3 myRisto col-5"
+      staticClass: "card mb-4 myRisto col-6 border-0 shadow bg-body rounded"
     }, [_c("div", {
-      staticClass: "row g-0"
+      staticClass: "row"
     }, [_c("div", {
-      staticClass: "col-md-4 d-flex align-items-center"
+      staticClass: "col-md-4 p-0 contain_img"
+    }, [_c("router-link", {
+      attrs: {
+        to: {
+          name: "show",
+          params: {
+            id: rand.id
+          }
+        }
+      }
     }, [_c("img", {
       staticClass: "myRistoImg img-fluid rounded",
       attrs: {
         src: rand.img,
         alt: rand.name
       }
-    })]), _vm._v(" "), _c("div", {
+    })])], 1), _vm._v(" "), _c("div", {
       staticClass: "col-md-8"
     }, [_c("div", {
-      staticClass: "card-body ms-2"
+      staticClass: "card-body p-0 ms-2 h-100 d-flex align-items-center"
     }, [_c("router-link", {
       staticClass: "card-title text-decoration-none text-dark text-capitalize",
       attrs: {
@@ -5668,7 +5675,7 @@ var staticRenderFns = [function () {
     attrs: {
       role: "alert"
     }
-  }, [_vm._v("\n                            La tua ricerca non ha prodotto risultati.\n                        ")])]);
+  }, [_c("span", [_vm._v("Mi dispiace la tua ricerca non ha prodotto risultati. "), _c("strong", [_vm._v("Riprova")])])])]);
 }];
 render._withStripped = true;
 
@@ -11096,7 +11103,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".categories_on[data-v-04c29797] {\n  margin-top: -130px;\n}\n.myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 540px;\n}\n.myRistoImg[data-v-04c29797] {\n  width: 12rem;\n  height: auto;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}", ""]);
+exports.push([module.i, "#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -130px;\n}\n.myCateg[data-v-04c29797] {\n  width: 12rem;\n  height: 12rem;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 12rem;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
 
 // exports
 
@@ -28121,8 +28128,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })
