@@ -4,13 +4,13 @@
         <Jumbotrone></Jumbotrone>
         <div class="container">
             <div class="row">
-              
+
                 <!-- Categorie e Lista ristoranti -->
                 <div class="col-12 categories_on">
                     <!-- Lista Categorie -->
                     <div class="row d-flex justify-content-between my-4">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" class="col-2 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
+                            <div class="card myCateg myShadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
                                 <img :src="category.img" :alt="category.name" class="card-img myCategImg">
                                 <div class="card-img-overlay p-0 d-flex align-items-end">
                                     <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pulsante reset filtri -->
                 <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
                     <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             resetCategory(){
                 this.arrElements = [];
                 this.arrTrueOrFalse = [];
-                this.arrRestaurants = []; 
+                this.arrRestaurants = [];
             }
         }
     }
@@ -227,16 +227,13 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
 
     .myCateg.myactive{
-        //margin-top: -36px;
-        //transition: all 0.2s ease-in-out;
         transform:translate(0, -36px);
         border-bottom: 5px solid #d43a1c;
         color: red !important;
     }
-
-    // .myButton{
-    //     height: 12rem;
-    // }
+    .myShadow {
+        box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;
+    }
 
     .my_btn{
         background-color: #d43a1c;
@@ -246,7 +243,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             color:white;
         }
     }
-    
+
     .my_text_cat{
         background-color: rgba(0, 0, 0, 0.6);
         color: white;
