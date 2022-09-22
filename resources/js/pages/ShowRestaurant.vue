@@ -15,7 +15,7 @@
                     <ul class="list-group mb-5 p-4">
                         <div v-for="plate in arrRestPlate" :key="plate.id" class="list-group-flush mb-4 p-4 shadow bg-body rounded">
                             <li class="list-group-item d-flex justify-content-between">
-                                <p class="fs-3 fw-bold">{{plate.name}} </p>
+                                <p class="fs-3 fw-bold" >{{plate.name}}</p>
                                     <span class="float-end"><button class="btn btn_color" @click.prevent="addToCart(plate)">ADD</button></span>
                             </li>
                             <li class="list-group-item">
@@ -91,13 +91,26 @@ export default {
             }
         })
     },
+
+    mounted() {
+    if (localStorage.getItem('arrCartPlate')) {
+      try {
+        this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate'));
+      } catch(e) {
+        localStorage.removeItem('arrCartPlate');
+      }
+    }
+  },
+    //dobbiamo salvare gli elementi dell'array arrCartPlate in local storage
+    //nella funzione addtocart dobbiamo 
     methods:{
         addToCart(element){
             // this.isAdded = true;
             if(!this.arrCartPlate.includes(element)){
                 
                 this.arrCartPlate.push(element);
-
+                    const parsed = JSON.stringify(this.arrCartPlate);
+                    localStorage.setItem('arrCartPlate', parsed);
                 console.log('piatto cliccato'); 
             }
         },         

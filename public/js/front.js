@@ -5353,11 +5353,24 @@ __webpack_require__.r(__webpack_exports__);
       }
     });
   },
+  mounted: function mounted() {
+    if (localStorage.getItem('arrCartPlate')) {
+      try {
+        this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate'));
+      } catch (e) {
+        localStorage.removeItem('arrCartPlate');
+      }
+    }
+  },
+  //dobbiamo salvare gli elementi dell'array arrCartPlate in local storage
+  //nella funzione addtocart dobbiamo 
   methods: {
     addToCart: function addToCart(element) {
       // this.isAdded = true;
       if (!this.arrCartPlate.includes(element)) {
         this.arrCartPlate.push(element);
+        var parsed = JSON.stringify(this.arrCartPlate);
+        localStorage.setItem('arrCartPlate', parsed);
         console.log('piatto cliccato');
       }
     },
@@ -5802,7 +5815,7 @@ var render = function render() {
       staticClass: "list-group-item d-flex justify-content-between"
     }, [_c("p", {
       staticClass: "fs-3 fw-bold"
-    }, [_vm._v(_vm._s(plate.name) + " ")]), _vm._v(" "), _c("span", {
+    }, [_vm._v(_vm._s(plate.name))]), _vm._v(" "), _c("span", {
       staticClass: "float-end"
     }, [_c("button", {
       staticClass: "btn btn_color",
