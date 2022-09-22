@@ -110,9 +110,10 @@ export default {
             // this.isAdded = true;
             if(!this.arrCartPlate.includes(element)){    
                 this.arrCartPlate.push(element);
-                this.savePlate();
+                
                 // console.log('piatto cliccato'); 
             }
+            this.savePlate();
         }, 
         
         savePlate(){
@@ -127,10 +128,11 @@ export default {
             if(this.plateQuantity > 1){
                 this.plateQuantity--;
             } else if(this.plateQuantity <= 1){
-                this.arrCartPlate.splice(element, 1)
+                let myindex = this.arrCartPlate.indexOf(element);
+                this.arrCartPlate.splice(myindex, 1);
                 console.log("Hai rimosso questo elemento");
             }
-            
+            this.savePlate();
         }
     }
 }

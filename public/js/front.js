@@ -5368,9 +5368,10 @@ __webpack_require__.r(__webpack_exports__);
     addToCart: function addToCart(element) {
       // this.isAdded = true;
       if (!this.arrCartPlate.includes(element)) {
-        this.arrCartPlate.push(element);
-        this.savePlate(); // console.log('piatto cliccato'); 
+        this.arrCartPlate.push(element); // console.log('piatto cliccato'); 
       }
+
+      this.savePlate();
     },
     savePlate: function savePlate() {
       var parsed = JSON.stringify(this.arrCartPlate);
@@ -5383,9 +5384,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.plateQuantity > 1) {
         this.plateQuantity--;
       } else if (this.plateQuantity <= 1) {
-        this.arrCartPlate.splice(element, 1);
+        var myindex = this.arrCartPlate.indexOf(element);
+        this.arrCartPlate.splice(myindex, 1);
         console.log("Hai rimosso questo elemento");
       }
+
+      this.savePlate();
     }
   }
 });
