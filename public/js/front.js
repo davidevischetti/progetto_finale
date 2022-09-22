@@ -5327,9 +5327,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ShowRestaurant',
   // components: {
   // },
-  props: {
-    id: Number
-  },
+  props: ['id'],
   data: function data() {
     return {
       // idRistorante: id,
@@ -5340,6 +5338,7 @@ __webpack_require__.r(__webpack_exports__);
       //indichiamo il numero totale di articoli aggiunti
       plateQuantity: 1 //indichiamo la quantità del singolo piatto ordinato
       // isAdded: false,
+      // idRest: this.id,
 
     };
   },
@@ -5351,7 +5350,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.arrRestInfo = response.data.infoRestaurant;
         _this.arrRestPlate = response.data.plates;
       }
-    });
+    }); // this.prova();
   },
   mounted: function mounted() {
     if (localStorage.getItem('arrCartPlate')) {
@@ -5366,11 +5365,7 @@ __webpack_require__.r(__webpack_exports__);
   //nella funzione addtocart dobbiamo 
   methods: {
     addToCart: function addToCart(element) {
-      // this.isAdded = true;
-      if (!this.arrCartPlate.includes(element)) {
-        this.arrCartPlate.push(element); // console.log('piatto cliccato'); 
-      }
-
+      this.arrCartPlate.push(element);
       this.savePlate();
     },
     savePlate: function savePlate() {
@@ -5390,7 +5385,13 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.savePlate();
-    }
+    } //     prova(){
+    //         if(this.idRest != this.id){
+    //             localStorage.clear();
+    //             // this.idRest=this.id;
+    //         }
+    //    } 
+
   }
 });
 
@@ -5864,21 +5865,17 @@ var render = function render() {
     return _c("li", {
       key: cart.id,
       staticClass: "list-group-item"
-    }, [_c("span", [_vm._v("\n                            " + _vm._s(cart.name) + " \n                        ")]), _vm._v(" "), _c("div", {}, [_c("button", {
+    }, [_c("span", {
+      staticClass: "d-flex justify-content-between"
+    }, [_c("span", [_vm._v(_vm._s(cart.name))]), _c("button", {
+      staticClass: "btn btn-outline-danger py-0 px-2",
       on: {
         click: function click($event) {
           $event.preventDefault();
           return _vm.removePlate(cart);
         }
       }
-    }, [_vm._v("-")]), _c("p", [_vm._v(_vm._s(_vm.plateQuantity))]), _c("button", {
-      on: {
-        click: function click($event) {
-          $event.preventDefault();
-          return _vm.updatePlate(cart);
-        }
-      }
-    }, [_vm._v("+")])])]);
+    }, [_vm._v("X")])])]);
   }), _vm._v(" "), _c("div", {
     staticClass: "list-group-item"
   }, [_c("router-link", {
@@ -28403,8 +28400,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

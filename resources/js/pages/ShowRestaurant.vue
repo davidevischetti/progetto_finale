@@ -39,12 +39,13 @@
                         <li class="list-group-item text-center fs-3 fw-bold">carrello</li>
                         <li class="list-group-item fw-bold">piatti inseriti</li>
                         <li class="list-group-item" v-for="cart in arrCartPlate" :key="cart.id">
-                            <span>
-                                {{cart.name}} 
+                            <span class="d-flex justify-content-between">
+                                <span>{{cart.name}}</span><button @click.prevent="removePlate(cart)" class="btn btn-outline-danger py-0 px-2 ">X</button> 
                             </span>
-                            <div class="">
-                                <button @click.prevent="removePlate(cart)">-</button><p>{{plateQuantity}}</p><button @click.prevent="updatePlate(cart)">+</button>
-                            </div>
+
+                                
+                                <!-- <p>{{plateQuantity}}</p> -->
+                                <!-- <button @click.prevent="updatePlate(cart)">+</button> -->
                         </li> 
                         <div class="list-group-item ">
                             <router-link :to="{name: 'cart' }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
@@ -65,9 +66,7 @@ export default {
 
     // components: {
     // },
-     props:{
-        id: Number,
-     },
+     props:['id'],
     data() {
         return {
             // idRistorante: id,
@@ -80,6 +79,7 @@ export default {
             plateQuantity: 1, //indichiamo la quantità del singolo piatto ordinato
 
             // isAdded: false,
+            // idRest: this.id,
         }
     },
     created(){
@@ -90,6 +90,9 @@ export default {
                 this.arrRestPlate = response.data.plates
             }
         })
+
+        // this.prova();
+
     },
 
     mounted() {
@@ -106,13 +109,8 @@ export default {
     //dobbiamo salvare gli elementi dell'array arrCartPlate in local storage
     //nella funzione addtocart dobbiamo 
     methods:{
-        addToCart(element){
-            // this.isAdded = true;
-            if(!this.arrCartPlate.includes(element)){    
-                this.arrCartPlate.push(element);
-                
-                // console.log('piatto cliccato'); 
-            }
+        addToCart(element){  
+            this.arrCartPlate.push(element);             
             this.savePlate();
         }, 
         
@@ -124,6 +122,7 @@ export default {
         updatePlate(){   
             this.plateQuantity++; 
         },
+
         removePlate(element){
             if(this.plateQuantity > 1){
                 this.plateQuantity--;
@@ -133,7 +132,14 @@ export default {
                 console.log("Hai rimosso questo elemento");
             }
             this.savePlate();
-        }
+        },
+
+    //     prova(){
+    //         if(this.idRest != this.id){
+    //             localStorage.clear();
+    //             // this.idRest=this.id;
+    //         }
+    //    } 
     }
 }
 
