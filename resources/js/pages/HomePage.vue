@@ -91,6 +91,7 @@
 
         <!-- TODO: stampa immagini da storage -->
         <!-- TODO: rivedere il lato responsive -->
+        <!-- ciao -->
 
     </div>
 </template>
