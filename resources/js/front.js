@@ -10,6 +10,7 @@ require('./bootstrap');
     // importiamo tutti i componenti delle pagine
     import HomePage from './pages/HomePage.vue';
     import ShowRestaurant from './pages/ShowRestaurant.vue';
+    import CarrelloComp from './pages/CarrelloComp.vue';
 
     // definiamo le rotte
     const routes = [
@@ -31,11 +32,12 @@ require('./bootstrap');
             props: true,
         },
 
-        // {
-        //     path: '/carrello',
-        //     name: 'carrello',
-        //     component: CarrelloComp, fare import del componente
-        // }, 
+        {
+            path: '/restaurants/:id/carrello',
+            name: 'cart',
+            component: CarrelloComp, //fare import del componente
+            props: true,
+        }, 
         // {
         //     path: '/contacts',
         //     name: 'contacts',

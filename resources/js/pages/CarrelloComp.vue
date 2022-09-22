@@ -1,5 +1,7 @@
 <template>
     <div id="myCart">
+        <h1>prova</h1>
+
         <!-- TODO: bisogna mettere il collegamento alla pagina anche in front.js -->
         <!-- TODO:  struttura carrello 
                     -una volta importato avrà navbar e footer  
@@ -12,13 +14,16 @@
 <script>
 export default{
     name: 'CarrelloComp',
-    components:{
+    // components:{
 
-    }
+    // }
+    props:{
+        id: Number,
+    },
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
     #myCart{
         background-color: #ffe6d8;
     }
