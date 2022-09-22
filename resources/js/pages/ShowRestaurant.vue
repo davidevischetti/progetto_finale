@@ -44,19 +44,16 @@
                             </span>
                             <div class="cart-item__details-qty">
                                 <button>-</button><p>{{plateQuantity}}</p><button @click.prevent="updatePlate(cart)">+</button>
-                            </div>                        
-                            <router-link :to="{name: 'cart', params: {id: cart.id} }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
-                        </li>
-
-                    </ul>
+                            </div>
+                        </li> 
+                        <div class="list-group-item ">
+                            <router-link :to="{name: 'cart' }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
+                        </div>                     
+                    </ul>                        
                 </div>
-
             </div>
-
-
         </div>
     </div>
-
 </template>
 
 <!-- TODO: implementare funzione che collega i piatti alla sezione carrello nella pagina -->

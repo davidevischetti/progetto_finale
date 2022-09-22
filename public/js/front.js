@@ -5846,19 +5846,18 @@ var render = function render() {
           return _vm.updatePlate(cart);
         }
       }
-    }, [_vm._v("+")])]), _vm._v(" "), _c("router-link", {
-      attrs: {
-        to: {
-          name: "cart",
-          params: {
-            id: cart.id
-          }
-        }
+    }, [_vm._v("+")])])]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "list-group-item"
+  }, [_c("router-link", {
+    attrs: {
+      to: {
+        name: "cart"
       }
-    }, [_c("button", {
-      staticClass: "btn btn_color text-capitalize"
-    }, [_vm._v("procedi con il pagamento")])])], 1);
-  })], 2)])])])]);
+    }
+  }, [_c("button", {
+    staticClass: "btn btn_color text-capitalize"
+  }, [_vm._v("procedi con il pagamento")])])], 1)], 2)])])])]);
 };
 
 var staticRenderFns = [];
