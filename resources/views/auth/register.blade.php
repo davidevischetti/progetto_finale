@@ -100,8 +100,11 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}*</label>
 
                             <div class="col-md-8">
-                                <input id="password-confirm" type="password" class="form-control pws-confirmed" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" oninput="return fixedPws()" class="form-control pws-confirmed mb-1" name="password_confirmation" required autocomplete="new-password">
+                                
+                                <div class="alert mt-2 py-1 myAlert d-none" role="alert"></div>
                             </div>
+                            
                         </div>
 
                         {{-- SELEZIONE DELLA CATEGORIA --}}
@@ -124,7 +127,7 @@
 
                         <div class="form-group row mt-5 mb-0">
                             <div class="col-md-2 offset-md-5">
-                                <button type="submit" class="btn myBtn-primary">
+                                <button type="submit" onclick="return validate()"  class="btn myBtn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>

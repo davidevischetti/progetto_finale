@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Restaurant;
 
+use App\Models\User;
 use App\Models\Plate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,8 +27,12 @@ class RestaurantController extends Controller
      */
     public function dashboard()
     {
+        $userName = Auth::user();
         $platesVisible = Auth::user()->plates()->where('visible', '=', true)->orderBy('name')->paginate(8);
 
-        return view('restaurant.dashboard', compact('platesVisible'));
+        return view('restaurant.dashboard', [
+            'platesVisible' => $platesVisible,
+            'userName' => $userName,
+        ]);
     }
 }
