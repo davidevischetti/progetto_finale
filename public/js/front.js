@@ -5314,7 +5314,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // idRistorante: id,
       arrRestInfo: [],
-      arrRestPlate: []
+      arrRestPlate: [],
+      arrCartPlate: [] // isAdded: false,
+
     };
   },
   created: function created() {
@@ -5326,6 +5328,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.arrRestPlate = response.data.plates;
       }
     });
+  },
+  methods: {
+    addToCart: function addToCart(element) {
+      // this.isAdded = true;
+      this.arrCartPlate.push(element);
+      console.log('piatto cliccato');
+    }
   }
 });
 
@@ -5731,7 +5740,17 @@ var render = function render() {
       staticClass: "list-group-item d-flex justify-content-between"
     }, [_c("p", {
       staticClass: "fs-3 fw-bold"
-    }, [_vm._v(_vm._s(plate.name) + " ")]), _vm._v(" "), _vm._m(0, true)]), _vm._v(" "), _c("li", {
+    }, [_vm._v(_vm._s(plate.name) + " ")]), _vm._v(" "), _c("span", {
+      staticClass: "float-end"
+    }, [_c("button", {
+      staticClass: "btn btn_color",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.addToCart(plate);
+        }
+      }
+    }, [_vm._v("ADD")])])]), _vm._v(" "), _c("li", {
       staticClass: "list-group-item"
     }, [_c("span", {
       staticClass: "fw-bold"
@@ -5744,23 +5763,7 @@ var render = function render() {
     }, [_c("span", {
       staticClass: "fw-bold"
     }, [_vm._v("Prezzo:")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(plate.price) + " € ")])])]);
-  }), 0)]), _vm._v(" "), _vm._m(1)])])]);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("span", {
-    staticClass: "float-end"
-  }, [_c("button", {
-    staticClass: "btn btn_color"
-  }, [_vm._v("ADD")])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
+  }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "col-6 mb-5 p-4"
   }, [_c("ul", {
     staticClass: "list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded heightScroll overflow-scroll"
@@ -5768,11 +5771,23 @@ var staticRenderFns = [function () {
     staticClass: "list-group-item text-center fs-3 fw-bold"
   }, [_vm._v("carrello")]), _vm._v(" "), _c("li", {
     staticClass: "list-group-item fw-bold"
-  }, [_vm._v("piatti inseriti")]), _vm._v(" "), _c("li", {
+  }, [_vm._v("piatti inseriti")]), _vm._v(" "), _vm._l(_vm.arrCartPlate, function (cart) {
+    return _c("li", {
+      key: cart.id,
+      staticClass: "list-group-item"
+    }, [_c("div", [_vm._v("\n                            " + _vm._s(cart.name) + "\n                        ")])]);
+  }), _vm._v(" "), _vm._m(0)], 2)])])])]);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", {
     staticClass: "list-group-item text-center"
   }, [_c("button", {
     staticClass: "btn btn_color text-capitalize"
-  }, [_vm._v("procedi con il pagamento")])])])]);
+  }, [_vm._v("procedi con il pagamento")])]);
 }];
 render._withStripped = true;
 
@@ -28145,8 +28160,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/alessandrofulco/Desktop/progetto_finale/resources/js/front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! /Users/alessandrofulco/Desktop/progetto_finale/resources/sass/back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

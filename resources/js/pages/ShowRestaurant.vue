@@ -16,7 +16,7 @@
                         <div v-for="plate in arrRestPlate" :key="plate.id" class="list-group-flush mb-4 p-4 shadow bg-body rounded">
                             <li class="list-group-item d-flex justify-content-between">
                                 <p class="fs-3 fw-bold">{{plate.name}} </p>
-                                    <span class="float-end"><button class="btn btn_color">ADD</button></span>
+                                    <span class="float-end"><button class="btn btn_color" @click.prevent="addToCart(plate)">ADD</button></span>
                             </li>
                             <li class="list-group-item">
                                 <span class="fw-bold">Descrizione: </span>
@@ -38,6 +38,11 @@
                     <ul class="list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded heightScroll overflow-scroll">
                         <li class="list-group-item text-center fs-3 fw-bold">carrello</li>
                         <li class="list-group-item fw-bold">piatti inseriti</li>
+                        <li class="list-group-item" v-for="cart in arrCartPlate" :key="cart.id">
+                            <div>
+                                {{cart.name}}
+                            </div>
+                        </li>
                         <li class="list-group-item text-center"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></li>
                     </ul>
                 </div>
@@ -67,6 +72,10 @@ export default {
             // idRistorante: id,
             arrRestInfo: [],
             arrRestPlate: [],
+
+            arrCartPlate: [],
+
+            // isAdded: false,
         }
     },
     created(){
@@ -77,6 +86,15 @@ export default {
                 this.arrRestPlate = response.data.plates
             }
         })
+    },
+    methods:{
+        addToCart(element){
+
+            // this.isAdded = true;
+            this.arrCartPlate.push(element);
+            console.log('piatto cliccato');
+
+        }  
     }
 }
 
