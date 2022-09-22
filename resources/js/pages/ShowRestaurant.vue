@@ -45,10 +45,10 @@
                             <div class="cart-item__details-qty">
                                 <button>-</button><p>{{plateQuantity}}</p><button @click.prevent="updatePlate(cart)">+</button>
                             </div>                        
-                            <router-link :to="{name: 'cart', params: {id: cart.id} }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
                         </li>
-
+                        
                     </ul>
+                    <router-link :to="{name: 'cart', params: {arrCartPlate: this.arrCartPlate} }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
                 </div>
 
             </div>
@@ -69,6 +69,7 @@ export default {
     // components: {
     // },
      props:{
+        // TODO: cambiare con string
         id: Number,
      },
     data() {
@@ -77,8 +78,8 @@ export default {
             arrRestInfo: [],
             arrRestPlate: [],
 
+            
             arrCartPlate: [],
-
             cartQuantity: 0, //indichiamo il numero totale di articoli aggiunti
             plateQuantity: 1, //indichiamo la quantità del singolo piatto ordinato
 

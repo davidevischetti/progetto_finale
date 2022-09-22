@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 
 
@@ -10,6 +11,9 @@ use GuzzleHttp\Middleware;
 // });
 
 Auth::routes();
+
+
+
 
 Route::middleware('auth')
    ->namespace('Restaurant')

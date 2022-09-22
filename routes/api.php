@@ -25,9 +25,17 @@ Route::get('/category/restaurants/{restaurant}', 'Api\RestaurantController@show'
 Route::get('/restaurant/random', 'Api\RestaurantController@random')->name('api.restaurants.random'); //restituiscer rando rest
 
 
+Route::post('/orders', 'Api\Orders\OrderController@createOrder');
+
+
+
 // route per Braintree
 Route::get('/orders/generate', 'Api\Orders\OrderController@generate')->name('api.orders.generateToken'); // genera un token
 Route::post('/orders/make/payment', 'Api\Orders\OrderController@makePayment')->name('api.orders.makePayment'); // genera il pagamento
 
 // rotte per i piatti
 Route::get('/plates', 'Api\Plate\PlateController@index');
+
+
+
+
