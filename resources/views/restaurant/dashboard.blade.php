@@ -2,18 +2,27 @@
 
 @section('content')
 <div class="container">
-    <a href="{{url()->previous()}}" class="mb-5 text-decoration-none"><< Back</a>
+    <a href="{{url()->previous()}}" class="mb-5 text-decoration-none btn btn-outline-secondary rounded-pill"><< Back</a>
 
     <div class="row justify-content-start">
 
         {{-- TODO: aggiungere funzione per mandare il messaggio di avvenuto login/register  --}}
-
-            @if (session('registrato'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('registrato') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="col-8 offset-2">
+                @if (session('registrato'))
+                <div class="alert alert-light alert-dismissible mt-2 fade show" role="alert">
+                    Ciao {{$userName->name}},
+                    {{ session('registrato') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                @if (session('login'))
+                    <div class="alert alert-light alert-dismissible mt-2 fade show" role="alert">
+                        {{$userName->name}},
+                        {{ session('login') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
             </div>
-            @endif
 
         <h1 class="mb-4 text-center">
             Menu
@@ -24,10 +33,9 @@
         </div>
 
         <div class="col-8">
-
             <ul class="nav myBorder-primary flex-column list-group mb-2">
                 @foreach ($platesVisible as $plate)
-                    <li  data-id="{{ $plate->id }}" class="nav-item d-flex align-items-center py-3 list-group-item">
+                    <li  data-id="{{ $plate->id }}" class="nav-item d-flex align-items-center py-3 list-group-item" >
                         {{-- <img src="{{ asset ('storage/' . $plate->img)}}" alt="" > --}}
                         <div class="col-8 my-0 align-items-center">
                             <h3  href="#">{{$plate->name}}</h3>

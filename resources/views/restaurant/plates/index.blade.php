@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <a href="{{url()->previous()}}" class="mb-5 text-decoration-none"><< Back</a>
+    <a href="{{url()->previous()}}" class="mb-5 text-decoration-none btn btn-outline-secondary rounded-pill"><< Back</a>
 
     <div class="row justify-content-start">
         <h1 class="mb-4 text-center">
