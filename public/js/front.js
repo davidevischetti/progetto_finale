@@ -5379,9 +5379,12 @@ __webpack_require__.r(__webpack_exports__);
     updatePlate: function updatePlate() {
       this.plateQuantity++;
     },
-    removePlate: function removePlate() {
+    removePlate: function removePlate(element) {
       if (this.plateQuantity > 1) {
         this.plateQuantity--;
+      } else if (this.plateQuantity <= 1) {
+        this.arrCartPlate.splice(element, 1);
+        console.log("Hai rimosso questo elemento");
       }
     }
   }
@@ -28396,8 +28399,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\deliveboo\progetto_finale\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

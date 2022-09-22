@@ -123,9 +123,12 @@ export default {
         updatePlate(){   
             this.plateQuantity++; 
         },
-        removePlate(){
+        removePlate(element){
             if(this.plateQuantity > 1){
                 this.plateQuantity--;
+            } else if(this.plateQuantity <= 1){
+                this.arrCartPlate.splice(element, 1)
+                console.log("Hai rimosso questo elemento");
             }
             
         }
