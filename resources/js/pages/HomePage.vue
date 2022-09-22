@@ -1,44 +1,44 @@
 <template>
-    <div id="myHompage">
+    <div id="myHomepage">
 
         <Jumbotrone></Jumbotrone>
         <div class="container">
             <div class="row">
 
-                
                 <!-- Categorie e Lista ristoranti -->
-                <div class="col-12 ciao">
+                <div class="col-12 categories_on">
                     <!-- Lista Categorie -->
                     <div class="row d-flex justify-content-between my-4">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" class="col-2 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
-                                <img :src="category.img" :alt="category.name" class="card-img  rounded-3 myCategImg">
-                                <div class="card-img-overlay">
-                                    <p class="card-text text-capitalize text-center fs-5"> {{category.name}} </p>
+                            <div class="card myCateg myShadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
+                                <img :src="category.img" :alt="category.name" class="card-img myCategImg">
+                                <div class="card-img-overlay p-0 d-flex align-items-end">
+                                    <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Pulsante reset filtri -->
-                <div class="col-1 d-flex align-items-center justify-content-center my-4 myButton">
-                    <button class="btn btn-primary border-0 my_btn" @click.prevent="resetCategory()">Reset</button>
+                <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
+                    <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
                 </div>
 
-                <div class="col-11">
+
+                <div class="col-12 heightScroll overflow-scroll">
                     <!-- lista ristoranti -->
                     <div class="row">
-                        <div class="col-6">
-                            <div v-for="rest in arrRestaurants" :key="rest.id" class="card mb-3 myRisto" >
-                                <div class="row g-0">
+                        <div class="">
+                            <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-6 mb-3 myRisto border-0 shadow bg-body rounded" >
+                                <div class="row">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                <div class="col-md-4 d-flex align-items-center ">
+                                <div class="col-md-4 p-0 contain_img">
                                     <img :src="rest.img" :alt="rest.name" class="myRistoImg img-fluid rounded" >
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-body ms-2  ">
+                                    <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                         <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                             <div class="fs-5 fw-bold">{{rest.name}}</div>
                                             <div>{{rest.address}}</div>
@@ -53,16 +53,26 @@
                         </div>
                     </div>
 
+                    <div class="row" v-if="arrRestaurants.length == 0 && arrElements.length > 1">
+                        <div class="col-6">
+                            <!-- TODO: fix scritta -->
+                            <div class="alert alert-danger" role="alert">
+                            <span>Mi dispiace la tua ricerca non ha prodotto risultati. <strong>Riprova</strong></span>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <!-- Lista ristoranti random -->
                     <div class="row justify-content-between" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
-                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-3 myRisto col-5 " >
-                                <div class="row g-0">
+                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-4 myRisto col-6 border-0 shadow bg-body rounded" >
+                                <div class="row">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                    <div class="col-md-4 d-flex align-items-center ">
-                                        <img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded">
+                                    <div class="col-md-4 p-0 contain_img">
+                                    <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="card-body ms-2  ">
+                                        <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                             <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                                 <div class="fs-5 fw-bold">{{rand.name}}</div>
                                                 <div>{{rand.address}}</div>
@@ -75,22 +85,12 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="row" v-else-if="arrRestaurants.length == 0 && arrElements.length != 0">
-                        <div class="col-6">
-                            <!-- TODO: fix scritta -->
-                            ciao
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
 
-
-        <!-- TODO: stampa di ristoranti randomici nella homepage prima della selezione categories -->
         <!-- TODO: stampa immagini da storage -->
-        <!-- TODO:al secondo click l'active si deve togliere -->
-        <!-- TODO:le categorie non devono essere esclusive non si possono selezionare più categorie contemporaneamente -->
+        <!-- TODO: rivedere il lato responsive -->
 
     </div>
 </template>
@@ -171,13 +171,6 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
 
             activeBorder(element) {
-                // activeCard =     [1,4,3,2]
-                // arrTrueOrFalse = [true, true, true, true]
-                // index = activeCard.indexOf(element)  -----> "index = 1"
-                // if (arrTrueOrFalse[index] == true)
-                // activeCard.splice(index, 1)
-                // arrTrueOrFalse.splice(index, 1)
-
                 if(!this.arrElements.includes(element)) {
                     this.arrElements.push(element);
                     this.arrTrueOrFalse.push(true);
@@ -192,43 +185,57 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             resetCategory(){
                 this.arrElements = [];
                 this.arrTrueOrFalse = [];
-                this.arrRestaurants = []; 
+                this.arrRestaurants = [];
             }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
-    .ciao{
-        margin-top: -250px;
+    .heightScroll {
+        height: calc(50vh - 40px);
+    }
+    #myHomepage{
+        background-color: #FFE6D8;
+    }
+    .categories_on{
+        margin-top: -130px;
     }
 
     .myCateg{
         width: 12rem;
         height: 12rem;
         border: none;
+        border-radius: 10px !important;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
     }
 
     .myCategImg{
         height: 100%;
+        object-fit: cover;
     }
 
     .myRisto{
-        max-width: 540px;
+        max-width: 40rem;
+        height: 8rem !important;
+    }
+    .contain_img{
+        height: 8rem;
+        width: 12rem;
     }
     .myRistoImg{
-        width: 12rem;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
     }
 
-    .card.myactive{
-        border: 3px solid #d43a1c;
+    .myCateg.myactive{
+        transform:translate(0, -36px);
+        border-bottom: 5px solid #d43a1c;
         color: red !important;
     }
-
-    .myButton{
-        height: 12rem;
+    .myShadow {
+        box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;
     }
 
     .my_btn{
@@ -239,7 +246,11 @@ import Jumbotrone from '../components/Jumbotrone.vue';
             color:white;
         }
     }
-    // .my_list_risto{
-    //     min-height: 400px;
-    // }
+
+    .my_text_cat{
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 5px 0;
+        border-radius: 0 0 5px 5px;
+    }
 </style>

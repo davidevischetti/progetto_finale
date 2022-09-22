@@ -1,49 +1,66 @@
 <template>
-    <div class="container">
-        <ul class="list-group my-5 text-center border-bottom border-5 rounded-0 pb-3 myBorder">   
-            <!-- <li class="list-group-item"><img :src="arrRestInfo.img" :alt="arrRestInfo.name" class=" risto_img" ></li> -->
-            <li class="list-group-item border-0"><h1>{{arrRestInfo.name}}</h1></li>
-            <li class="list-group-item border-0"><h3>{{arrRestInfo.address}}</h3></li>
-        </ul>
+    <div id="showRestaurant">
+        <div class="container">
+            <ul class="list-unstyled p-4 text-center border-bottom border-5 rounded-0 myBorder">
+                <!-- TODO: sarebbe carino riuscire a mettere la foto come una sorta di jumbotron usando il componente già creato -->
+                <li class="border-0"><img :src="arrRestInfo.img" :alt="arrRestInfo.name" class=" risto_img" ></li>
+                <li class="border-0"><h1>{{arrRestInfo.name}}</h1></li>
+                <li class="border-0"><h3>{{arrRestInfo.address}}</h3></li>
+            </ul>
 
+            <!-- TODO: aggiungere overflow-scroll per fare lo scroll solo dei piatti oppure alla pagina intera senza le info dei risto-->
 
-        <div class="d-flex justify-content-between" >
-            <div class="row col-6">
-                <ul class="list-group mb-5">
-                    <div v-for="plate in arrRestPlate" :key="plate.id" class=" list-group-flush mb-2">
-                        <li class="list-group-item">
-                            <p class="fs-3 fw-bold">{{plate.name}} 
-                                <span class="float-end"><button class="btn btn_color">ADD</button></span></p>
-                        </li>  
-                        <li class="list-group-item">
-                            <span class="fw-bold">Descrizione: </span>
-                            <span>{{plate.description}}</span>
+            <div class="d-flex justify-content-between" >
+                <div class="row col-6 heightScroll overflow-scroll">
+                    <ul class="list-group mb-5 p-4">
+                        <div v-for="plate in arrRestPlate" :key="plate.id" class="list-group-flush mb-4 p-4 shadow bg-body rounded">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <p class="fs-3 fw-bold">{{plate.name}} </p>
+                                    <span class="float-end"><button class="btn btn_color" @click.prevent="addToCart(plate)">ADD</button></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">Descrizione: </span>
+                                <span>{{plate.description}}</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">Ingredienti: </span>
+                                <span> {{plate.ingredients}}</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">Prezzo:</span>
+                                <span>{{plate.price}} € </span>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="col-6 mb-5 p-4">
+                    <ul class="list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded heightScroll overflow-scroll">
+                        <li class="list-group-item text-center fs-3 fw-bold">carrello</li>
+                        <li class="list-group-item fw-bold">piatti inseriti</li>
+                        <li class="list-group-item" v-for="cart in arrCartPlate" :key="cart.id">
+                            <span>
+                                {{cart.name}} 
+                            </span>
+                            <div class="cart-item__details-qty">
+                                <button>-</button><p>{{plateQuantity}}</p><button @click.prevent="updatePlate(cart)">+</button>
+                            </div>                        
+                            <router-link :to="{name: 'cart', params: {id: cart.id} }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
                         </li>
-                        <li class="list-group-item">
-                            <span class="fw-bold">Ingredienti: </span>
-                            <span> {{plate.ingredients}}</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="fw-bold">Prezzo:</span>
-                            <span>{{plate.price}} € </span>
-                        </li>
-                    </div>
-                </ul>
+
+                    </ul>
+                </div>
+
             </div>
 
-            <div class="col-6 ">
-                <ul class="list-group text-capitalize border list-group-flush">
-                    <li class="list-group-item text-center">carrello</li>
-                    <li class="list-group-item">piatti inseriti:</li>
-                    <li class="list-group-item text-center"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></li>
-                </ul>
-            </div>
 
         </div>
-        
-
     </div>
+
 </template>
+
+<!-- TODO: implementare funzione che collega i piatti alla sezione carrello nella pagina -->
+<!-- TODO: il button "procedi la pagamento" deve collegarsi al componente carrello e caricare quella pagina -->
 
 <script>
 export default {
@@ -57,8 +74,15 @@ export default {
     data() {
         return {
             // idRistorante: id,
-            arrRestInfo: null,
-            arrRestPlate: null,
+            arrRestInfo: [],
+            arrRestPlate: [],
+
+            arrCartPlate: [],
+
+            cartQuantity: 0, //indichiamo il numero totale di articoli aggiunti
+            plateQuantity: 1, //indichiamo la quantità del singolo piatto ordinato
+
+            // isAdded: false,
         }
     },
     created(){
@@ -69,12 +93,34 @@ export default {
                 this.arrRestPlate = response.data.plates
             }
         })
+    },
+    methods:{
+        addToCart(element){
+            // this.isAdded = true;
+            if(!this.arrCartPlate.includes(element)){
+                
+                this.arrCartPlate.push(element);
+
+                console.log('piatto cliccato'); 
+            }
+        },         
+        updatePlate(){   
+            this.plateQuantity++; 
+        }
     }
 }
 
 </script>
 
 <style lang="scss" scoped>
+    .heightScroll{
+        height: calc(50vh - 40px);
+    }
+    #showRestaurant{
+        background-color: #ffe6d8;
+        // height: 100vh;
+        // TODO: bisogna dare una misura alla NavBar così da fare con il calc() altrimenti non si riesce a fare lo scroll
+    }
     .myBorder{
         border-color: #d43a1c !important;
 
