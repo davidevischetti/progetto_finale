@@ -47,10 +47,8 @@
                                 <!-- <p>{{plateQuantity}}</p> -->
                                 <!-- <button @click.prevent="updatePlate(cart)">+</button> -->
                         </li> 
-                        <div class="list-group-item ">
-                            <router-link :to="{name: 'cart' }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
-                        </div>                     
                     </ul>                        
+                    <router-link :to="{name: 'cart', params: {arrCartPlate: this.arrCartPlate} }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
                 </div>
             </div>
         </div>
