@@ -5369,13 +5369,20 @@ __webpack_require__.r(__webpack_exports__);
       // this.isAdded = true;
       if (!this.arrCartPlate.includes(element)) {
         this.arrCartPlate.push(element);
-        var parsed = JSON.stringify(this.arrCartPlate);
-        localStorage.setItem('arrCartPlate', parsed);
-        console.log('piatto cliccato');
+        this.savePlate(); // console.log('piatto cliccato'); 
       }
+    },
+    savePlate: function savePlate() {
+      var parsed = JSON.stringify(this.arrCartPlate);
+      localStorage.setItem('arrCartPlate', parsed);
     },
     updatePlate: function updatePlate() {
       this.plateQuantity++;
+    },
+    removePlate: function removePlate() {
+      if (this.plateQuantity > 1) {
+        this.plateQuantity--;
+      }
     }
   }
 });
@@ -5850,9 +5857,14 @@ var render = function render() {
     return _c("li", {
       key: cart.id,
       staticClass: "list-group-item"
-    }, [_c("span", [_vm._v("\n                            " + _vm._s(cart.name) + " \n                        ")]), _vm._v(" "), _c("div", {
-      staticClass: "cart-item__details-qty"
-    }, [_c("button", [_vm._v("-")]), _c("p", [_vm._v(_vm._s(_vm.plateQuantity))]), _c("button", {
+    }, [_c("span", [_vm._v("\n                            " + _vm._s(cart.name) + " \n                        ")]), _vm._v(" "), _c("div", {}, [_c("button", {
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.removePlate(cart);
+        }
+      }
+    }, [_vm._v("-")]), _c("p", [_vm._v(_vm._s(_vm.plateQuantity))]), _c("button", {
       on: {
         click: function click($event) {
           $event.preventDefault();

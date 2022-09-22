@@ -42,8 +42,8 @@
                             <span>
                                 {{cart.name}} 
                             </span>
-                            <div class="cart-item__details-qty">
-                                <button>-</button><p>{{plateQuantity}}</p><button @click.prevent="updatePlate(cart)">+</button>
+                            <div class="">
+                                <button @click.prevent="removePlate(cart)">-</button><p>{{plateQuantity}}</p><button @click.prevent="updatePlate(cart)">+</button>
                             </div>
                         </li> 
                         <div class="list-group-item ">
@@ -93,29 +93,41 @@ export default {
     },
 
     mounted() {
-    if (localStorage.getItem('arrCartPlate')) {
-      try {
-        this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate'));
-      } catch(e) {
-        localStorage.removeItem('arrCartPlate');
-      }
-    }
-  },
+        if (localStorage.getItem('arrCartPlate')) {
+            try {
+                this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate'));
+            } 
+            catch(e) {
+                localStorage.removeItem('arrCartPlate');
+            }
+        }
+    },
+
     //dobbiamo salvare gli elementi dell'array arrCartPlate in local storage
     //nella funzione addtocart dobbiamo 
     methods:{
         addToCart(element){
             // this.isAdded = true;
-            if(!this.arrCartPlate.includes(element)){
-                
+            if(!this.arrCartPlate.includes(element)){    
                 this.arrCartPlate.push(element);
-                    const parsed = JSON.stringify(this.arrCartPlate);
-                    localStorage.setItem('arrCartPlate', parsed);
-                console.log('piatto cliccato'); 
+                this.savePlate();
+                // console.log('piatto cliccato'); 
             }
-        },         
+        }, 
+        
+        savePlate(){
+            const parsed = JSON.stringify(this.arrCartPlate);
+            localStorage.setItem('arrCartPlate', parsed);
+        },
+
         updatePlate(){   
             this.plateQuantity++; 
+        },
+        removePlate(){
+            if(this.plateQuantity > 1){
+                this.plateQuantity--;
+            }
+            
         }
     }
 }
