@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Orders\OrderRequest;
 use App\Models\Order;
+use OrderSeeder;
 
 class OrderController extends Controller
 {
@@ -16,76 +17,79 @@ class OrderController extends Controller
         'email' => 'required|string|max:255|unique:orders',
         'address' => 'required|string|max:500|unique:orders',
         'phone' =>'required|string||max:20|unique:orders',
-        'price_total' => 'required|numeric',
     ];
 
-    public function createOrder(Request $request)
-    {
-
-        $request->validate($this->validations);
-
-        $order_data = $request->all();
-
-        $order = Order::create($order_data);
+    public function generate(Request $request, Gateway $gateway) {
+        
+        $token = $gateway->clientToken()->generate();
 
         return response()->json([
             'success' => true,
-            'message' => 'Ordine avvenuto con successo',
+            'token' => $token
         ]);
     }
 
+    public function makePayment(Request $request, Gateway $gateway) {
 
 
+        $dataOrderback = $request->all();
+
+        $plateIds = $dataOrderback['plate'];
+
+        $token = $dataOrderback['token'];
+
+        $infoOrder = $dataOrderback['order'];
+
+        
+        
+        
+        
+        $priceTotal = null;
+        foreach($plateIds as $id ){
+
+            $plate = Plate::find($id);
+            $priceTotal += $plate->price;
+        }
+
+        
+
+        // return response()->json([
+        //     'success' => true,
+        //     'priceTotal' => $infoOrder,
+        // ]);
+
+        $result = $gateway->transaction()->sale([
+            'amount' => $priceTotal,
+            'paymentMethodNonce' => $token,
+            'options' => [
+                'submitForSettlement' => true,
+            ]
+        ]);
+
+        if($result->success) {
+
+            
+
+            Order::create($infoOrder + [
+                'price_total' => $priceTotal
+            ]);
 
 
+            return response()->json([
+                'success' => true,
+                'message' => 'Transazione avvenuta con successo'
+            ]);
+
+        } else {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Transazione Fallita'
+            ]);
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-    // public function generate(Request $request, Gateway $gateway) {
-    //     $token = $gateway->clientToken()->generate();
-
-    //     $data = [
-    //         'success' => true,
-    //         'token' => $token
-    //     ];
-
-    //     return response()->json($data, 200);
-    // }
-
-    // public function makePayment(OrderRequest $request, Gateway $gateway) {
-
-    //     $plate = Plate::find($request->plates);
-
-    //     $result = $gateway->transaction()->sale([
-    //         'amount' => $plate->price,
-    //         'paymentMethodNonce' => $request->token,
-    //         'options' => [
-    //             'submitForSettlement' => true,
-    //         ]
-    //     ]);
-
-    //     if($result->success) {
-    //         $data = [
-    //             'success' => true,
-    //             'message' => 'Transazione avvenuta con successo'
-    //         ];
-    //         return response()->json($data, 200);
-
-    //     } else {
-    //         $data = [
-    //             'success' => false,
-    //             'message' => 'Transazione Fallita'
-    //         ];
-    //         return response()->json($data, 401);
-    //     }
-    // }
+            
+            
+    }
 }

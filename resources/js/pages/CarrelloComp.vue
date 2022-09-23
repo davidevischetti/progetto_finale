@@ -5,13 +5,11 @@
                 Carrello
             </h1>
             
-            <div v-if="orderMessage.length >= 1">
-                <div class="col-4 offset-4 text-center">
-                    {{orderMessage}}
-                </div>
-            </div>
-            <div v-else-if="orderMessage.length == 0" class="col-8 offset-2 card p-5 myBorder-primary">
-                <form @submit.prevent="sendOrder()" method="post" enctype="multipart/form-data">
+           
+
+            
+            <div class="col-8 offset-2 card p-5 myBorder-primary">
+                <form v-if="formVisible" method="post" enctype="multipart/form-data">
     
                     <div class="mb-3">
                         <label class="form-label" for="name">Name*</label>
@@ -36,11 +34,28 @@
                     <div>
                         Price Total
                         <br>
-                        99.99 $
+                        {{price_visualizzato}} €
                     </div>
 
-                    <button type="submit" class="btn my_btn">Save</button>
+                    
+                    <button @click.prevent="myLog()" type="submit" class="btn my_btn">Save</button>
                 </form>
+                <div v-if="visible">
+                    <v-braintree 
+                        :authorization=token_collegamento
+                        @success="onSuccess"
+                    />
+                </div>
+                <div v-else-if="visible == false && formVisible == false">
+                    Transazione avvenuta con successo
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li v-for="plate in arrCartPlate" :key="plate.id">
+                        {{plate.name}} 
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -60,26 +75,60 @@ export default{
                 'email': '',
                 'address': '',
                 'phone': null,
-                'price_total': 40,
             },
+            price_visualizzato: null,
             orderMessage: '',
-            plateIds: []
+            plateIds: [],
+            token_collegamento: 'null',
+
+            visible: false,
+            formVisible: true,
         }
             
     },
     created(){
+        this.generateToken();
+
+        this.arrCartPlate.forEach(plate => {
+            this.price_visualizzato += plate.price;
+        });
+
         this.arrCartPlate.forEach(plate => {
             this.plateIds.push(plate.id);
         });
-    },
+        console.log(this.price_visualizzato); 
+    },  
 
     methods: {
+        myLog(){
+            this.formVisible = false;
+            this.visible = true
+        },
  
-        sendOrder() {
-            axios.post('/api/orders', this.dataOrder).then(response => {
+        onSuccess(payload) {
+            let token = payload.nonce;
+            axios.post('/api/orders/make/payment', {plate: this.plateIds, token: token, order: this.dataOrder}).then(response => {
                 if (response.data.success) {
-                    this.orderMessage = response.data.message
+                    console.log(response.data.priceTotal)
+                    this.visible = false;
                 }
+            });
+
+
+            // axios.post('/api/orders', this.dataOrder).then(response => {
+            //     if (response.data.success) {
+            //         this.orderMessage = response.data.message
+            //     }
+            // })
+        },
+        generateToken(){
+            axios.get('/api/orders/generate').then(response => {
+                if (response.data.success) {
+                    this.token_collegamento = response.data.token
+                    
+                }
+            console.log(this.token_collegamento);
+            console.log(this.visible);
             })
         }
     }

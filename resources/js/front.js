@@ -2,6 +2,7 @@ require('./bootstrap');
 
     import Vue from 'vue';
     import VueRouter from 'vue-router'; // importiamo la libreria vue-router
+    import VueBraintree from 'vue-braintree';
 
 
     import App from './views/App.vue';
@@ -32,7 +33,7 @@ require('./bootstrap');
         },
 
         {
-            path: '/restaurants/:id/carrello',
+            path: '/restaurants/:id/order',
             name: 'cart',
             component: CarrelloComp, //fare import del componente
             props: true,
@@ -66,6 +67,7 @@ require('./bootstrap');
 
 
     Vue.use(VueRouter); // diciamo a Vue di usare il plugin vue-router
+    Vue.use(VueBraintree);
 
     const app = new Vue({
         el: '#root',
