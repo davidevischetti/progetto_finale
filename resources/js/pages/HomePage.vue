@@ -8,7 +8,7 @@
                 <!-- Categorie e Lista ristoranti -->
                 <div class="col-12 categories_on">
                     <!-- Lista Categorie -->
-                    <div class="row d-flex justify-content-between my-4">
+                    <div class="row w-100 d-flex rowCat justify-content-between overflow-x my-4">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" class="col-2 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
                             <div class="card myCateg myShadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
                                 <img :src="`/storage/${category.img}`" :alt="category.name" class="card-img myCategImg">
@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                                 <div class="col-md-4 p-0 contain_img">
-                                    <img :src="rest.img" :alt="rest.name" class="myRistoImg img-fluid rounded" >
+                                    <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
@@ -69,7 +69,7 @@
                                 <div class="row">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                                     <div class="col-md-4 p-0 contain_img">
-                                    <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="rand.img" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
+                                    <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="`/storage/${rand.img}`" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
@@ -201,6 +201,12 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
     .categories_on{
         margin-top: -130px;
+        height: auto;
+    }
+    .rowCat{
+
+        flex-wrap: nowrap;
+
     }
 
     .myCateg{
