@@ -10,8 +10,8 @@
 
             <!-- TODO: aggiungere overflow-scroll per fare lo scroll solo dei piatti oppure alla pagina intera senza le info dei risto-->
 
-            <div class="d-flex justify-content-between" >
-                <div class="row col-6 heightScroll overflow-auto">
+            <div class="d-flex wrap justify-content-between" >
+                <div class="row col-lg-6 col-12  heightScroll overflow-auto">
                     <ul class="list-group mb-5 p-4">
                         <div v-for="plate in arrRestPlate" :key="plate.id" class="list-group-flush mb-4 p-4 shadow bg-body rounded">
                             <li class="list-group-item d-flex justify-content-between">
@@ -34,7 +34,7 @@
                     </ul>
                 </div>
 
-                <div class="col-6 mb-5 p-4">
+                <div class="col-lg-6 col-12 mb-5 p-4">
                     <ul class="list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded heightScroll overflow-auto">
                         <li class="list-group-item text-center fs-3 fw-bold">carrello</li>
                         <li class="list-group-item fw-bold">piatti inseriti</li>
@@ -145,7 +145,7 @@ export default {
 
 <style lang="scss" scoped>
     .heightScroll{
-        height: calc(50vh - 40px);
+        height: 800px;
     }
     #showRestaurant{
         background-color: #ffe6d8;
@@ -167,5 +167,8 @@ export default {
     }
     .risto_img{
         height: 15rem;
+    }
+    .wrap{
+        flex-wrap: wrap;
     }
 </style>
