@@ -11,7 +11,7 @@
                     <div class="row d-flex justify-content-between my-4">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" class="col-2 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
                             <div class="card myCateg myShadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
-                                <img :src="category.img" :alt="category.name" class="card-img myCategImg">
+                                <img :src="`/storage/${category.img}`" :alt="category.name" class="card-img myCategImg">
                                 <div class="card-img-overlay p-0 d-flex align-items-end">
                                     <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
                                 </div>
@@ -27,7 +27,7 @@
                 </div>
 
 
-                <div class="col-12 heightScroll overflow-scroll">
+                <div class="col-12 heightScroll overflow-auto">
                     <!-- lista ristoranti -->
                     <div class="row">
                         <div class="">

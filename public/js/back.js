@@ -10625,6 +10625,54 @@ if (eleOverlay) {
     eleOverlay.classList.add('d-none');
   });
 } // TODO: controllo password
+// let elPws = document.querySelector('.pws');
+// let elPwsConfirmed = document.querySelector('.pws-confirmed');
+// let elAlert = document.querySelector('.myAlert');
+// let elBtn = document.querySelector('.myDisable');
+// function checkPws(){
+//     if (elPwsConfirmed.value != elPws.value) {
+//         elAlert.innerHTML = 'Le password non corrispondono';
+//         elBtn.setAttribute('disabled');
+//     } else {
+//         elBtn.removeAttribute('disabled');
+//     }
+// }
+
+
+function validate() {
+  var elPws = document.querySelector('.pws').value;
+  var elPwsConfirmed = document.querySelector('.pws-confirmed').value;
+  var elAlert = document.querySelector('.myAlert');
+
+  if (elPws != elPwsConfirmed) {
+    elAlert.classList.remove('d-none');
+    elAlert.classList.add('alert-danger');
+    elAlert.classList.add('pws-shake');
+    elAlert.innerHTML = "Le password non corrispondono";
+    return false;
+  }
+
+  return true;
+}
+
+function fixedPws() {
+  var elPws = document.querySelector('.pws').value;
+  var elPwsConfirmed = document.querySelector('.pws-confirmed').value;
+  var elAlert = document.querySelector('.myAlert');
+
+  if (elPws == elPwsConfirmed) {
+    elAlert.classList.remove('alert-danger');
+    elAlert.classList.add('alert-success');
+    elAlert.innerHTML = "Le password corrispondono";
+  } else if (elPws != elPwsConfirmed) {
+    elAlert.classList.remove('d-none');
+    elAlert.classList.add('alert-danger');
+    elAlert.innerHTML = "Le password non corrispondono";
+  }
+}
+
+window.validate = validate;
+window.fixedPws = fixedPws;
 
 /***/ }),
 
@@ -10650,7 +10698,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Documents\Boolean Careers\Esercizi Boolean\deliveboo\progetto_finale\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\Users\Utente\esercitazioni\progetto_finale\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })
