@@ -8,8 +8,8 @@
                 <!-- Categorie e Lista ristoranti -->
                 <div class="col-12 categories_on">
                     <!-- Lista Categorie -->
-                    <div class="row w-100 d-flex rowCat justify-content-between overflow-x my-4">
-                        <div @click.prevent="assegnaValoreIdCategory(category.id)" class="col-2 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
+                    <div class="row w-100 d-flex rowCat justify-content-between my-4">
+                        <div @click.prevent="assegnaValoreIdCategory(category.id)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'upcat' : ''"  class="col-md-4 col-lg-3 col-xxl-2 col-6 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
                             <div class="card myCateg myShadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
                                 <img :src="`/storage/${category.img}`" :alt="category.name" class="card-img myCategImg">
                                 <div class="card-img-overlay p-0 d-flex align-items-end">
@@ -25,30 +25,26 @@
                 <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
                     <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
                 </div>
-
-
-                <div class="col-12 heightScroll overflow-auto">
+                <div class="heightScroll overflow-auto">
                     <!-- lista ristoranti -->
                     <div class="row">
-                        <div class="">
-                            <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-6 mb-3 myRisto border-0 shadow bg-body rounded" >
-                                <div class="row">
-                                    <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                <div class="col-md-4 p-0 contain_img">
-                                    <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
+                        <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 mb-3 myRisto border-0 shadow bg-body rounded" >
+                            <div class="row">
+                                <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
+                            <div class="col-md-4 p-0 contain_img">
+                                <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
+                                    <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
+                                        <div class="fs-5 fw-bold">{{rest.name}}</div>
+                                        <div>{{rest.address}}</div>
+                                        <div v-for="category in rest.category">
+                                            {{category.name}}
+                                        </div>
+                                    </router-link>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
-                                        <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
-                                            <div class="fs-5 fw-bold">{{rest.name}}</div>
-                                            <div>{{rest.address}}</div>
-                                            <div v-for="category in rest.category">
-                                                {{category.name}}
-                                            </div>
-                                        </router-link>
-                                    </div>
-                                </div>
-                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -65,13 +61,13 @@
 
                     <!-- Lista ristoranti random -->
                     <div class="row justify-content-between" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
-                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-4 myRisto col-6 border-0 shadow bg-body rounded" >
-                                <div class="row">
+                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-4 myRisto col-12 col-lg-6 border-0 shadow bg-body rounded" >
+                                <div class="row wrap_rist d-flex">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                    <div class="col-md-4 p-0 contain_img">
+                                    <div class="col-4 p-0 contain_img">
                                     <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="`/storage/${rand.img}`" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-8">
                                         <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                             <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                                 <div class="fs-5 fw-bold">{{rand.name}}</div>
@@ -194,28 +190,31 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
 <style lang="scss" scoped>
     .heightScroll {
-        height: calc(50vh - 40px);
+        min-height: 500px;
     }
     #myHomepage{
         background-color: #FFE6D8;
     }
     .categories_on{
-        margin-top: -130px;
+        margin-top: -200px;
         height: auto;
     }
     .rowCat{
-
         flex-wrap: nowrap;
-
+        height: 300px;
+        overflow-x: auto;
+        align-items: flex-end;
+        padding-bottom: 5px;
     }
 
     .myCateg{
-        width: 12rem;
-        height: 12rem;
+        width: 200px;
+        height: 200px;
         border: none;
         border-radius: 10px !important;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
+
     }
 
     .myCategImg{
@@ -231,6 +230,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         height: 8rem;
         width: 12rem;
     }
+    .wrap_rist{
+        flex-wrap: nowrap;
+    }
     .myRistoImg{
         height: 100%;
         object-fit: cover;
@@ -240,6 +242,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         transform:translate(0, -36px);
         border-bottom: 5px solid #d43a1c;
         color: red !important;
+    }
+    .upcat{
+        transform:translate(0, -36px);
     }
     .myShadow {
         box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;
