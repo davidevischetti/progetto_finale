@@ -25,10 +25,10 @@
                 <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
                     <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
                 </div>
-                <div class="heightScroll overflow-auto">
+                <div class="heightScroll overflow-auto ">
                     <!-- lista ristoranti -->
-                    <div class="row justify-content-between">
-                        <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 mb-3 myRisto border-0 shadow bg-body rounded" >
+                    <div class="row justify-content-center gap-4">
+                        <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 myRisto border-0 shadow bg-body rounded" >
                             <div class="row">
                                 <div class="col-md-4 p-0 contain_img">
                                     <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
@@ -68,8 +68,8 @@
                     </div>
 
                     <!-- Lista ristoranti random -->
-                    <div class="row justify-content-between" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
-                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card mb-4 myRisto col-12 col-lg-6 border-0 shadow bg-body rounded" >
+                    <div class="row justify-content-center align-items-center gap-4" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
+                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card myRisto col-12 col-lg-6 border-0 shadow bg-body rounded" >
                                 <div class="row wrap_rist d-flex">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                                     <div class="col-4 p-0 contain_img">
