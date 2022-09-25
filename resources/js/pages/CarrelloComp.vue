@@ -2,7 +2,7 @@
     <div id="myCart" class="container">
         <div class="row ">
             <h1 class="mb-4 offset-4 col-4 text-center">
-                Carrello
+                Riepilogo ordine
             </h1>
             
            
