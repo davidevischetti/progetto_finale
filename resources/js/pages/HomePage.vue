@@ -30,21 +30,24 @@
                     <div class="row justify-content-between">
                         <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 mb-3 myRisto border-0 shadow bg-body rounded" >
                             <div class="row">
-                                <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                            <div class="col-md-4 p-0 contain_img">
-                                <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
-                                    <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
-                                        <div class="fs-5 fw-bold">{{rest.name}}</div>
-                                        <div>{{rest.address}}</div>
-                                        <div v-for="category in rest.category">
-                                            {{category.name}}
-                                        </div>
-                                    </router-link>
+                                <div class="col-md-4 p-0 contain_img">
+                                    <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
                                 </div>
-                            </div>
+                                <div class="col-md-8">
+                                    <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
+                                        <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
+                                            <div class="fs-5 fw-bold">
+                                                {{rest.name}}
+                                            </div>
+                                            <div>
+                                                {{rest.address}}
+                                            </div>
+                                            <div v-for="category in rest.category">
+                                                {{category.name}}
+                                            </div>
+                                        </router-link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,7 +56,9 @@
                         <div class="col-6">
                             <!-- TODO: fix scritta -->
                             <div class="alert alert-danger" role="alert">
-                            <span>Mi dispiace la tua ricerca non ha prodotto risultati. <strong>Riprova</strong></span>
+                                <span>Mi dispiace la tua ricerca non ha prodotto risultati. 
+                                    <strong>Riprova</strong>
+                                </span>
                             </div>
                         </div>
 
@@ -70,8 +75,12 @@
                                     <div class="col-8">
                                         <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                             <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
-                                                <div class="fs-5 fw-bold">{{rand.name}}</div>
-                                                <div>{{rand.address}}</div>
+                                                <div class="fs-5 fw-bold">
+                                                    {{rand.name}}
+                                                </div>
+                                                <div>
+                                                    {{rand.address}}
+                                                </div>
                                                 <div v-for="category in rand.category">
                                                     {{category.name}}
                                                 </div>
@@ -85,9 +94,7 @@
             </div>
         </div>
 
-        <!-- TODO: stampa immagini da storage -->
         <!-- TODO: rivedere il lato responsive -->
-        <!-- ciao -->
 
     </div>
 </template>
