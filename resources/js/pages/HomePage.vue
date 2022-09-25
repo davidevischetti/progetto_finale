@@ -42,9 +42,12 @@
                                             <div>
                                                 {{rest.address}}
                                             </div>
-                                            <div v-for="category in rest.category">
+                                            <span v-for="category in rest.category">
+                                                <strong>
+                                                    &middot;
+                                                </strong>
                                                 {{category.name}}
-                                            </div>
+                                            </span>
                                         </router-link>
                                     </div>
                                 </div>
@@ -81,9 +84,12 @@
                                                 <div>
                                                     {{rand.address}}
                                                 </div>
-                                                <div v-for="category in rand.category">
+                                                <span v-for="category in rand.category">
+                                                    <strong>
+                                                        &middot;
+                                                    </strong>
                                                     {{category.name}}
-                                                </div>
+                                                </span>
                                             </router-link>
                                         </div>
                                     </div>

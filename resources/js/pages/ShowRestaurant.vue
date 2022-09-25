@@ -3,9 +3,19 @@
         <div class="container">
             <ul class="list-unstyled p-4 text-center border-bottom border-5 rounded-0 myBorder">
                 <!-- TODO: sarebbe carino riuscire a mettere la foto come una sorta di jumbotron usando il componente già creato -->
-                <li class="border-0"><img :src="arrRestInfo.img" :alt="arrRestInfo.name" class=" risto_img" ></li>
-                <li class="border-0"><h1>{{arrRestInfo.name}}</h1></li>
-                <li class="border-0"><h3>{{arrRestInfo.address}}</h3></li>
+                <li class="border-0">
+                    <img :src="`/storage/${arrRestInfo.img}`" :alt="arrRestInfo.name" class="rounded-4 risto_img"/>
+                </li>
+                <li class="border-0">
+                    <h1>
+                    {{arrRestInfo.name}}
+                    </h1>
+                </li>
+                <li class="border-0">
+                    <h3>
+                        {{arrRestInfo.address}}
+                    </h3>
+                </li>
             </ul>
 
             <!-- TODO: aggiungere overflow-scroll per fare lo scroll solo dei piatti oppure alla pagina intera senza le info dei risto-->
