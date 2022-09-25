@@ -27,7 +27,7 @@
                 </div>
                 <div class="heightScroll overflow-auto">
                     <!-- lista ristoranti -->
-                    <div class="row">
+                    <div class="row justify-content-between">
                         <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 mb-3 myRisto border-0 shadow bg-body rounded" >
                             <div class="row">
                                 <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
