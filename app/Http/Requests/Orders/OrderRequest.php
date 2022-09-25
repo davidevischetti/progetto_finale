@@ -25,11 +25,11 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required',
-            'plates' => [
-                'required',
-                new ValidPlate()
-            ],
+            // 'token' => 'required',
+            // 'plates' => [
+            //     'required',
+            //     new ValidPlate()
+            // ],
         ];
     }
 }
