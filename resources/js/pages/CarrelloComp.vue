@@ -10,7 +10,7 @@
 
 
                 <div v-if="formVisible" class="col-md-7 col-12 card p-5 myBorder-primary">
-                    <form  method="post" enctype="multipart/form-data">
+                    <form @submit.prevent="myLog()"  method="post" enctype="multipart/form-data">
 
                         <div class="mb-3">
                             <label class="form-label" for="name">Nome*</label>
@@ -32,7 +32,7 @@
                             <input class="form-control" type="tel" v-model="dataOrder.phone" name="phone" id="phone" max="20" required>
                         </div>
 
-                        <button @click.prevent="myLog()" type="submit" class="btn my_btn">Conferma e accedi al pagamento</button>
+                        <button type="submit" class="btn my_btn">Conferma e accedi al pagamento</button>
                     </form>
 
 

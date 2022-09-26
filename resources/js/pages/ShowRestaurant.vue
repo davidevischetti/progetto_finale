@@ -1,12 +1,12 @@
 <template>
     <div id="showRestaurant">
         <div class="container">
-            <div class=" d-flex align-items-center p-4 text-center border-bottom border-5 rounded-0 myBorder">
+            <div class="d-flex row align-items-center p-4 text-center border-bottom border-5 rounded-0 myBorder">
                 <!-- TODO: sarebbe carino riuscire a mettere la foto come una sorta di jumbotron usando il componente già creato -->
-                <div class="">
+                <div class="col-6">
                     <img :src="`/storage/${arrRestInfo.img}`" :alt="arrRestInfo.name" class="rounded-4 risto_img"/>
                 </div>
-                <div class="px-5 text-start text-capitalize">
+                <div class="px-5 col-6 text-start text-capitalize">
                     <h1>
                     {{arrRestInfo.name}}
                     </h1>
@@ -201,7 +201,7 @@ export default {
     }
     .myBorder{
         border-color: #d43a1c !important;
-
+        margin-bottom: 15px;
     }
 
     .btn_color{
@@ -214,7 +214,7 @@ export default {
     }
     .risto_img{
         // height: 15rem;
-        width: 35rem;
+        max-width: 100%;
         box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;
     }
     .wrap{
