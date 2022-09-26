@@ -29,11 +29,11 @@
                     <!-- lista ristoranti -->
                     <div class="row justify-content-center gap-4">
                         <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 myRisto border-0 shadow bg-body rounded" >
-                            <div class="row">
-                                <div class="col-md-4 p-0 contain_img">
+                            <div class="row wrap_rist d-flex">
+                                <div class="col-4 p-0 contain_img">
                                     <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
                                 </div>
-                                <div class="col-md-8">
+                                <!-- <div class="col-md-8"> -->
                                     <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                         <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                             <div class="fs-5 fw-bold">
@@ -50,7 +50,7 @@
                                             </span>
                                         </router-link>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
