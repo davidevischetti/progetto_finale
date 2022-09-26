@@ -22,13 +22,13 @@
                 </div>
 
                 <!-- Pulsante reset filtri -->
-                <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
+                <!-- <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
                     <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
-                </div>
+                </div> -->
                 <div class="heightScroll overflow-auto pb-5">
                     <!-- lista ristoranti -->
                     <div class="row justify-content-between align-items-center gap-4">
-                        <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 myRisto border-0 shadow bg-body rounded" >
+                        <div v-for="rest in arrRestaurants" :key="rest.id" class="card myRisto col-12 col-lg-6 offset-lg-3 col-xxl-6 offset-xxl-0 border-0 shadow bg-body rounded" >
                             <div class="row wrap_rist d-flex">
                                 <div class="col-4 p-0 contain_img">
                                     <router-link :to="{name: 'show', params: {id: rest.id} }"><img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" ></router-link>
@@ -69,7 +69,7 @@
 
                     <!-- Lista ristoranti random -->
                     <div class="row align-items-center gap-4" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
-                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card myRisto col-12 col-lg-6 border-0 shadow bg-body rounded" >
+                            <div v-for="rand in arrRandomRest" :key="rand.id" class="card myRisto col-12 col-lg-6 offset-lg-3 col-xxl-6 offset-xxl-0 border-0 shadow bg-body rounded" >
                                 <div class="row wrap_rist d-flex">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
                                     <div class="col-4 p-0 contain_img ">

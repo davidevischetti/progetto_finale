@@ -70,10 +70,11 @@ export default{
 <style lang="scss" scoped>
     #myFooter{
         background-color:  #2F4858;
+        height: 200px;
     }
     .my_text_style{
         text-align: left;
-        
+
         a{
             color: rgb(177, 174, 174);
             text-decoration: none;

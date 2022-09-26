@@ -49,9 +49,10 @@
                         <li class="list-group-item" v-for="(cartPlate, i) in arrCartPlate" :key="i">
 
                             <span class="d-flex justify-content-between">
-                                <span>{{cartPlate.name}} {{cartPlate.quantity}}</span>
+                                <span>{{cartPlate.name}}</span>
                                 <div>
                                     <button @click.prevent="removePlate(cartPlate)" class="btn btn-outline-danger py-0 px-2 ">-</button>
+                                    <span> {{cartPlate.quantity}}</span>
                                     <button class="btn btn-outline-success py-0 px-2 " @click.prevent="updatePlate(cartPlate)">+</button>
                                 </div>
                             </span>

@@ -59,7 +59,7 @@ export default {
 <style lang="scss" scoped>
     #myNavbar{
         background-color: #d43a1c;
-        // width: 100vw;
+        height: 90px;
     }
 
     img{
