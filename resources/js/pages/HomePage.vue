@@ -245,7 +245,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
     .contain_img{
         height: 8rem;
-        width: 12rem;
+        width: 10rem;
     }
     .wrap_rist{
         flex-wrap: nowrap;
