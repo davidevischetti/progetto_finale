@@ -24,14 +24,14 @@
                 @endif
             </div>
         
-        <div class="col-3 col-lg-2">
+        <div class="col-3 col-md-2">
                 @include('restaurant/partials/side-bar')
         </div>
         
-        <div class="col-3 mb-4 d-none d-lg-flex align-items-center justify-content-center ">
+        <div class="col-3 mb-4 d-none d-md-flex align-items-center justify-content-center ">
             <img class="img_rest  w-75" src="{{"storage/".$userName->img}}" alt="">
         </div>    
-        <div class="mb-4 col-5 d-flex flex-wrap align-items-center col-lg-3">
+        <div class="mb-4 col-5 d-flex flex-wrap align-items-center col-md-3">
             <h1 class="underline title_rest text-uppercase col-12 d-flex align-items-center justify-content-center">{{$userName->name}}</h1>
         </div>
         <div class="col-3 d-flex flex-wrap justify-content-center mb-4">

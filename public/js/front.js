@@ -5661,11 +5661,11 @@ var render = function render() {
       id: "myCart"
     }
   }, [_c("div", {
-    staticClass: "row"
+    staticClass: "row py-4"
   }, [_c("h1", {
-    staticClass: "mb-4 offset-4 col-4 text-center"
+    staticClass: "mb-4 col-12 text-center"
   }, [_vm._v("\n            Riepilogo ordine\n        ")]), _vm._v(" "), _c("div", {
-    staticClass: "col-8 offset-2 card p-5 myBorder-primary"
+    staticClass: "col-md-7 col-12 card p-5 myBorder-primary"
   }, [_vm.formVisible ? _c("form", {
     attrs: {
       method: "post",
@@ -5678,7 +5678,7 @@ var render = function render() {
     attrs: {
       "for": "name"
     }
-  }, [_vm._v("Name*")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Nome*")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5743,7 +5743,7 @@ var render = function render() {
     attrs: {
       "for": "address"
     }
-  }, [_vm._v("Address*")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Indirizzo*")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5776,7 +5776,7 @@ var render = function render() {
     attrs: {
       "for": "phone"
     }
-  }, [_vm._v("Phone*")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Telefono*")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5801,7 +5801,7 @@ var render = function render() {
         _vm.$set(_vm.dataOrder, "phone", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("div", [_vm._v("\n                    Price Total\n                    "), _c("br"), _vm._v("\n                    " + _vm._s(_vm.price_visualizzato) + " €\n                ")]), _vm._v(" "), _c("button", {
+  })]), _vm._v(" "), _c("div"), _vm._v(" "), _c("button", {
     staticClass: "btn my_btn",
     attrs: {
       type: "submit"
@@ -5812,18 +5812,31 @@ var render = function render() {
         return _vm.myLog();
       }
     }
-  }, [_vm._v("Save")])]) : _vm._e(), _vm._v(" "), _vm.visible ? _c("div", [_c("v-braintree", {
+  }, [_vm._v("Conferma e accedi al pagamento")])]) : _vm._e(), _vm._v(" "), _vm.visible ? _c("div", [_c("v-braintree", {
     attrs: {
       authorization: _vm.token_collegamento
     },
     on: {
       success: _vm.onSuccess
     }
-  })], 1) : _vm.visible == false && _vm.formVisible == false ? _c("div", [_vm._v("\n                Transazione avvenuta con successo\n            ")]) : _vm._e()]), _vm._v(" "), _c("div", [_c("ul", _vm._l(_vm.arrCartPlate, function (plate) {
-    return _c("li", {
-      key: plate.id
-    }, [_vm._v("\n                    " + _vm._s(plate.name) + " \n                ")]);
-  }), 0)])])]);
+  })], 1) : _vm.visible == false && _vm.formVisible == false ? _c("div", [_vm._v("\n                Transazione avvenuta con successo\n            ")]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-4 col-12 offset-md-1"
+  }, [_c("h1", {
+    staticClass: "text-center"
+  }, [_vm._v("Il tuo carrello")]), _vm._v(" "), _c("div", {
+    staticClass: "my_order position-relative inline-block"
+  }, [_vm._l(_vm.arrCartPlate, function (plate) {
+    return _c("div", {
+      key: plate.id,
+      staticClass: "col-12 d-flex my_plate_order"
+    }, [_c("h4", {
+      staticClass: "col-8 offset-1 d-flex align-items-center"
+    }, [_vm._v(_vm._s(plate.name) + " ")]), _vm._v(" "), _c("h5", {
+      staticClass: "col-3 d-flex align-items-center"
+    }, [_vm._v(_vm._s(plate.price) + " €")])]);
+  }), _vm._v(" "), _c("h5", {
+    staticClass: "col-12 text-center position-relative bottom-0"
+  }, [_vm._v("Prezzo totale: " + _vm._s(_vm.price_visualizzato) + " €")])], 2)])])]);
 };
 
 var staticRenderFns = [];
@@ -5903,7 +5916,7 @@ var render = function render() {
   }, [_vm._v("Cancella filtri")])]), _vm._v(" "), _c("div", {
     staticClass: "heightScroll overflow-auto"
   }, [_c("div", {
-    staticClass: "row justify-content-center gap-4"
+    staticClass: "row gap-4"
   }, _vm._l(_vm.arrRestaurants, function (rest) {
     return _c("div", {
       key: rest.id,
@@ -5940,7 +5953,7 @@ var render = function render() {
   }), 0), _vm._v(" "), _vm.arrRestaurants.length == 0 && _vm.arrElements.length > 1 ? _c("div", {
     staticClass: "row"
   }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _vm.arrRestaurants.length == 0 && _vm.arrElements.length == 0 ? _c("div", {
-    staticClass: "row justify-content-center align-items-center gap-4"
+    staticClass: "row align-items-center gap-4"
   }, _vm._l(_vm.arrRandomRest, function (rand) {
     return _c("div", {
       key: rand.id,
@@ -36356,7 +36369,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".my_btn[data-v-04684380] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04684380]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n#myCart[data-v-04684380] {\n  background-color: #ffe6d8;\n}", ""]);
+exports.push([module.i, ".my_btn[data-v-04684380] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04684380]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n#myCart[data-v-04684380] {\n  background-color: #ffe6d8;\n}\n.my_order[data-v-04684380] {\n  border: solid 2px #ff5735;\n  border-radius: 10px;\n}\n.my_plate_order[data-v-04684380] {\n  border-bottom: solid 2px #ff5735;\n}", ""]);
 
 // exports
 
