@@ -55,5 +55,6 @@ class CategoryUserSeeder extends Seeder
         User::find(26)->category()->attach([8,7,2,1]);
         User::find(27)->category()->attach([8,2,7]);
         User::find(28)->category()->attach([8,7]);
+        User::find(29)->category()->attach([8]);
     }
 }

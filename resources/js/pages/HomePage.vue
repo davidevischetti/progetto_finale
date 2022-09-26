@@ -6,17 +6,17 @@
             <div class="row">
 
                 <!-- Categorie e Lista ristoranti -->
-                <div class="col-12 categories_on">
+                <!-- TODO: sistemare il responsive delle categorie -->
+                <div class="col-sm-12 categories_on">
                     <!-- Lista Categorie -->
-                    <div class="row w-100 d-flex rowCat justify-content-between my-4">
+                    <div class="row w-100 d-flex rowCat justify-content-between my-4 pb-4">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'upcat' : ''"  class="col-md-4 col-lg-3 col-xxl-2 col-6 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg myShadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
+                            <div class="card myCateg myShadow shadow img-thumbnail p-0" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
                                 <img :src="`/storage/${category.img}`" :alt="category.name" class="card-img myCategImg">
                                 <div class="card-img-overlay p-0 d-flex align-items-end">
                                     <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -25,15 +25,15 @@
                 <div class="col-12 d-flex align-items-center justify-content-start my-4 myButton">
                     <button class="btn btn-primary border-0 rounded-pill px-4 my_btn" @click.prevent="resetCategory()">Cancella filtri</button>
                 </div>
-                <div class="heightScroll overflow-auto ">
+                <div class="heightScroll overflow-auto pb-5">
                     <!-- lista ristoranti -->
-                    <div class="row gap-4">
+                    <div class="row justify-content-between align-items-center gap-4">
                         <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 myRisto border-0 shadow bg-body rounded" >
                             <div class="row wrap_rist d-flex">
                                 <div class="col-4 p-0 contain_img">
-                                    <img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" >
+                                    <router-link :to="{name: 'show', params: {id: rest.id} }"><img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" ></router-link>
                                 </div>
-                                <!-- <div class="col-md-8"> -->
+                                <!-- <div class="col-8 "> -->
                                     <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                         <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                             <div class="fs-5 fw-bold">
@@ -59,7 +59,7 @@
                         <div class="col-6">
                             <!-- TODO: fix scritta -->
                             <div class="alert alert-danger" role="alert">
-                                <span>Mi dispiace la tua ricerca non ha prodotto risultati. 
+                                <span>Mi dispiace la tua ricerca non ha prodotto risultati.
                                     <strong>Riprova</strong>
                                 </span>
                             </div>
@@ -72,7 +72,7 @@
                             <div v-for="rand in arrRandomRest" :key="rand.id" class="card myRisto col-12 col-lg-6 border-0 shadow bg-body rounded" >
                                 <div class="row wrap_rist d-flex">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                    <div class="col-4 p-0 contain_img">
+                                    <div class="col-4 p-0 contain_img ">
                                     <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="`/storage/${rand.img}`" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
                                     <!-- <div class="col-8"> -->
@@ -202,6 +202,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 </script>
 
 <style lang="scss" scoped>
+    #myHomepage{
+        overflow-x: hidden !important;
+    }
     .heightScroll {
         min-height: 500px;
     }
@@ -223,7 +226,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     .myCateg{
         width: 200px;
         height: 200px;
-        border: none;
+        border: none !important;
         border-radius: 10px !important;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
@@ -241,7 +244,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     }
     .contain_img{
         height: 8rem;
-        width: 12rem;
+        width: 10rem;
     }
     .wrap_rist{
         flex-wrap: nowrap;
@@ -253,15 +256,16 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 
     .myCateg.myactive{
         transform:translate(0, -36px);
-        border-bottom: 5px solid #d43a1c;
+        border-bottom: 5px solid #d43a1c !important;
         color: red !important;
+        box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;
     }
     .upcat{
         transform:translate(0, -36px);
     }
-    .myShadow {
-        box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;
-    }
+    // .myShadow {
+    //    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.408) !important;
+    // }
 
     .my_btn{
         background-color: #d43a1c;

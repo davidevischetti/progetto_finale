@@ -1,22 +1,20 @@
 <template>
     <div id="showRestaurant">
         <div class="container">
-            <ul class="list-unstyled p-4 text-center border-bottom border-5 rounded-0 myBorder">
+            <div class=" d-flex align-items-center p-4 text-center border-bottom border-5 rounded-0 myBorder">
                 <!-- TODO: sarebbe carino riuscire a mettere la foto come una sorta di jumbotron usando il componente già creato -->
-                <li class="border-0">
+                <div class="">
                     <img :src="`/storage/${arrRestInfo.img}`" :alt="arrRestInfo.name" class="rounded-4 risto_img"/>
-                </li>
-                <li class="border-0">
+                </div>
+                <div class="px-5 text-start text-capitalize">
                     <h1>
                     {{arrRestInfo.name}}
                     </h1>
-                </li>
-                <li class="border-0">
                     <h3>
                         {{arrRestInfo.address}}
                     </h3>
-                </li>
-            </ul>
+                </div>
+            </div>
 
             <!-- TODO: aggiungere overflow-scroll per fare lo scroll solo dei piatti oppure alla pagina intera senza le info dei risto-->
 
@@ -214,7 +212,9 @@ export default {
         }
     }
     .risto_img{
-        height: 15rem;
+        // height: 15rem;
+        width: 35rem;
+        box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;
     }
     .wrap{
         flex-wrap: wrap;
