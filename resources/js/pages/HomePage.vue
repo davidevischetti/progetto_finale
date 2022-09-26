@@ -27,7 +27,7 @@
                 </div>
                 <div class="heightScroll overflow-auto ">
                     <!-- lista ristoranti -->
-                    <div class="row justify-content-center gap-4">
+                    <div class="row gap-4">
                         <div v-for="rest in arrRestaurants" :key="rest.id" class="card col-12 col-lg-6 myRisto border-0 shadow bg-body rounded" >
                             <div class="row">
                                 <div class="col-md-4 p-0 contain_img">
@@ -68,7 +68,7 @@
                     </div>
 
                     <!-- Lista ristoranti random -->
-                    <div class="row justify-content-center align-items-center gap-4" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
+                    <div class="row align-items-center gap-4" v-if="arrRestaurants.length == 0 && arrElements.length == 0">
                             <div v-for="rand in arrRandomRest" :key="rand.id" class="card myRisto col-12 col-lg-6 border-0 shadow bg-body rounded" >
                                 <div class="row wrap_rist d-flex">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
