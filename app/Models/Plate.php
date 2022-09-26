@@ -10,10 +10,6 @@ class Plate extends Model
         'user_id', 'name', 'ingredients', 'description', 'price', 'img', 'id', 'visible'
     ];
 
-    protected $hidden = [
-         'user_id'
-    ];
-
     // COLLEGAMENTO TABELLE USER - PLATE (ONE TO MANY)
     public function user() {
         return $this->belongsTo('App\Models\User');

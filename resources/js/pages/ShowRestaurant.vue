@@ -47,20 +47,17 @@
                 <div class="col-lg-6 col-12 mb-5 p-4">
                     <ul class="list-group text-capitalize border list-group-flush mb-4 p-4 border-0 shadow bg-body rounded heightScroll overflow-auto">
                         <li class="list-group-item text-center fs-3 fw-bold">carrello</li>
-                        <li class="list-group-item fw-bold">piatti inseriti</li>
-                        <li class="list-group-item" v-for="cart in arrCartPlate" :key="cart.id">
+                        <!-- <li class="list-group-item fw-bold">piatti inseriti</li> -->
+                        <li class="list-group-item" v-for="(cartPlate, i) in arrCartPlate" :key="i">
+
                             <span class="d-flex justify-content-between">
-                                <span>{{cart.name}} {{plateQuantity}}</span>
+                                <span>{{cartPlate.name}} {{cartPlate.quantity}}</span>
                                 <div>
-                                    <button @click.prevent="removePlate(cart)" class="btn btn-outline-danger py-0 px-2 ">-</button>
-                                    <button class="btn btn-outline-success py-0 px-2 " @click.prevent="updatePlate(cart)">+</button>
+                                    <button @click.prevent="removePlate(cartPlate)" class="btn btn-outline-danger py-0 px-2 ">-</button>
+                                    <button class="btn btn-outline-success py-0 px-2 " @click.prevent="updatePlate(cartPlate)">+</button>
                                 </div>
                             </span>
 
-
-
-                                <!-- <p>{{plateQuantity}}</p> -->
-                                <!-- <button @click.prevent="updatePlate(cart)">+</button> -->
                         </li>
                     </ul>
                     <router-link :to="{name: 'cart', params: {arrCartPlate: this.arrCartPlate} }"><button class="btn btn_color text-capitalize ">procedi con il pagamento</button></router-link>
@@ -74,6 +71,7 @@
 <!-- TODO: il button "procedi la pagamento" deve collegarsi al componente carrello e caricare quella pagina -->
 
 <script>
+
 export default {
     name: 'ShowRestaurant',
 
@@ -86,14 +84,8 @@ export default {
             arrRestInfo: [],
             arrRestPlate: [],
 
-
             arrCartPlate: [],
-
-            // cartQuantity: 0, indichiamo il numero totale di articoli aggiunti
-            plateQuantity : 0, //indichiamo la quantità del singolo piatto ordinato
-
-            // isAdded: false,
-            // idRest: this.id,
+            ciao: null
         }
     },
     created(){
@@ -105,71 +97,96 @@ export default {
             }
         })
 
-        // this.prova();
-
     },
+
 
     mounted() {
-        if (localStorage.getItem('arrCartPlate')) {
-            try {
-                this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate'));
-            }
-            catch(e) {
-                localStorage.removeItem('arrCartPlate');
-            }
-        }
+        this.localStorageSave();
+
+
     },
+
 
     //dobbiamo salvare gli elementi dell'array arrCartPlate in local storage
     //nella funzione addtocart dobbiamo
     methods:{
-        addToCart(element){
-            this.plateInCart = element;
+        addToCart(selectedPlate){
+            this.arrCartPlate.push(this.ciao);
+            let index = this.arrCartPlate.indexOf(this.ciao);
+            this.arrCartPlate.splice(index, 1);
 
-            if(this.arrCartPlate.includes(this.plateInCart)) {
-                // this.quantity++;
-                this.plateInCart['quantity']++;
+            if(!this.arrCartPlate.includes(selectedPlate)) {
+                selectedPlate['quantity'] = 1;
+                this.arrCartPlate.push(selectedPlate);
+
             } else {
-
-                this.plateInCart['quantity'] = 1;
-                // this.quantity++;
-                this.arrCartPlate.push(this.plateInCart);
+                selectedPlate['quantity']++;
             }
-            console.log(this.plateInCart);
+
+            this.savePlate();
+        },
+
+
+
+        savePlate(){
+            const parsed = JSON.stringify(this.arrCartPlate);
+            // const rest = JSON.stringify(this.id);
+            localStorage.setItem('arrCartPlate', parsed);
+            // localStorage.setItem('arrInfoRest', rest);
+            // console.log(localStorage.getItem('arrCartPlate'));
+        },
+
+        updatePlate(element){
+            this.arrCartPlate.push(this.ciao);
+            let index = this.arrCartPlate.indexOf(this.ciao);
+            this.arrCartPlate.splice(index, 1);
+
+            element['quantity']++;
+
+            console.log(this.arrCartPlate);
+            console.log(element['quantity']);
+            this.savePlate();
+        },
+
+        removePlate(element){
+            this.arrCartPlate.push(this.ciao);
+            let index = this.arrCartPlate.indexOf(this.ciao);
+            this.arrCartPlate.splice(index, 1);
+
+            element['quantity']--;
+
+            if(element['quantity'] < 1){
+            let myindex = this.arrCartPlate.indexOf(element);
+            this.arrCartPlate.splice(myindex, 1);
+            console.log("Hai rimosso questo elemento");
+            }
+            console.log(element['quantity']);
             console.log(this.arrCartPlate);
             this.savePlate();
         },
 
-        savePlate(){
-            const parsed = JSON.stringify(this.arrCartPlate);
-            localStorage.setItem('arrCartPlate', parsed);
-        },
+        localStorageSave() {
 
-        // updatePlate(){
-        //     this.plateQuantity++;
+            if (localStorage.getItem('arrCartPlate')) {
+            try {
 
-        //     this.addToCart(element);
-        //     console.log(this.arrCartPlate);
-        // },
+                this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate'));
 
-        removePlate(element){
-            if(this.plateQuantity > 1){
-                this.plateQuantity--;
-            } else if(this.plateQuantity <= 1){
-                let myindex = this.arrCartPlate.indexOf(element);
-                this.arrCartPlate.splice(myindex, 1);
-                console.log("Hai rimosso questo elemento");
+                if(this.arrCartPlate.length > 0) {
+                    if(this.id != this.arrCartPlate[0].user_id) {
+                    // localStorage.clear();
+                this.arrCartPlate = [];
             }
-            this.savePlate();
-        },
+        }
+            }
+            catch(e) {
+                localStorage.removeItem('arrCartPlate');
+            }
+            }
+        }
 
-    //     prova(){
-    //         if(this.idRest != this.id){
-    //             localStorage.clear();
-    //             // this.idRest=this.id;
-    //         }
-    //    }
-    }
+    },
+
 }
 
 </script>
