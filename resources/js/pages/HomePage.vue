@@ -7,12 +7,12 @@
 
                 <!-- Categorie e Lista ristoranti -->
                 <!-- TODO: sistemare il responsive delle categorie -->
-                <div class="col-12 categories_on">
+                <div class="col-sm-12 categories_on">
                     <!-- Lista Categorie -->
-                    <div class="row w-100 d-flex rowCat justify-content-between my-4 pb-3">
+                    <div class="row w-100 d-flex rowCat justify-content-around my-4 pb-3">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'upcat' : ''"  class="col-md-4 col-lg-3 col-xxl-2 col-6 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg myShadow shadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
-                                <img :src="`/storage/${category.img}`" :alt="category.name" class="card-img myCategImg">
+                            <div class="card myCateg myShadow shadow img-thumbnail p-0" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
+                                <img :src="`/storage/${category.img}`" :alt="category.name" class="card-img myCategImg rounded-3">
                                 <div class="card-img-overlay p-0 d-flex align-items-end">
                                     <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
                                 </div>
@@ -73,7 +73,7 @@
                             <div v-for="rand in arrRandomRest" :key="rand.id" class="card myRisto col-12 col-lg-6 border-0 shadow bg-body rounded" >
                                 <div class="row wrap_rist d-flex">
                                     <!-- TODO:rendere dinamico il valore nella funzione, deve essere l'id del ristorante  -->
-                                    <div class="col-4 p-0 contain_img">
+                                    <div class="col-4 p-0 contain_img ">
                                     <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="`/storage/${rand.img}`" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
                                     <div class="col-8">
@@ -203,6 +203,9 @@ import Jumbotrone from '../components/Jumbotrone.vue';
 </script>
 
 <style lang="scss" scoped>
+    #myHomepage{
+        overflow-x: hidden !important;
+    }
     .heightScroll {
         min-height: 500px;
     }
@@ -224,7 +227,7 @@ import Jumbotrone from '../components/Jumbotrone.vue';
     .myCateg{
         width: 200px;
         height: 200px;
-        border: none;
+        border: none !important;
         border-radius: 10px !important;
         cursor: pointer;
         transition: all 0.2s ease-in-out;

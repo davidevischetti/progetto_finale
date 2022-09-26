@@ -5580,12 +5580,10 @@ var render = function render() {
       id: "myNavbar"
     }
   }, [_c("nav", {
-    staticClass: "navbar navbar-expand-lg navbar-dark p-0"
+    staticClass: "navbar navbar-expand-lg navbar-dark"
   }, [_c("div", {
-    staticClass: "container-fluid"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "d-flex"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
     attrs: {
       id: "navbarSupportedContent"
@@ -5595,14 +5593,14 @@ var render = function render() {
   }, _vm._l(_vm.navItems, function (navItem, index) {
     return _c("li", {
       key: index,
-      staticClass: "nav-item"
+      staticClass: "nav-item mx-0 mx-lg-1"
     }, [_c("a", {
-      staticClass: "nav-link active",
+      staticClass: "nav-link py-3 px-0 px-lg-3 rounded active",
       attrs: {
         href: navItem.routeName
       }
     }, [_vm._v(_vm._s(navItem.label))])]);
-  }), 0)])])])])]);
+  }), 0)])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -5610,7 +5608,7 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("a", {
-    staticClass: "navbar-brand",
+    staticClass: "navbar-brand mx-0 mx-lg-1",
     attrs: {
       href: "/"
     }
@@ -5859,9 +5857,9 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-12 categories_on"
+    staticClass: "col-sm-12 categories_on"
   }, [_c("div", {
-    staticClass: "row w-100 d-flex rowCat justify-content-between my-4 pb-3"
+    staticClass: "row w-100 d-flex rowCat justify-content-around my-4 pb-3"
   }, _vm._l(_vm.categories, function (category, i) {
     return _c("div", {
       key: i,
@@ -5874,7 +5872,7 @@ var render = function render() {
         }
       }
     }, [_c("div", {
-      staticClass: "card myCateg myShadow shadow",
+      staticClass: "card myCateg myShadow shadow img-thumbnail p-0",
       "class": _vm.arrElements.includes(i) && _vm.arrTrueOrFalse ? "myactive" : "",
       on: {
         click: function click($event) {
@@ -5883,7 +5881,7 @@ var render = function render() {
         }
       }
     }, [_c("img", {
-      staticClass: "card-img myCategImg",
+      staticClass: "card-img myCategImg rounded-3",
       attrs: {
         src: "/storage/".concat(category.img),
         alt: category.name
@@ -36387,7 +36385,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".heightScroll[data-v-04c29797] {\n  min-height: 500px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -200px;\n  height: auto;\n}\n.rowCat[data-v-04c29797] {\n  flex-wrap: nowrap;\n  height: 300px;\n  overflow-x: auto;\n  align-items: flex-end;\n  padding-bottom: 5px;\n}\n.myCateg[data-v-04c29797] {\n  width: 200px;\n  height: 200px;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 12rem;\n}\n.wrap_rist[data-v-04c29797] {\n  flex-wrap: nowrap;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n  box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;\n}\n.upcat[data-v-04c29797] {\n  transform: translate(0, -36px);\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
+exports.push([module.i, "#myHomepage[data-v-04c29797] {\n  overflow-x: hidden !important;\n}\n.heightScroll[data-v-04c29797] {\n  min-height: 500px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -200px;\n  height: auto;\n}\n.rowCat[data-v-04c29797] {\n  flex-wrap: nowrap;\n  height: 300px;\n  overflow-x: auto;\n  align-items: flex-end;\n  padding-bottom: 5px;\n}\n.myCateg[data-v-04c29797] {\n  width: 200px;\n  height: 200px;\n  border: none !important;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 12rem;\n}\n.wrap_rist[data-v-04c29797] {\n  flex-wrap: nowrap;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n  box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;\n}\n.upcat[data-v-04c29797] {\n  transform: translate(0, -36px);\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
 
 // exports
 
