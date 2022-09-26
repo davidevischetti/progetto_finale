@@ -5859,7 +5859,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "col-sm-12 categories_on"
   }, [_c("div", {
-    staticClass: "row w-100 d-flex rowCat justify-content-around my-4 pb-3"
+    staticClass: "row w-100 d-flex rowCat justify-content-between my-4 pb-4"
   }, _vm._l(_vm.categories, function (category, i) {
     return _c("div", {
       key: i,
@@ -5881,7 +5881,7 @@ var render = function render() {
         }
       }
     }, [_c("img", {
-      staticClass: "card-img myCategImg rounded-3",
+      staticClass: "card-img myCategImg",
       attrs: {
         src: "/storage/".concat(category.img),
         alt: category.name
@@ -6035,21 +6035,17 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "container"
-  }, [_c("ul", {
-    staticClass: "list-unstyled p-4 text-center border-bottom border-5 rounded-0 myBorder"
-  }, [_c("li", {
-    staticClass: "border-0"
-  }, [_c("img", {
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center p-4 text-center border-bottom border-5 rounded-0 myBorder"
+  }, [_c("div", {}, [_c("img", {
     staticClass: "rounded-4 risto_img",
     attrs: {
       src: "/storage/".concat(_vm.arrRestInfo.img),
       alt: _vm.arrRestInfo.name
     }
-  })]), _vm._v(" "), _c("li", {
-    staticClass: "border-0"
-  }, [_c("h1", [_vm._v("\n                " + _vm._s(_vm.arrRestInfo.name) + "\n                ")])]), _vm._v(" "), _c("li", {
-    staticClass: "border-0"
-  }, [_c("h3", [_vm._v("\n                    " + _vm._s(_vm.arrRestInfo.address) + "\n                ")])])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "px-5 text-start text-capitalize"
+  }, [_c("h1", [_vm._v("\n                " + _vm._s(_vm.arrRestInfo.name) + "\n                ")]), _vm._v(" "), _c("h3", [_vm._v("\n                    " + _vm._s(_vm.arrRestInfo.address) + "\n                ")])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex wrap justify-content-between"
   }, [_c("div", {
     staticClass: "row col-lg-6 col-12 heightScroll overflow-auto"
@@ -36385,7 +36381,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myHomepage[data-v-04c29797] {\n  overflow-x: hidden !important;\n}\n.heightScroll[data-v-04c29797] {\n  min-height: 500px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -200px;\n  height: auto;\n}\n.rowCat[data-v-04c29797] {\n  flex-wrap: nowrap;\n  height: 300px;\n  overflow-x: auto;\n  align-items: flex-end;\n  padding-bottom: 5px;\n}\n.myCateg[data-v-04c29797] {\n  width: 200px;\n  height: 200px;\n  border: none !important;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 10rem;\n}\n.wrap_rist[data-v-04c29797] {\n  flex-wrap: nowrap;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n  box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;\n}\n.upcat[data-v-04c29797] {\n  transform: translate(0, -36px);\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
+exports.push([module.i, "#myHomepage[data-v-04c29797] {\n  overflow-x: hidden !important;\n}\n.heightScroll[data-v-04c29797] {\n  min-height: 500px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -200px;\n  height: auto;\n}\n.rowCat[data-v-04c29797] {\n  flex-wrap: nowrap;\n  height: 300px;\n  overflow-x: auto;\n  align-items: flex-end;\n  padding-bottom: 5px;\n}\n.myCateg[data-v-04c29797] {\n  width: 200px;\n  height: 200px;\n  border: none !important;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 10rem;\n}\n.wrap_rist[data-v-04c29797] {\n  flex-wrap: nowrap;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c !important;\n  color: red !important;\n  box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;\n}\n.upcat[data-v-04c29797] {\n  transform: translate(0, -36px);\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
 
 // exports
 
@@ -36404,7 +36400,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".heightScroll[data-v-c1f7c23a] {\n  height: 800px;\n}\n#showRestaurant[data-v-c1f7c23a] {\n  background-color: #ffe6d8;\n}\n.myBorder[data-v-c1f7c23a] {\n  border-color: #d43a1c !important;\n}\n.btn_color[data-v-c1f7c23a] {\n  background-color: #d43a1c;\n  color: white;\n}\n.btn_color[data-v-c1f7c23a]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.risto_img[data-v-c1f7c23a] {\n  height: 15rem;\n}\n.wrap[data-v-c1f7c23a] {\n  flex-wrap: wrap;\n}", ""]);
+exports.push([module.i, ".heightScroll[data-v-c1f7c23a] {\n  height: 800px;\n}\n#showRestaurant[data-v-c1f7c23a] {\n  background-color: #ffe6d8;\n}\n.myBorder[data-v-c1f7c23a] {\n  border-color: #d43a1c !important;\n}\n.btn_color[data-v-c1f7c23a] {\n  background-color: #d43a1c;\n  color: white;\n}\n.btn_color[data-v-c1f7c23a]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.risto_img[data-v-c1f7c23a] {\n  width: 35rem;\n  box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;\n}\n.wrap[data-v-c1f7c23a] {\n  flex-wrap: wrap;\n}", ""]);
 
 // exports
 
