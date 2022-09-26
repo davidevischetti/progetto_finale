@@ -17,7 +17,6 @@
                                     <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -34,7 +33,7 @@
                                 <div class="col-4 p-0 contain_img">
                                     <router-link :to="{name: 'show', params: {id: rest.id} }"><img :src="`/storage/${rest.img}`" :alt="rest.name" class="myRistoImg img-fluid rounded" ></router-link>
                                 </div>
-                                <div class="col-8">
+                                <!-- <div class="col-8 "> -->
                                     <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                         <router-link :to="{name: 'show', params: {id: rest.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                             <div class="fs-5 fw-bold">
@@ -51,7 +50,7 @@
                                             </span>
                                         </router-link>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -76,7 +75,7 @@
                                     <div class="col-4 p-0 contain_img ">
                                     <router-link :to="{name: 'show', params: {id: rand.id} }"><img :src="`/storage/${rand.img}`" :alt="rand.name" class="myRistoImg img-fluid rounded"></router-link>
                                     </div>
-                                    <div class="col-8">
+                                    <!-- <div class="col-8"> -->
                                         <div class="card-body p-0 ms-2 h-100 d-flex align-items-center">
                                             <router-link :to="{name: 'show', params: {id: rand.id} }" class="card-title text-decoration-none text-dark text-capitalize">
                                                 <div class="fs-5 fw-bold">
@@ -93,7 +92,7 @@
                                                 </span>
                                             </router-link>
                                         </div>
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                     </div>
