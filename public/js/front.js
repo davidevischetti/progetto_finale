@@ -5583,7 +5583,9 @@ var render = function render() {
     staticClass: "navbar navbar-expand-lg navbar-dark p-0"
   }, [_c("div", {
     staticClass: "container-fluid"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "d-flex"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
     attrs: {
       id: "navbarSupportedContent"
@@ -5600,7 +5602,7 @@ var render = function render() {
         href: navItem.routeName
       }
     }, [_vm._v(_vm._s(navItem.label))])]);
-  }), 0)])])])]);
+  }), 0)])])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -5614,7 +5616,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("img", {
     attrs: {
-      src: "/image/logo-deliveboo-transparent.png",
+      src: "/image/logo-deliveboo-transparent-tagliato.png",
       alt: ""
     }
   })]);
@@ -5859,7 +5861,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "col-12 categories_on"
   }, [_c("div", {
-    staticClass: "row w-100 d-flex rowCat justify-content-between my-4"
+    staticClass: "row w-100 d-flex rowCat justify-content-between my-4 pb-3"
   }, _vm._l(_vm.categories, function (category, i) {
     return _c("div", {
       key: i,
@@ -5872,7 +5874,7 @@ var render = function render() {
         }
       }
     }, [_c("div", {
-      staticClass: "card myCateg myShadow",
+      staticClass: "card myCateg myShadow shadow",
       "class": _vm.arrElements.includes(i) && _vm.arrTrueOrFalse ? "myactive" : "",
       on: {
         click: function click($event) {
@@ -36385,7 +36387,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".heightScroll[data-v-04c29797] {\n  min-height: 500px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -200px;\n  height: auto;\n}\n.rowCat[data-v-04c29797] {\n  flex-wrap: nowrap;\n  height: 300px;\n  overflow-x: auto;\n  align-items: flex-end;\n  padding-bottom: 5px;\n}\n.myCateg[data-v-04c29797] {\n  width: 200px;\n  height: 200px;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 12rem;\n}\n.wrap_rist[data-v-04c29797] {\n  flex-wrap: nowrap;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n}\n.upcat[data-v-04c29797] {\n  transform: translate(0, -36px);\n}\n.myShadow[data-v-04c29797] {\n  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
+exports.push([module.i, ".heightScroll[data-v-04c29797] {\n  min-height: 500px;\n}\n#myHomepage[data-v-04c29797] {\n  background-color: #FFE6D8;\n}\n.categories_on[data-v-04c29797] {\n  margin-top: -200px;\n  height: auto;\n}\n.rowCat[data-v-04c29797] {\n  flex-wrap: nowrap;\n  height: 300px;\n  overflow-x: auto;\n  align-items: flex-end;\n  padding-bottom: 5px;\n}\n.myCateg[data-v-04c29797] {\n  width: 200px;\n  height: 200px;\n  border: none;\n  border-radius: 10px !important;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n}\n.myCategImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myRisto[data-v-04c29797] {\n  max-width: 40rem;\n  height: 8rem !important;\n}\n.contain_img[data-v-04c29797] {\n  height: 8rem;\n  width: 12rem;\n}\n.wrap_rist[data-v-04c29797] {\n  flex-wrap: nowrap;\n}\n.myRistoImg[data-v-04c29797] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.myCateg.myactive[data-v-04c29797] {\n  transform: translate(0, -36px);\n  border-bottom: 5px solid #d43a1c;\n  color: red !important;\n  box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;\n}\n.upcat[data-v-04c29797] {\n  transform: translate(0, -36px);\n}\n.my_btn[data-v-04c29797] {\n  background-color: #d43a1c;\n  color: white;\n}\n.my_btn[data-v-04c29797]:hover {\n  background-color: #ff5735;\n  color: white;\n}\n.my_text_cat[data-v-04c29797] {\n  background-color: rgba(0, 0, 0, 0.6);\n  color: white;\n  padding: 5px 0;\n  border-radius: 0 0 5px 5px;\n}", ""]);
 
 // exports
 

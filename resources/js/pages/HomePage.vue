@@ -6,11 +6,12 @@
             <div class="row">
 
                 <!-- Categorie e Lista ristoranti -->
+                <!-- TODO: sistemare il responsive delle categorie -->
                 <div class="col-12 categories_on">
                     <!-- Lista Categorie -->
-                    <div class="row w-100 d-flex rowCat justify-content-between my-4">
+                    <div class="row w-100 d-flex rowCat justify-content-between my-4 pb-3">
                         <div @click.prevent="assegnaValoreIdCategory(category.id)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'upcat' : ''"  class="col-md-4 col-lg-3 col-xxl-2 col-6 text-decoration-none text-dark"  v-for="(category, i) in categories" :key="i">
-                            <div class="card myCateg myShadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
+                            <div class="card myCateg myShadow shadow" @click.prevent="activeBorder(i)" :class="arrElements.includes(i) && arrTrueOrFalse ? 'myactive' : ''">
                                 <img :src="`/storage/${category.img}`" :alt="category.name" class="card-img myCategImg">
                                 <div class="card-img-overlay p-0 d-flex align-items-end">
                                     <p class="card-text text-capitalize text-center fs-4 my_text_cat col-12"> {{category.name}} </p>
@@ -255,13 +256,14 @@ import Jumbotrone from '../components/Jumbotrone.vue';
         transform:translate(0, -36px);
         border-bottom: 5px solid #d43a1c;
         color: red !important;
+        box-shadow: 0 0.75rem 0.75rem rgba(0, 0, 0, 0.5) !important;
     }
     .upcat{
         transform:translate(0, -36px);
     }
-    .myShadow {
-        box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5) !important;
-    }
+    // .myShadow {
+    //    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.408) !important;
+    // }
 
     .my_btn{
         background-color: #d43a1c;
