@@ -50,8 +50,13 @@
                         <li class="list-group-item fw-bold">piatti inseriti</li>
                         <li class="list-group-item" v-for="cart in arrCartPlate" :key="cart.id">
                             <span class="d-flex justify-content-between">
-                                <span>{{cart.name}}</span><button @click.prevent="removePlate(cart)" class="btn btn-outline-danger py-0 px-2 ">X</button>
+                                <span>{{cart.name}} {{plateQuantity}}</span>
+                                <div>
+                                    <button @click.prevent="removePlate(cart)" class="btn btn-outline-danger py-0 px-2 ">-</button>
+                                    <button class="btn btn-outline-success py-0 px-2 " @click.prevent="updatePlate(cart)">+</button>
+                                </div>
                             </span>
+
 
 
                                 <!-- <p>{{plateQuantity}}</p> -->
@@ -81,10 +86,11 @@ export default {
             arrRestInfo: [],
             arrRestPlate: [],
 
+
             arrCartPlate: [],
 
-            cartQuantity: 0, //indichiamo il numero totale di articoli aggiunti
-            plateQuantity: 1, //indichiamo la quantità del singolo piatto ordinato
+            // cartQuantity: 0, indichiamo il numero totale di articoli aggiunti
+            plateQuantity : 0, //indichiamo la quantità del singolo piatto ordinato
 
             // isAdded: false,
             // idRest: this.id,
@@ -118,7 +124,19 @@ export default {
     //nella funzione addtocart dobbiamo
     methods:{
         addToCart(element){
-            this.arrCartPlate.push(element);
+            this.plateInCart = element;
+
+            if(this.arrCartPlate.includes(this.plateInCart)) {
+                // this.quantity++;
+                this.plateInCart['quantity']++;
+            } else {
+
+                this.plateInCart['quantity'] = 1;
+                // this.quantity++;
+                this.arrCartPlate.push(this.plateInCart);
+            }
+            console.log(this.plateInCart);
+            console.log(this.arrCartPlate);
             this.savePlate();
         },
 
@@ -127,9 +145,12 @@ export default {
             localStorage.setItem('arrCartPlate', parsed);
         },
 
-        updatePlate(){
-            this.plateQuantity++;
-        },
+        // updatePlate(){
+        //     this.plateQuantity++;
+
+        //     this.addToCart(element);
+        //     console.log(this.arrCartPlate);
+        // },
 
         removePlate(element){
             if(this.plateQuantity > 1){
