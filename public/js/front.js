@@ -5902,9 +5902,9 @@ var render = function render() {
       }
     }
   }, [_vm._v("Cancella filtri")])]), _vm._v(" "), _c("div", {
-    staticClass: "heightScroll overflow-auto"
+    staticClass: "heightScroll overflow-auto pb-5"
   }, [_c("div", {
-    staticClass: "row justify-content-center align-items-center gap-4"
+    staticClass: "row justify-content-between align-items-center gap-4"
   }, _vm._l(_vm.arrRestaurants, function (rest) {
     return _c("div", {
       key: rest.id,
