@@ -5579,17 +5579,17 @@ var render = function render() {
     attrs: {
       id: "myNavbar"
     }
-  }, [_c("nav", {
-    staticClass: "navbar navbar-expand-lg navbar-dark"
   }, [_c("div", {
     staticClass: "container"
+  }, [_c("nav", {
+    staticClass: "navbar navbar-expand-lg navbar-dark"
   }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
     attrs: {
       id: "navbarSupportedContent"
     }
   }, [_c("ul", {
-    staticClass: "navbar-nav me-auto mb-2 mb-lg-0"
+    staticClass: "navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end"
   }, _vm._l(_vm.navItems, function (navItem, index) {
     return _c("li", {
       key: index,
@@ -36343,7 +36343,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myNavbar[data-v-5dd24bca] {\n  background-color: #d43a1c;\n}\nimg[data-v-5dd24bca] {\n  width: 80px;\n}", ""]);
+exports.push([module.i, "#myNavbar[data-v-5dd24bca] {\n  background-color: #d43a1c;\n}\nimg[data-v-5dd24bca] {\n  width: 80px;\n}\nul[data-v-5dd24bca] {\n  width: 100%;\n}", ""]);
 
 // exports
 
