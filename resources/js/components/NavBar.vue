@@ -1,6 +1,6 @@
 <template>
 <div id="myNavbar">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark p-0">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img src="/image/logo-deliveboo-transparent.png" alt="">
@@ -9,8 +9,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li v-for="(navItem, index) in navItems"  :key="index" class="nav-item">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li v-for="(navItem, index) in navItems"  :key="index" class="nav-item ">
             <a :href="navItem.routeName" class="nav-link active">{{ navItem.label }}</a>
         </li>
       </ul>
@@ -44,10 +44,10 @@ export default {
                     label: 'Register',
                     routeName: 'register',
                 },
-                {
-                    label: 'Dashboard',
-                    routeName: 'restaurant',
-                }
+                // {
+                //     label: 'Dashboard',
+                //     routeName: 'restaurant',
+                // }
             ]
         };
     }
