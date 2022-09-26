@@ -51,12 +51,12 @@
                 <h1 class="text-center">Il tuo carrello</h1>
                 <div class="my_order  position-relative inline-block">
                     <div v-for="plate in arrCartPlate" class="col-12 d-flex my_plate_order " :key="plate.id">
-                        <h4 class="col-8 offset-1 d-flex align-items-center">{{plate.name}} </h4>
+                        <h5 class="col-8 offset-1 d-flex align-items-center">{{plate.name}} </h5>
                         <h5 class="col-3 d-flex align-items-center">{{plate.price}} €</h5>
 
                         
                     </div>
-                    <h5 class=" col-12 text-center position-relative bottom-0" >Prezzo totale: {{price_visualizzato}} €</h5>
+                    <h3 class=" col-12 text-center position-relative bottom-0" >Prezzo totale: {{price_visualizzato}} €</h3>
                 </div>
 
             </div>
@@ -152,11 +152,11 @@ export default{
         background-color: #ffe6d8;
     }
     .my_order{
-        border: solid 2px #ff5735;
-        border-radius: 10px;
+        border: solid 2px #dee2e6;
+        border-radius: 5px;
 
     }
     .my_plate_order{
-        border-bottom: solid 2px #ff5735;
+        border-bottom: solid 2px #dee2e6;
     }
 </style>
