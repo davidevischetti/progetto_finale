@@ -5,15 +5,15 @@
     <a href="{{url()->previous()}}" class="mb-5 text-decoration-none btn btn-outline-secondary rounded-pill"><< Back</a>
 
     <div class="row justify-content-start">
-        <h1 class="mb-4 text-center">
+        <h1 class=" col-9 col-lg-10 offset-2 mb-4 text-center">
             Lista piatti creati
         </h1>
 
-        <div class="col-2 ">
+        <div class="col-3 col-lg-2 ">
             @include('restaurant/partials/side-bar')
         </div>
 
-        <div class="col-8">
+        <div class="col-9 col-lg-10">
             @if (session('creato'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('creato') }}
@@ -32,12 +32,15 @@
             @endif
 
 
-
+            @if (count($plates) == 0 )
+            <h1 class="message">Non hai ancora creato dei piatti</h1>
+            <div class="white border_matteo"></div>
+            @endif
             <ul class="nav myBorder-primary flex-column list-group mb-2">
                 @foreach ($plates as $plate)
-                    <li  data-id="{{ $plate->id }}" class="nav-item d-flex align-items-center py-3 list-group-item">
+                    <li  data-id="{{ $plate->id }}" class="nav-item border_matteo d-flex align-items-center py-3 list-group-item">
                         {{-- <img src="{{ asset ('storage/' . $plate->img)}}" alt="" > --}}
-                        <div class="col-8 my-0 align-items-center">
+                        <div class="col-7 my-0 align-items-center">
                             <h3  href="#">{{$plate->name}}</h3>
                             <span>
                                 {{$plate->ingredients}}
@@ -46,9 +49,12 @@
                                 {{$plate->price}} €
                             </div>
                         </div>
-                        <a class="btn btn-success col-1 py-2 me-5 ms-5" href="{{route('restaurant.plates.edit', ['plate' => $plate])}}">Edit</a>
+                        <div class="col-md-4 col-5 offset-md-1 d-flex justify-content-around">
+                            <a class="btn btn-success py-2" href="{{route('restaurant.plates.edit', ['plate' => $plate])}}">Edit</a>
 
-                        <button class="btn btn-danger js-delete">Delete</button>
+                            <button class="btn btn-danger js-delete">Delete</button>
+                        </div>
+
 
                     </li>
 
