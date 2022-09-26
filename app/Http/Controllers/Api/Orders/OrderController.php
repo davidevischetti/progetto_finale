@@ -20,7 +20,7 @@ class OrderController extends Controller
     ];
 
     public function generate(Request $request, Gateway $gateway) {
-        
+
         $token = $gateway->clientToken()->generate();
 
         return response()->json([
@@ -40,18 +40,14 @@ class OrderController extends Controller
 
         $infoOrder = $dataOrderback['order'];
 
-        
-        
-        
-        
-        $priceTotal = null;
-        foreach($plateIds as $id ){
+        $total = $dataOrderback['total'];
 
+
+        foreach($plateIds as $id ){
             $plate = Plate::find($id);
-            $priceTotal += $plate->price;
         }
 
-        
+
 
         // return response()->json([
         //     'success' => true,
@@ -59,7 +55,7 @@ class OrderController extends Controller
         // ]);
 
         $result = $gateway->transaction()->sale([
-            'amount' => $priceTotal,
+            'amount' => $total,
             'paymentMethodNonce' => $token,
             'options' => [
                 'submitForSettlement' => true,
@@ -68,10 +64,10 @@ class OrderController extends Controller
 
         if($result->success) {
 
-            
+
 
             Order::create($infoOrder + [
-                'price_total' => $priceTotal
+                'price_total' => $total
             ]);
 
 
@@ -89,7 +85,7 @@ class OrderController extends Controller
         }
 
 
-            
-            
+
+
     }
 }

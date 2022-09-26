@@ -5,44 +5,44 @@
                 <h1 class="mb-4 offset-4 col-4 text-center">
                     Checkout
                 </h1>
-                
-               
-    
-                
+
+
+
+
                 <div class="col-6 offset-3 card p-5 myBorder-primary">
                     <form @submit.prevent="myLog()" v-if="formVisible" method="post" enctype="multipart/form-data">
-        
+
                         <div class="mb-3">
                             <label class="form-label" for="name">Name*</label>
                             <input class="form-control" type="text" v-model="dataOrder.name" name="name" id="name" maxlength="255" required>
                         </div>
-        
+
                         <div class="mb-3">
                             <label class="form-label" for="email">Email*</label>
                             <input class="form-control" type="email" v-model="dataOrder.email" name="email" id="email" maxlength="255" minlength="8" required>
                         </div>
-        
+
                         <div class="mb-3">
                             <label class="form-label" for="address">Address*</label>
                             <input class="form-control" type="text" v-model="dataOrder.address" name="address" id="address" maxlength="255" minlength="8" required>
                         </div>
-        
+
                         <div class="mb-3">
                             <label class="form-label" for="phone">Phone*</label>
                             <input class="form-control" type="tel" v-model="dataOrder.phone" name="phone" id="phone" max="20" required>
                         </div>
-    
+
                         <div>
                             Price Total
                             <br>
                             {{price_visualizzato}} €
                         </div>
-    
-                        
+
+
                         <button  type="submit" class="btn my_btn">Save</button>
                     </form>
                     <div v-if="visible">
-                        <v-braintree 
+                        <v-braintree
                             :authorization=token_collegamento
                             @success="onSuccess"
                         />
@@ -74,6 +74,7 @@ export default{
             price_visualizzato: null,
             orderMessage: '',
             plateIds: [],
+            arrQuantity: [],
             token_collegamento: 'null',
 
             visible: false,
@@ -81,14 +82,14 @@ export default{
         }
 
 
-            
+
     },
-   
+
     created(){
         this.generateToken();
 
         console.log(this.arrCartPlate);
-        
+
         if (localStorage.getItem('arrCartPlate')) {
             try {
                 this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate'));
@@ -98,27 +99,34 @@ export default{
             }
         }
 
-        
+
 
 
         this.arrCartPlate.forEach(plate => {
-            this.price_visualizzato += plate.price;
+            let newPrice = plate.price * plate.quantity;
+            this.price_visualizzato += newPrice;
         });
 
         this.arrCartPlate.forEach(plate => {
+
             this.plateIds.push(plate.id);
+            this.arrQuantity.push(plate.quantity);
+
+            console.log(plate);
         });
-    },  
+
+        console.log(this.plateIds);
+    },
 
     methods: {
         myLog(){
             this.formVisible = false;
             this.visible = true
         },
- 
+
         onSuccess(payload) {
             let token = payload.nonce;
-            axios.post('/api/orders/make/payment', {plate: this.plateIds, token: token, order: this.dataOrder}).then(response => {
+            axios.post('/api/orders/make/payment', {plate: this.plateIds, token: token, order: this.dataOrder, total: this.price_visualizzato}).then(response => {
                 if (response.data.success) {
                     this.visible = false;
                 }
@@ -129,7 +137,7 @@ export default{
             axios.get('/api/orders/generate').then(response => {
                 if (response.data.success) {
                     this.token_collegamento = response.data.token
-                    
+
                 }
             // console.log(this.token_collegamento);
             // console.log(this.visible);
