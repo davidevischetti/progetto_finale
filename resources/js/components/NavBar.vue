@@ -38,15 +38,15 @@ export default {
                 // },
                 {
                     label: 'Login',
-                    routeName: 'login',
+                    routeName: '/login',
                 },
                 {
                     label: 'Register',
-                    routeName: 'register',
+                    routeName: '/register',
                 },
                 {
                     label: 'Dashboard',
-                    routeName: 'restaurant',
+                    routeName: '/restaurant',
                 }
             ]
         };

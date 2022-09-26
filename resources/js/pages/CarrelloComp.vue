@@ -2,14 +2,14 @@
     <div id="myCart" class="container">
         <div class="row ">
             <h1 class="mb-4 offset-4 col-4 text-center">
-                Riepilogo ordine
+                Checkout
             </h1>
             
            
 
             
             <div class="col-8 offset-2 card p-5 myBorder-primary">
-                <form v-if="formVisible" method="post" enctype="multipart/form-data">
+                <form @submit.prevent="myLog()" v-if="formVisible" method="post" enctype="multipart/form-data">
     
                     <div class="mb-3">
                         <label class="form-label" for="name">Name*</label>
@@ -38,7 +38,7 @@
                     </div>
 
                     
-                    <button @click.prevent="myLog()" type="submit" class="btn my_btn">Save</button>
+                    <button  type="submit" class="btn my_btn">Save</button>
                 </form>
                 <div v-if="visible">
                     <v-braintree 
@@ -49,13 +49,6 @@
                 <div v-else-if="visible == false && formVisible == false">
                     Transazione avvenuta con successo
                 </div>
-            </div>
-            <div>
-                <ul>
-                    <li v-for="plate in arrCartPlate" :key="plate.id">
-                        {{plate.name}} 
-                    </li>
-                </ul>
             </div>
         </div>
 
@@ -83,11 +76,26 @@ export default{
 
             visible: false,
             formVisible: true,
+
+            $arrCartPlate2: this.arrCartPlate,
+
+            
         }
+
+
             
     },
     created(){
         this.generateToken();
+
+        if (localStorage.getItem('arrCartPlate2')) {
+            try {
+                this.arrCartPlate = JSON.parse(localStorage.getItem('arrCartPlate2'));
+            }
+            catch(e) {
+                localStorage.removeItem('arrCartPlate2');
+            }
+        }
 
         this.arrCartPlate.forEach(plate => {
             this.price_visualizzato += plate.price;
@@ -109,17 +117,10 @@ export default{
             let token = payload.nonce;
             axios.post('/api/orders/make/payment', {plate: this.plateIds, token: token, order: this.dataOrder}).then(response => {
                 if (response.data.success) {
-                    console.log(response.data.priceTotal)
                     this.visible = false;
                 }
+                window.localStorage.clear();
             });
-
-
-            // axios.post('/api/orders', this.dataOrder).then(response => {
-            //     if (response.data.success) {
-            //         this.orderMessage = response.data.message
-            //     }
-            // })
         },
         generateToken(){
             axios.get('/api/orders/generate').then(response => {
