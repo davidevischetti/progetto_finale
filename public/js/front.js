@@ -6027,8 +6027,6 @@ var render = function render() {
         alt: rand.name
       }
     })])], 1), _vm._v(" "), _c("div", {
-      staticClass: "col-8"
-    }, [_c("div", {
       staticClass: "card-body p-0 ms-2 h-100 d-flex align-items-center"
     }, [_c("router-link", {
       staticClass: "card-title text-decoration-none text-dark text-capitalize",
@@ -6044,7 +6042,7 @@ var render = function render() {
       staticClass: "fs-5 fw-bold"
     }, [_vm._v("\n                                                " + _vm._s(rand.name) + "\n                                            ")]), _vm._v(" "), _c("div", [_vm._v("\n                                                " + _vm._s(rand.address) + "\n                                            ")]), _vm._v(" "), _vm._l(rand.category, function (category) {
       return _c("span", [_c("strong", [_vm._v("\n                                                    ·\n                                                ")]), _vm._v("\n                                                " + _vm._s(category.name) + "\n                                            ")]);
-    })], 2)], 1)])])]);
+    })], 2)], 1)])]);
   }), 0) : _vm._e()])])])], 1);
 };
 
