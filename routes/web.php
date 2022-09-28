@@ -1,15 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
+
+
+
 
 Route::middleware('auth')
    ->namespace('Restaurant')
@@ -19,3 +23,7 @@ Route::middleware('auth')
     Route::get('/', 'RestaurantController@dashboard')->name('dashboard');
     Route::resource('plates', 'PlateController');
    });
+
+Route::get("{any?}", function() {
+    return view("guests.home");
+})->where("any", ".*")->name('home');

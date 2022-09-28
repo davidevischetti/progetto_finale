@@ -15,23 +15,43 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'name'     => 'italiano',
-                'img'  => 'https://primochef.it/wp-content/uploads/2018/06/SH_pasta_al_pomodoro-1.jpg',
+                'img'  => 'uploads/italiano.jpg',
+                //1
             ],
             [
                 'name'     => 'pizza',
-                'img'  => 'https://media-assets.vanityfair.it/photos/61e444841e21bc3bd54b5357/1:1/w_2832,h_2832,c_limit/pizza%20tendenze.jpg',
+                'img'  => 'uploads/pizza.jpg',
+                //2
             ],
             [
                 'name'     => 'giapponese',
-                'img'  => 'https://static.gamberorosso.it/2022/01/sushi-768x512.jpeg',
+                'img'  => 'uploads/giapponese.jpg',
+                //3
             ],
             [
                 'name'     => 'messicano',
-                'img'  => 'https://cdn.ilclubdellericette.it/wp-content/uploads/2021/07/burrito-di-carne-1280x720.jpg',
+                'img'  => 'uploads/messicano.jpg',
+                //4
+            ],
+            [
+                'name'     => 'dolci',
+                'img'  => 'uploads/dolci.jpg',
+                //5
+            ],
+            [
+                'name'     => 'pokè',
+                'img'  => 'uploads/poké.jpg',
+                //6
+            ],
+            [
+                'name'     => 'americano',
+                'img'  => 'uploads/americano.jpg',
+                //7
             ],
             [
                 'name'     => 'kebab',
-                'img'  => 'https://static.cookist.it/wp-content/uploads/sites/21/2019/05/kebab-fatto-in-casa.jpg',
+                'img'  => 'uploads/kebab.jpg',
+                //8
             ],
 
         ];

@@ -140,6 +140,6 @@ class PlateController extends Controller
 
         return redirect()->route('restaurant.plates.index')->with([
             'eliminato' => 'Piatto eliminato con successo',
-        ]);;
+        ]);
     }
 }

@@ -52,3 +52,49 @@ if (eleOverlay) {
 
 
 // TODO: controllo password
+// let elPws = document.querySelector('.pws');
+// let elPwsConfirmed = document.querySelector('.pws-confirmed');
+// let elAlert = document.querySelector('.myAlert');
+// let elBtn = document.querySelector('.myDisable');
+
+// function checkPws(){
+//     if (elPwsConfirmed.value != elPws.value) {
+//         elAlert.innerHTML = 'Le password non corrispondono';
+//         elBtn.setAttribute('disabled');
+//     } else {
+//         elBtn.removeAttribute('disabled');
+//     }
+// }
+
+function validate() {
+    let elPws = document.querySelector('.pws').value;
+    let elPwsConfirmed = document.querySelector('.pws-confirmed').value;
+    let elAlert = document.querySelector('.myAlert');
+    if (elPws != elPwsConfirmed) {
+        elAlert.classList.remove('d-none');
+        elAlert.classList.add('alert-danger');
+        elAlert.classList.add('pws-shake');
+        elAlert.innerHTML = "Le password non corrispondono";
+        return false;
+    }
+    return true;
+}
+
+function fixedPws (){
+    let elPws = document.querySelector('.pws').value;
+    let elPwsConfirmed = document.querySelector('.pws-confirmed').value;
+    let elAlert = document.querySelector('.myAlert');
+    if (elPws == elPwsConfirmed) {
+        elAlert.classList.remove('alert-danger');
+        elAlert.classList.add('alert-success');
+        elAlert.innerHTML = "Le password corrispondono";
+    } else if (elPws != elPwsConfirmed){
+        elAlert.classList.remove('d-none');
+        elAlert.classList.add('alert-danger');
+        elAlert.innerHTML = "Le password non corrispondono";
+    }
+}
+
+window.validate = validate;
+window.fixedPws = fixedPws;
+
